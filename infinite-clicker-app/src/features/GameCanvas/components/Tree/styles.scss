@@ -1,0 +1,89 @@
+.tree {
+  position: absolute;
+  top: 410px;
+  left: 590px;
+  height: 300px;
+  width: 138px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  animation: none;
+}
+
+.tree-basic {
+  background: url("./assets/tree.png");
+  background-size: contain;
+}
+
+.tree-dead {
+  background: url("./assets/treeDead.png");
+  background-size: contain;
+  width: 210px;
+  left: 545px;
+}
+
+.tree-long {
+  background: url("./assets/treeLong.png");
+  background-size: contain;
+  width: 98px;
+  left: 610px;
+}
+
+.tree-long-orange {
+  background: url("./assets/treeLongOrange.png");
+  background-size: contain;
+  width: 98px;
+  left: 610px;
+}
+
+.tree-orange {
+  background: url("./assets/treeOrange.png");
+  background-size: contain;
+  width: 117px;
+  left: 595px;
+}
+
+.tree-palm {
+  background: url("./assets/treePalm.png");
+  background-size: contain;
+  width: 250px;
+  left: 510px;
+}
+
+.tree-pine {
+  background: url("./assets/treePine.png");
+  background-size: contain;
+  width: 125px;
+  left: 600px;
+}
+
+.tree-pine-orange {
+  background: url("./assets/treePineOrange.png");
+  background-size: contain;
+  width: 125px;
+  left: 600px;
+}
+
+.bounce {
+  animation: shake 0.45s cubic-bezier(.18,.04,.12,.87) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

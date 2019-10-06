@@ -1,19 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import GameCanvas from "./features/GameCanvas"
 
-const App: React.FC = () => {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <div>This will become a clicker game.</div>
-          <div>Soon...</div>
-        </p>
-      </header>
+    <div>
+      <GameCanvas/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
