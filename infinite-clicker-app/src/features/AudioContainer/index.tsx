@@ -12,8 +12,9 @@ const AudioContainer = (props: AudioContainerProps) => {
     if (props.isPlaying) {
       audio.current.currentTime = 0
       audio.current.play()
+
     }
-  }, [props.isPlaying, audio])
+  }, [props.isPlaying])
 
   return <span className="audio-container"></span>
 }
