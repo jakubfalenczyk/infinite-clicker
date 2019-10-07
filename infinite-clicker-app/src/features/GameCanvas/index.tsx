@@ -4,11 +4,13 @@ import Player from "../Player"
 import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
+import { getRandom } from "../../common/random"
 
 const GameCanvas = ()  => {
   const [ treeState, setTreeState ] = useState({ 
     life: 100,
-    type: "tree-basic"
+    type: "tree-basic",
+    isFalling: false
   })
   const [ playerState, setPlayerState ] = useState({
     isCutting: false
@@ -16,7 +18,7 @@ const GameCanvas = ()  => {
 
   const getNextTreeType = (): string => {
     const max = treeTypes.length
-    const randomTreeTypeIndex = Math.floor(Math.random() * max)
+    const randomTreeTypeIndex = getRandom(max)
     const uniqueType = treeTypes[randomTreeTypeIndex] !== treeState.type
       ? treeTypes[randomTreeTypeIndex]
       : getNextTreeType()
@@ -32,12 +34,14 @@ const GameCanvas = ()  => {
     if (isTreeDead) {
       setTreeState({
         life: fullLife,
-        type: getNextTreeType()
+        type: getNextTreeType(),
+        isFalling: true
       })
     } else {
       setTreeState({
         life: newTreeLife,
         type: treeState.type,
+        isFalling: false,
       })
     }
   }
@@ -49,7 +53,11 @@ const GameCanvas = ()  => {
 
   return (
     <div className="game-canvas">
-      <Tree type={treeState.type} onClick={() => onTreeClick()}/>
+      <Tree 
+        type={treeState.type}
+        isFalling={treeState.isFalling}
+        onClick={() => onTreeClick()}
+      />
       <HealthBar life={treeState.life}/>
       <Player 
         isCutting={playerState.isCutting}

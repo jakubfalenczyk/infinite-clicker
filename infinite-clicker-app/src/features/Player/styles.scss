@@ -1,13 +1,13 @@
 $base-position: 0px -60px;
 
 .player {
-  background: url("./assets/character-tilesheet.png");
+  background: url("/assets/images/character-tilesheet.png");
   background-position: $base-position;
   height: 240px;
   width: 220px;
   position: relative;
   top: 200px;
-  right: 120px;
+  right: 160px;
   margin: auto;
 }
 
