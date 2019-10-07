@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import "./styles.scss"
 import Player from "../Player"
-import Tree from "./components/Tree"
+import Tree from "../Tree"
 import treeTypes from "./treeTypes"
-import HealthBar from "./components/HealthBar"
+import HealthBar from "../HealthBar"
 
 const GameCanvas = ()  => {
   const [ treeState, setTreeState ] = useState({ 
@@ -14,12 +14,14 @@ const GameCanvas = ()  => {
     isCutting: false
   })
 
-  const getNextTreeType = () => {
-    const currentTypeIndex = treeTypes.findIndex(t => t === treeState.type)
-    const isNextIndexOutOfBounds = currentTypeIndex + 1 > treeTypes.length - 1
-    const nextIndex = isNextIndexOutOfBounds ? 0 : currentTypeIndex + 1
-    
-    return treeTypes[nextIndex]
+  const getNextTreeType = (): string => {
+    const max = treeTypes.length
+    const randomTreeTypeIndex = Math.floor(Math.random() * max)
+    const uniqueType = treeTypes[randomTreeTypeIndex] !== treeState.type
+      ? treeTypes[randomTreeTypeIndex]
+      : getNextTreeType()
+
+    return uniqueType
   }
 
   const damageTree = () => {

@@ -1,12 +1,10 @@
 .tree {
-  position: absolute;
+  position: relative;
+  margin: auto;
   top: 410px;
-  left: 590px;
   height: 300px;
   width: 138px;
-  background-repeat: no-repeat;
   cursor: pointer;
-  animation: none;
 }
 
 .tree-basic {
@@ -18,49 +16,44 @@
   background: url("./assets/treeDead.png");
   background-size: contain;
   width: 210px;
-  left: 545px;
+  right: 10px;
 }
 
 .tree-long {
   background: url("./assets/treeLong.png");
   background-size: contain;
   width: 98px;
-  left: 610px;
 }
 
 .tree-long-orange {
   background: url("./assets/treeLongOrange.png");
   background-size: contain;
   width: 98px;
-  left: 610px;
 }
 
 .tree-orange {
   background: url("./assets/treeOrange.png");
   background-size: contain;
   width: 117px;
-  left: 595px;
 }
 
 .tree-palm {
   background: url("./assets/treePalm.png");
   background-size: contain;
   width: 250px;
-  left: 510px;
+  right: 20px;
 }
 
 .tree-pine {
   background: url("./assets/treePine.png");
   background-size: contain;
   width: 125px;
-  left: 600px;
 }
 
 .tree-pine-orange {
   background: url("./assets/treePineOrange.png");
   background-size: contain;
   width: 125px;
-  left: 600px;
 }
 
 .bounce {

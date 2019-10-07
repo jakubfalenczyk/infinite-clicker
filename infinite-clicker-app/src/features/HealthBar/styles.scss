@@ -1,14 +1,15 @@
 .health-bar {
+  color: white;
   position: relative;
-  top: 720px;
-  left: 610px;
+  margin: auto;
+  top: 420px;
   height: 18px;
   line-height: 18px;
   width: 100px;
   font-size: 14px;
   text-align: center;
   font-weight: bold;
-  background-color: #e8e8e8;
+  background-color: #b5b5b5;
 
   .life {
     background-color: #a30b0b;

@@ -1,13 +1,14 @@
-$base-position: -20px -60px;
+$base-position: 0px -60px;
 
 .player {
   background: url("./assets/character-tilesheet.png");
   background-position: $base-position;
-  height: 200px;
-  width: 185px;
-  position: absolute;
-  top: 520px;
-  left: 450px;
+  height: 240px;
+  width: 220px;
+  position: relative;
+  top: 200px;
+  right: 120px;
+  margin: auto;
 }
 
 .cutting {
@@ -17,14 +18,16 @@ $base-position: -20px -60px;
 
 @keyframes cut {
   0% {
-    background-position: -0px -60px;
+    background-position: -230px -60px;
   }
 
   25% {
-    background-position: -185px -820px;
+    background-position: -440px -30px;
+    top: 170px;
   }
 
   50% {
-    background-position: -390px -820px;
+    background-position: -660px -60px;
+    width: 240px;
   }
 }
