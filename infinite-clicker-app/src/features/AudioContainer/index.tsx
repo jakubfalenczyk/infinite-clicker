@@ -16,7 +16,7 @@ const AudioContainer = (props: AudioContainerProps) => {
       audio.current.currentTime = 0
       audio.current.play()
     }
-  }, [props.isPlaying])
+  }, [props.isPlaying, props.src])
 
   return null
 }
