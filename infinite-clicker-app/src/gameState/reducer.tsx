@@ -1,11 +1,12 @@
 import React, { useContext, createContext, useReducer } from "react"
 import { defaultGameState, GameState } from "./stateModels"
 
-type GameStateActionType =
-  "Player_UpdateWood" |
-  "Player_UpdateAxeDamage" |
-  "Tree_UpdateMaxLife" |
-  "Tree_UpdateCurrentLife"
+export enum GameStateActionType {
+  PlayerAddWood,
+  PlayerUpdateAxeDamage,
+  TreeUpdateMaxLife,
+  TreeUpdateCurrentLife,
+}
 
 interface GameStateAction {
   type: GameStateActionType
@@ -16,15 +17,15 @@ const reducer = (state: GameState, action: GameStateAction): GameState => {
   const { player, tree } = state
 
   switch (action.type) {
-    case "Player_UpdateWood":
+    case GameStateActionType.PlayerAddWood:
       return {
         ...state,
         player: {
           ...player,
-          wood: action.payload
+          wood: player.wood + action.payload
         }
       }
-    case "Player_UpdateAxeDamage":
+    case GameStateActionType.PlayerUpdateAxeDamage:
       return {
         ...state,
         player: {
@@ -32,7 +33,7 @@ const reducer = (state: GameState, action: GameStateAction): GameState => {
           axeDamage: action.payload
         }
       }
-    case "Tree_UpdateMaxLife":
+    case GameStateActionType.TreeUpdateMaxLife:
       return {
         ...state,
         tree: {
@@ -40,14 +41,14 @@ const reducer = (state: GameState, action: GameStateAction): GameState => {
           maxLife: action.payload
         }
       }
-    case "Tree_UpdateCurrentLife":
-        return {
-          ...state,
-          tree: {
-            ...tree,
-            currentLife: action.payload
-          }
+    case GameStateActionType.TreeUpdateCurrentLife:
+      return {
+        ...state,
+        tree: {
+          ...tree,
+          currentLife: action.payload
         }
+      }
     default:
       return state
   }

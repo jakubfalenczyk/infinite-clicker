@@ -1,5 +1,6 @@
 export interface PlayerState {
   wood: number
+  gold: number
   axeDamage: number
 }
 
@@ -18,6 +19,7 @@ const defaultTreeLife = 100
 
 export const defaultGameState: GameState = {
   player: {
+    gold: 0,
     axeDamage: 10,
     wood: 0,
   },

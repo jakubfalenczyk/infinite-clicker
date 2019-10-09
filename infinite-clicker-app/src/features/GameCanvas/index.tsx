@@ -5,7 +5,8 @@ import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
 import { getRandom } from "../../common/random"
-import { useGameState } from "../../gameState/reducer"
+import { useGameState, GameStateActionType } from "../../gameState/reducer"
+import PlayerStats from "../PlayerStats"
 
 const GameCanvas = ()  => {
   const { gameState, dispatch } = useGameState()
@@ -19,7 +20,7 @@ const GameCanvas = ()  => {
   })
 
   const getNextTreeType = (): string => {
-    const max = treeTypes.length
+    const max = treeTypes.length - 1
     const randomTreeTypeIndex = getRandom(max)
     const uniqueType = treeTypes[randomTreeTypeIndex] !== treeState.type
       ? treeTypes[randomTreeTypeIndex]
@@ -39,10 +40,17 @@ const GameCanvas = ()  => {
     const newTreeLife = tree.currentLife - player.axeDamage
     const isTreeDead = newTreeLife === 0
     const validatedLife = isTreeDead ? tree.maxLife : newTreeLife
-    dispatch({ type: "Tree_UpdateCurrentLife", payload: validatedLife })
+    
+    dispatch({ 
+      type: GameStateActionType.TreeUpdateCurrentLife,
+      payload: validatedLife
+    })
     
     if (isTreeDead) {
-      dispatch({ type: "Player_UpdateWood", payload: tree.wood })
+      dispatch({ 
+        type: GameStateActionType.PlayerAddWood,
+        payload: tree.wood
+      })
       cutDownTree()
     } else {
       setTreeState({
@@ -59,6 +67,7 @@ const GameCanvas = ()  => {
 
   return (
     <div className="game-canvas">
+      <PlayerStats/>
       <Tree 
         type={treeState.type}
         isFalling={treeState.isFalling}

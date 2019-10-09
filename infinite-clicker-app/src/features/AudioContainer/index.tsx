@@ -10,9 +10,11 @@ const AudioContainer = (props: AudioContainerProps) => {
 
   useEffect(() => {
     if (props.isPlaying) {
+      console.log(props.src)
+      audio.current.src = props.src
+      audio.current.load()
       audio.current.currentTime = 0
       audio.current.play()
-
     }
   }, [props.isPlaying])
 
