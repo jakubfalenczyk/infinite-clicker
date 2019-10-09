@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 
 interface AudioContainerProps {
   src: string
@@ -16,7 +16,7 @@ const AudioContainer = (props: AudioContainerProps) => {
     }
   }, [props.isPlaying])
 
-  return <span className="audio-container"></span>
+  return null
 }
 
 export default AudioContainer

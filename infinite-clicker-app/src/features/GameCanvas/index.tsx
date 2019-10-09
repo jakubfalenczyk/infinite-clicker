@@ -5,11 +5,13 @@ import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
 import { getRandom } from "../../common/random"
+import { useGameState } from "../../gameState/reducer"
 
 const GameCanvas = ()  => {
+  const { gameState, dispatch } = useGameState()
+  const { player, tree } = gameState
   const [ treeState, setTreeState ] = useState({ 
-    life: 100,
-    type: "tree-basic",
+    type: treeTypes[0],
     isFalling: false
   })
   const [ playerState, setPlayerState ] = useState({
@@ -26,21 +28,25 @@ const GameCanvas = ()  => {
     return uniqueType
   }
 
+  const cutDownTree = () => {
+    setTreeState({
+      type: getNextTreeType(),
+      isFalling: true
+    })
+  }
+
   const damageTree = () => {
-    const fullLife = 100
-    const newTreeLife = treeState.life - 10
+    const newTreeLife = tree.currentLife - player.axeDamage
     const isTreeDead = newTreeLife === 0
+    const validatedLife = isTreeDead ? tree.maxLife : newTreeLife
+    dispatch({ type: "Tree_UpdateCurrentLife", payload: validatedLife })
     
     if (isTreeDead) {
-      setTreeState({
-        life: fullLife,
-        type: getNextTreeType(),
-        isFalling: true
-      })
+      dispatch({ type: "Player_UpdateWood", payload: tree.wood })
+      cutDownTree()
     } else {
       setTreeState({
-        life: newTreeLife,
-        type: treeState.type,
+        ...treeState,
         isFalling: false,
       })
     }
@@ -58,7 +64,7 @@ const GameCanvas = ()  => {
         isFalling={treeState.isFalling}
         onClick={() => onTreeClick()}
       />
-      <HealthBar life={treeState.life}/>
+      <HealthBar life={tree.currentLife}/>
       <Player 
         isCutting={playerState.isCutting}
         onAnimationEnd={() => setPlayerState({ isCutting: false })}
