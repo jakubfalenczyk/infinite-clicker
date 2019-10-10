@@ -4,9 +4,11 @@ import Player from "../Player"
 import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
-import { getRandom } from "../../common/random"
+import { getRandom, getRandomItem } from "../../common/random"
 import { useGameState, GameStateActionType } from "../../gameState/reducer"
 import PlayerStats from "../PlayerStats"
+import useAudio from "../../common/useAudio"
+import { choppingSounds } from "../../sounds"
 
 const GameCanvas = ()  => {
   const { gameState, dispatch } = useGameState()
@@ -18,6 +20,7 @@ const GameCanvas = ()  => {
   const [ playerState, setPlayerState ] = useState({
     isCutting: false
   })
+  const choppingAudio = useAudio(getRandomItem(choppingSounds))
 
   const getNextTreeType = (): string => {
     const max = treeTypes.length - 1
@@ -63,6 +66,8 @@ const GameCanvas = ()  => {
   const onTreeClick = () => {
     damageTree()
     setPlayerState({ isCutting: true })
+    choppingAudio.changeTrack(getRandomItem(choppingSounds))
+    choppingAudio.play()
   }
 
   return (

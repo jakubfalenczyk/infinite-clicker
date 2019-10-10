@@ -15,43 +15,49 @@ interface GameStateAction {
 
 const reducer = (state: GameState, action: GameStateAction): GameState => {
   const { player, tree } = state
+  let updatedState = state
 
   switch (action.type) {
     case GameStateActionType.PlayerAddWood:
-      return {
+      updatedState = {
         ...state,
         player: {
           ...player,
           wood: player.wood + action.payload
         }
       }
+      break
     case GameStateActionType.PlayerUpdateAxeDamage:
-      return {
+      updatedState = {
         ...state,
         player: {
           ...player,
           axeDamage: action.payload
         }
       }
+      break
     case GameStateActionType.TreeUpdateMaxLife:
-      return {
+      updatedState = {
         ...state,
         tree: {
           ...tree,
           maxLife: action.payload
         }
       }
+      break
     case GameStateActionType.TreeUpdateCurrentLife:
-      return {
+      updatedState = {
         ...state,
         tree: {
           ...tree,
           currentLife: action.payload
         }
       }
-    default:
-      return state
+      break
   }
+
+  localStorage.setItem("gameState", JSON.stringify(updatedState))
+  return updatedState
 }
 
 interface GameStateContextType {
@@ -62,7 +68,9 @@ interface GameStateContextType {
 const GameStateContext = createContext({} as GameStateContextType)
 
 const GameStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const [state, dispatch] = useReducer(reducer, defaultGameState)
+  const save = localStorage.getItem("gameState")
+  const savedState = save ? JSON.parse(save) : defaultGameState
+  const [state, dispatch] = useReducer(reducer, savedState)
 
   return (
     <GameStateContext.Provider value={{ gameState: state, dispatch: dispatch }}>

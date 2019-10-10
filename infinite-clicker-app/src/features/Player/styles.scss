@@ -12,7 +12,7 @@ $base-position: 0px -60px;
 }
 
 .cutting {
-  animation: cut 0.3s steps(1, end);
+  animation: cut 0.15s steps(1, end);
   background-position: $base-position;
 }
 
