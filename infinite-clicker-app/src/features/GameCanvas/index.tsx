@@ -5,14 +5,13 @@ import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
 import { getRandom, getRandomItem } from "../../common/random"
-import { useGameState, GameStateActionType } from "../../gameState/reducer"
+import { useGameState } from "../../gameState"
 import PlayerStats from "../PlayerStats"
 import useAudio from "../../common/useAudio"
 import { choppingSounds } from "../../sounds"
 
 const GameCanvas = ()  => {
-  const { gameState, dispatch } = useGameState()
-  const { player, tree } = gameState
+  const { player, tree } = useGameState()
   const [ treeState, setTreeState ] = useState({ 
     type: treeTypes[0],
     isFalling: false
@@ -43,17 +42,10 @@ const GameCanvas = ()  => {
     const newTreeLife = tree.currentLife - player.axeDamage
     const isTreeDead = newTreeLife === 0
     const validatedLife = isTreeDead ? tree.maxLife : newTreeLife
-    
-    dispatch({ 
-      type: GameStateActionType.TreeUpdateCurrentLife,
-      payload: validatedLife
-    })
-    
+    tree.updateCurrentLife(validatedLife)
+
     if (isTreeDead) {
-      dispatch({ 
-        type: GameStateActionType.PlayerAddWood,
-        payload: tree.wood
-      })
+      player.addWood(tree.wood)
       cutDownTree()
     } else {
       setTreeState({

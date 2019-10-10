@@ -1,6 +1,6 @@
 import React from "react"
 import GameCanvas from "./features/GameCanvas"
-import { GameStateProvider } from "./gameState/reducer"
+import { GameStateProvider } from "./gameState"
 
 const App = () => {
   return (

@@ -1,9 +1,9 @@
 import React from "react"
-import { useGameState } from "../../gameState/reducer"
+import { useGameState } from "../../gameState"
 import "./styles.scss"
 
 const PlayerStats = () => {
-  const { gameState: { player } } = useGameState()
+  const { player } = useGameState()
 
   return (
     <div className="playerStats">
