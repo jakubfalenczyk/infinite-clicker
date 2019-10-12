@@ -3,17 +3,20 @@ import {
   TreeActions,
   defaultTreeState,
   defaultTreeActions
-} from "./stateModels"
-import { useStateWithLocalStorage } from "../common/useStateWithLocalStorage"
+} from "./model"
+import { useStateWithLocalStorage } from "../../common/useStateWithLocalStorage"
+import { ImportSavedState } from ".."
+import _ from "lodash"
 
-export type TreeContextType = TreeState & TreeActions
+export type TreeContextType = TreeState & TreeActions & ImportSavedState<TreeState>
 
 export const defaultTreeContext: TreeContextType = {
   ...defaultTreeState,
   ...defaultTreeActions,
+  importSavedState: _.noop
 }
 
-const useTreeState = (): TreeState & TreeActions => {
+const useTreeState = (): TreeContextType => {
   const { state, setState } = useStateWithLocalStorage(defaultTreeState, "tree")
 
   const updateMaxLife = (newLife: number) => {
@@ -30,10 +33,15 @@ const useTreeState = (): TreeState & TreeActions => {
     })
   }
 
+  const importSavedState = (savedState: TreeState) => {
+    setState(savedState)
+  }
+
   return {
     ...state,
     updateMaxLife,
-    updateCurrentLife
+    updateCurrentLife,
+    importSavedState,
   }
 }
 

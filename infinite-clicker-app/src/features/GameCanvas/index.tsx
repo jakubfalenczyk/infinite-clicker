@@ -7,19 +7,18 @@ import HealthBar from "../HealthBar"
 import { getRandom, getRandomItem } from "../../common/random"
 import { useGameState } from "../../gameState"
 import PlayerStats from "../PlayerStats"
-import useAudio from "../../common/useAudio"
 import { choppingSounds } from "../../sounds"
+import Settings from "../Settings"
+import useSound from "../../common/useSound"
+import useMusic from "../../common/useMusic"
 
 const GameCanvas = ()  => {
   const { player, tree } = useGameState()
-  const [ treeState, setTreeState ] = useState({ 
-    type: treeTypes[0],
-    isFalling: false
-  })
-  const [ playerState, setPlayerState ] = useState({
-    isCutting: false
-  })
-  const choppingAudio = useAudio(getRandomItem(choppingSounds))
+  const [ treeState, setTreeState ] = useState({ type: treeTypes[0] })
+  const [ playerState, setPlayerState ] = useState({ isCutting: false })
+  const choppingAudio = useSound(getRandomItem(choppingSounds))
+  const treeFallAudio = useSound("/assets/sounds/tree-fall.mp3")
+  useMusic("/assets/sounds/bg-sound-1.mp3")
 
   const getNextTreeType = (): string => {
     const max = treeTypes.length - 1
@@ -34,8 +33,8 @@ const GameCanvas = ()  => {
   const cutDownTree = () => {
     setTreeState({
       type: getNextTreeType(),
-      isFalling: true
     })
+    treeFallAudio.play()
   }
 
   const damageTree = () => {
@@ -47,11 +46,6 @@ const GameCanvas = ()  => {
     if (isTreeDead) {
       player.addWood(tree.wood)
       cutDownTree()
-    } else {
-      setTreeState({
-        ...treeState,
-        isFalling: false,
-      })
     }
   }
 
@@ -65,9 +59,9 @@ const GameCanvas = ()  => {
   return (
     <div className="game-canvas">
       <PlayerStats/>
+      <Settings/>
       <Tree 
         type={treeState.type}
-        isFalling={treeState.isFalling}
         onClick={() => onTreeClick()}
       />
       <HealthBar life={tree.currentLife}/>

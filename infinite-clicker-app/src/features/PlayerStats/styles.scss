@@ -1,16 +1,17 @@
 .playerStats {
   padding: 15px;
   font-size: 25px;
+  user-select: none;
 
-    .resources {
-      padding: 10px;
-    }
+  .resources {
+    padding: 10px;
+  }
 
-    .wood {
-      color: #b16262;
-    }
+  .wood {
+    color: #b16262;
+  }
 
-    .gold {
-      color: #debb00;
-    }
+  .gold {
+    color: #debb00;
+  }
 }

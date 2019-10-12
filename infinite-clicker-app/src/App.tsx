@@ -1,12 +1,15 @@
 import React from "react"
 import GameCanvas from "./features/GameCanvas"
 import { GameStateProvider } from "./gameState"
+import { SoundSettingsProvider } from "./features/Settings/useSoundSettings"
 
 const App = () => {
   return (
     <div>
       <GameStateProvider>
-        <GameCanvas/>
+        <SoundSettingsProvider>
+          <GameCanvas/>
+        </SoundSettingsProvider>
       </GameStateProvider>
     </div>
   )

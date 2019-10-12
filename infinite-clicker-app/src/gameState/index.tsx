@@ -1,15 +1,21 @@
 import React, { useContext, createContext } from "react"
-import usePlayerState, { defaultPlayerContext, PlayerContextType } from "./usePlayerState"
-import useTreeState, { TreeContextType, defaultTreeContext } from "./useTreeState"
+import usePlayerState, { defaultPlayerContext, PlayerContextType } from "./player/usePlayerState"
+import useTreeState, { defaultTreeContext, TreeContextType } from "./tree/useTreeState"
+import _ from "lodash"
 
-interface GameStateContextType {
+export interface ImportSavedState<StateType> {
+  importSavedState: (savedState: StateType) => void 
+}
+
+export interface GameStateContextType extends ImportSavedState<GameStateContextType> {
   player: PlayerContextType
   tree: TreeContextType
 }
 
 const defaultGameStateContext: GameStateContextType = {
   player: defaultPlayerContext,
-  tree: defaultTreeContext
+  tree: defaultTreeContext,
+  importSavedState: _.noop
 }
 
 const GameStateContext = createContext(defaultGameStateContext)
@@ -17,9 +23,14 @@ const GameStateContext = createContext(defaultGameStateContext)
 const GameStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const player = usePlayerState()
   const tree = useTreeState()
+  
+  const importSavedState = (state: GameStateContextType) => {
+    player.importSavedState(state.player)
+    tree.importSavedState(state.tree)
+  }
  
   return (
-    <GameStateContext.Provider value={{ player, tree }}>
+    <GameStateContext.Provider value={{ player, tree, importSavedState }}>
       {children}
     </GameStateContext.Provider>
   )

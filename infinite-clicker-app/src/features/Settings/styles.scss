@@ -1,0 +1,106 @@
+%baseButton {
+  color: white;
+  font-size: 16px;
+  background-color: #682413;
+  font-family: inherit;
+  
+  &:hover {
+    background-color: #81240d,
+  }
+}
+
+.settingsContainer {
+  .settingsOpen {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    padding: 25px;
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+.title {
+  color: white;
+  font-size: 28px;
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+
+.settingsDialog {
+  min-width: 500px;
+
+  .MuiDialog-paper { 
+    margin-top: 100px;
+    width: 400px;
+    background-color: #793a29;
+    border: 4px solid #5f3227;
+  }
+
+  .MuiDialogContent-root {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 60px;
+  }
+
+  .MuiDialogTitle-root {
+    margin: auto;
+  }
+
+  .MuiDialog-container {
+    height: auto;
+  }
+
+  .MuiButton-root {
+    @extend %baseButton;
+    
+    margin-top: 12px;
+    padding: 12px 0px;
+  }
+}
+
+.MuiButton-root {
+  color: white;
+  background-color: #6b2716;
+  
+  &:hover {
+    background-color: #491b0f,
+  }
+}
+
+.importErrorDialog {
+  .MuiDialog-paper {
+    color: white;
+    margin-top: 250px;
+    width: 380px;
+    background-color: #793a29;
+    border: 4px solid #5f3227;
+  }
+
+  .MuiButton-root {
+    @extend %baseButton;
+        
+    margin-top: 20px;
+    margin-bottom: 6px;
+    width: 40%;
+  }
+
+  .MuiDialog-container {
+    height: auto;
+  }
+
+  .importErrorActions {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.settingsIcon {
+  font-size: 28px;
+  padding-left: 5px;
+}
+
