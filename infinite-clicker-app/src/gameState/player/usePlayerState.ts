@@ -5,15 +5,16 @@ import {
   defaultPlayerActions
 } from "./model"
 import { useStateWithLocalStorage } from "../../common/useStateWithLocalStorage"
-import { ImportSavedState } from ".."
+import { BaseState } from ".."
 import _ from "lodash"
 
-export type PlayerContextType = PlayerState & PlayerActions & ImportSavedState<PlayerState>
+export type PlayerContextType = PlayerState & PlayerActions & BaseState<PlayerState>
 
 export const defaultPlayerContext: PlayerContextType = {
   ...defaultPlayerState,
   ...defaultPlayerActions,
-  importSavedState: _.noop
+  importSavedState: _.noop,
+  reset: _.noop,
 }
 
 const usePlayerState = (): PlayerContextType => {
@@ -37,11 +38,16 @@ const usePlayerState = (): PlayerContextType => {
     setState(savedState)
   }
 
+  const reset = () => {
+    setState(defaultPlayerState)
+  }
+
   return {
     ...state,
     addWood,
     updateAxeDamage,
     importSavedState,
+    reset,
   }
 }
 

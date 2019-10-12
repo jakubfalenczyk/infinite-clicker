@@ -6,11 +6,13 @@ import DialogContent from '@material-ui/core/DialogContent'
 import { DialogActions } from '@material-ui/core'
 import { useSoundSettings } from '../useSoundSettings'
 import SaveHandler from './SaveHandler'
+import { useGameState } from '../../../gameState'
 
 const SettingsModal = (props: PropsWithChildren<{}>) => {
   const [open, setOpen] = useState(false)
   const [hasImportError, setHasImportError] = useState(false)
   const soundSettings = useSoundSettings()
+  const gameState = useGameState()
 
   const handleOpen = () => {
     setOpen(true)
@@ -28,6 +30,11 @@ const SettingsModal = (props: PropsWithChildren<{}>) => {
     setHasImportError(false)
   }
 
+  const onStartNewGame = () => {
+    gameState.reset()
+    setOpen(false)
+  }
+
   return (
     <div className="settingsContainer">
       <div className="settingsOpen" onClick={handleOpen}>
@@ -41,7 +48,7 @@ const SettingsModal = (props: PropsWithChildren<{}>) => {
           <Button onClick={handleClose}>
             Continue
           </Button>
-          <Button onClick={handleClose}>
+          <Button onClick={onStartNewGame}>
             Start New Game
           </Button>
           <Button onClick={() => soundSettings.changeSoundSettings()}>
