@@ -3,6 +3,8 @@ import { Button } from "@material-ui/core"
 import { useGameState, GameStateContextType } from "../../../gameState"
 import { saveAs } from "file-saver"
 
+const saveFileName = "lumber-click.sav"
+
 interface SaveHandlerProps {
   onActionCompleted: () => void
   onImportError: () => void
@@ -16,8 +18,7 @@ const SaveHandler = (props: SaveHandlerProps) => {
     const stateAsJson = JSON.stringify(gameState)
     const base64 = btoa(stateAsJson)
     const blob = new Blob([base64], {type: "text/plain;charset=utf-8"});
-    const filename = "lumberjack-clicker.save"
-    saveAs(blob, filename)
+    saveAs(blob, saveFileName)
     props.onActionCompleted()
   }
 
