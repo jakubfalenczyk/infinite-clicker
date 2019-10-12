@@ -34,7 +34,7 @@ const SaveHandler = (props: SaveHandlerProps) => {
       gameState.importSavedState(savedState)
       props.onActionCompleted()
     }
-    catch {
+    catch (e) {
       props.onImportError()
     }
   }
