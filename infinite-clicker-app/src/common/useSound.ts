@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useSoundSettings } from "../features/Settings/useSoundSettings"
+import { useSoundSettings } from "./useSoundSettings"
 
 interface AudioControls {
   changeTrack: (src: string) => void

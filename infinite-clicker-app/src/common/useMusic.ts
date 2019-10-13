@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useSoundSettings } from "../features/Settings/useSoundSettings"
+import { useSoundSettings } from "./useSoundSettings"
 
 const useMusic = (src: string) => {
   const [audio] = useState(new Audio(src))

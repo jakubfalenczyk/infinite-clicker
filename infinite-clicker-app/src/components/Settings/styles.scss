@@ -22,14 +22,6 @@
   }
 }
 
-.title {
-  color: white;
-  font-size: 28px;
-  display: flex;
-  width: 100%;
-  text-align: center;
-}
-
 .settingsDialog {
   min-width: 500px;
 
@@ -110,9 +102,19 @@
   padding-left: 5px;
 }
 
+.settingsOpen {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  padding: 25px;
+  font-size: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
 .creditsLink {
   color: #46947d;
-  margin-left: 4px;
 
   &:visited, &:hover, &:active {
     color: #33d8a6;

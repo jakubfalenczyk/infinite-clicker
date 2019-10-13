@@ -1,16 +1,16 @@
 import React, { useRef, ChangeEvent } from "react"
-import { Button } from "@material-ui/core"
 import { useGameState, GameStateContextType } from "../../../gameState"
 import { saveAs } from "file-saver"
+import Button from "../../GameModal/components/Button"
 
 const saveFileName = "lumber-click.sav"
 
-interface SaveHandlerProps {
+interface SaveActionsProps {
   onActionCompleted: () => void
   onImportError: () => void
 }
 
-const SaveHandler = (props: SaveHandlerProps) => {
+const SaveActions = (props: SaveActionsProps) => {
   const gameState = useGameState()
   const inputElement = useRef<HTMLInputElement>(null)
 
@@ -64,4 +64,4 @@ const SaveHandler = (props: SaveHandlerProps) => {
   ) 
 }
 
-export default SaveHandler
+export default SaveActions

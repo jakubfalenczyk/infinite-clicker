@@ -1,5 +1,5 @@
 import React, { useContext, createContext } from "react"
-import { useStateWithLocalStorage } from "../../common/useStateWithLocalStorage"
+import { useStateWithLocalStorage } from "./useStateWithLocalStorage"
 import _ from "lodash"
 
 interface SoundSettings {

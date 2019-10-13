@@ -1,7 +1,7 @@
 import React from "react"
-import GameCanvas from "./features/GameCanvas"
+import GameCanvas from "./components/GameCanvas"
 import { GameStateProvider } from "./gameState"
-import { SoundSettingsProvider } from "./features/Settings/useSoundSettings"
+import { SoundSettingsProvider } from "./common/useSoundSettings"
 
 const App = () => {
   return (
