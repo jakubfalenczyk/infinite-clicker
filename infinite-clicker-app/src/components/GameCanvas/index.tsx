@@ -4,7 +4,7 @@ import Player from "../Player"
 import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
-import { getRandom, getRandomItem } from "../../common/random"
+import { getRandomItem } from "../../common/random"
 import { useGameState } from "../../gameState"
 import PlayerStats from "../PlayerStats"
 import { choppingSounds } from "../../sounds"
@@ -21,10 +21,9 @@ const GameCanvas = ()  => {
   useMusic("/assets/sounds/bg-sound-1.mp3")
 
   const getNextTreeType = (): string => {
-    const max = treeTypes.length - 1
-    const randomTreeTypeIndex = getRandom(max)
-    const uniqueType = treeTypes[randomTreeTypeIndex] !== treeState.type
-      ? treeTypes[randomTreeTypeIndex]
+    const randomTreeType = getRandomItem(treeTypes)
+    const uniqueType = randomTreeType !== treeState.type
+      ? randomTreeType
       : getNextTreeType()
 
     return uniqueType
