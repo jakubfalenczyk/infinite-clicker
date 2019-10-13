@@ -16,6 +16,7 @@ const Settings = () => {
   return (
     <>
       <div className="settingsOpen" onClick={onOpen}>
+        Settings
         <div className="settingsIcon">
           <i className="fas fa-cog"></i>
         </div>
