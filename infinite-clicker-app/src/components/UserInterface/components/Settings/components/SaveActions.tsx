@@ -1,7 +1,7 @@
 import React, { useRef, ChangeEvent } from "react"
-import { useGameState, GameStateContextType } from "../../../gameState"
 import { saveAs } from "file-saver"
-import Button from "../../GameModal/components/Button"
+import { useGameState, GameStateContextType } from "gameState"
+import Button from "components/GameModal/components/Button"
 
 const saveFileName = "lumber-click.sav"
 

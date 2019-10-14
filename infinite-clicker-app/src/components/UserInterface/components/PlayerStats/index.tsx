@@ -1,6 +1,6 @@
 import React from "react"
-import { useGameState } from "../../gameState"
 import "./styles.scss"
+import { useGameState } from "gameState"
 
 const PlayerStats = () => {
   const { player } = useGameState()

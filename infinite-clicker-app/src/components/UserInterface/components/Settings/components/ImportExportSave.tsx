@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import SaveActions from "./SaveActions"
-import GameModal from "../../GameModal"
-import Button from "../../GameModal/components/Button"
+import Button from "components/GameModal/components/Button"
+import GameModal from "components/GameModal"
 
 interface ImportExportSaveProps {
   onActionCompleted: () => void

@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import "./styles.scss"
-import { useSoundSettings } from "../../common/useSoundSettings"
-import GameModal from "../GameModal"
-import Button from "../GameModal/components/Button"
 import StartNewGame from "./components/StartNewGame"
 import ImportExportSave from "./components/ImportExportSave"
 import Credits from "./components/Credits"
+import { useSoundSettings } from "common/useSoundSettings"
+import GameModal from "components/GameModal"
+import Button from "components/GameModal/components/Button"
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,9 +15,9 @@ const Settings = () => {
 
   return (
     <>
-      <div className="settingsOpen" onClick={onOpen}>
+      <div className="woodenButton" onClick={onOpen}>
         Settings
-        <div className="settingsIcon">
+        <div className="buttonIcon">
           <i className="fas fa-cog"></i>
         </div>
       </div>

@@ -1,0 +1,36 @@
+.userInterface {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .woodenButton {
+    background-color: #682413;
+    padding: 10px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 3px 3px 0px #42170c;
+
+    &:active {
+      box-shadow: 2px 2px 0px #42170c;
+      transform: translate(0, 2px);
+    }
+
+    .buttonIcon {
+      font-size: 24px;
+      margin-left: 10px;
+
+      i {
+        margin-top: 3px;
+      }
+    }
+  }
+}

@@ -4,21 +4,20 @@ import Player from "../Player"
 import Tree from "../Tree"
 import treeTypes from "./treeTypes"
 import HealthBar from "../HealthBar"
-import { getRandomItem } from "../../common/random"
-import { useGameState } from "../../gameState"
-import PlayerStats from "../PlayerStats"
-import { choppingSounds } from "../../sounds"
-import Settings from "../Settings"
-import useSound from "../../common/useSound"
-import useMusic from "../../common/useMusic"
+import UserInterface from "components/UserInterface"
+import { useGameState } from "gameState"
+import useSound from "common/useSound"
+import { getRandomItem } from "common/random"
+import { choppingSounds, backgroundMusic, treeFallSound } from "sounds"
+import useMusic from "common/useMusic"
 
 const GameCanvas = ()  => {
   const { player, tree } = useGameState()
   const [ treeState, setTreeState ] = useState({ type: treeTypes[0] })
   const [ playerState, setPlayerState ] = useState({ isCutting: false })
   const choppingAudio = useSound(getRandomItem(choppingSounds))
-  const treeFallAudio = useSound("/assets/sounds/tree-fall.mp3")
-  useMusic("/assets/sounds/bg-sound-1.mp3")
+  const treeFallAudio = useSound(treeFallSound)
+  useMusic(backgroundMusic[0])
 
   const getNextTreeType = (): string => {
     const randomTreeType = getRandomItem(treeTypes)
@@ -57,8 +56,7 @@ const GameCanvas = ()  => {
 
   return (
     <div className="game-canvas">
-      <PlayerStats/>
-      <Settings/>
+      <UserInterface/>
       <Tree 
         type={treeState.type}
         onClick={() => onTreeClick()}

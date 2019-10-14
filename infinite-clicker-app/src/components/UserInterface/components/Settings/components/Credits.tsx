@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import GameModal from "../../GameModal"
-import Button from "../../GameModal/components/Button"
+import Button from "components/GameModal/components/Button"
+import GameModal from "components/GameModal"
 
 const Credits = () => {
   const [isOpen, setIsOpen] = useState(false)

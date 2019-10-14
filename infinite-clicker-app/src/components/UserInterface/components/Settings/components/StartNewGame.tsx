@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import GameModal from "../../GameModal"
-import Button from "../../GameModal/components/Button"
-import { useGameState } from "../../../gameState"
+import Button from "components/GameModal/components/Button"
+import GameModal from "components/GameModal"
+import { useGameState } from "gameState"
 
 interface StartNewGameProps {
   onStartNewGame: () => void

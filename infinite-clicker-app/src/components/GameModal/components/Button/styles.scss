@@ -17,4 +17,12 @@
   &:focus {
     outline: none;
   }
+
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #42170c;
+
+  &:active {
+    box-shadow: 1px 1px 0px #42170c;
+    transform: translate(0, 2px);
+  }
 }
