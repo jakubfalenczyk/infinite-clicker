@@ -13,11 +13,9 @@ export const defaultPlayerState: PlayerState = {
 }
 
 export interface PlayerActions {
-  addWood(wood: number): void
-  updateAxeDamage(newDamage: number): void
+  updateState(newState: Partial<PlayerState>) : void
 }
 
 export const defaultPlayerActions: PlayerActions = {
-  addWood: _.noop,
-  updateAxeDamage: _.noop,
+  updateState: _.noop,
 }

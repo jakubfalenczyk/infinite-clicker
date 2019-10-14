@@ -5,10 +5,10 @@ $base-position: 0px -60px;
   background-position: $base-position;
   height: 240px;
   width: 220px;
-  position: relative;
-  top: 130px;
-  right: 160px;
   margin: auto;
+  position: relative;
+  top: -200px;
+  left: -140px;
 }
 
 .cutting {
@@ -23,7 +23,6 @@ $base-position: 0px -60px;
 
   25% {
     background-position: -440px -30px;
-    top: 110px;
   }
 
   50% {

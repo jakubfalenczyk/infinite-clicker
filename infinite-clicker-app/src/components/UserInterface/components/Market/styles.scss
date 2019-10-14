@@ -1,4 +1,29 @@
-.marketButton {
-  position: absolute;
-  
+.marketModal {
+  width: 800px;
+  font-size: 24px;
+
+  .marketRow {
+    display: flex;
+    justify-content: space-around;
+
+    .fa-tree {
+      color: #239135;
+    }
+
+    .fa-coins {
+      color: #debb00;
+    }
+
+    .marketCell {
+      display: flex;
+
+      * {
+        margin-left: 10px;
+      }
+    }
+
+    .label {
+      margin-top: 18px;
+    }
+  }
 }

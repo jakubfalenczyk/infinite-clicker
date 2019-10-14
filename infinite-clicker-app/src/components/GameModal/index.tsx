@@ -3,7 +3,10 @@ import ReactModal from 'react-modal'
 import "./styles.scss"
 import classNames from 'classnames'
 
+ReactModal.setAppElement('#root');
+
 interface GameModalProps {
+  className?: string
   isOpen: boolean
   isNested?: boolean
   onClose: () => void
@@ -12,10 +15,12 @@ interface GameModalProps {
 }
 
 const GameModal = (props: PropsWithChildren<GameModalProps>) => {
-  const { isOpen, isNested, onClose, title, actions } = props
-  const modalClassName = classNames("gameModal", {
-    "nested": isNested
-  }) 
+  const { isOpen, isNested, onClose, title, actions, className } = props
+  const modalClassName = classNames(
+    "gameModal",
+    className,
+    { "nested": isNested }
+  ) 
 
   return (
     <ReactModal 

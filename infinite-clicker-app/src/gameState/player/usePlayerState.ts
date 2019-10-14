@@ -20,17 +20,10 @@ export const defaultPlayerContext: PlayerContextType = {
 const usePlayerState = (): PlayerContextType => {
   const { state, setState } = useStateWithLocalStorage(defaultPlayerState, "player")
 
-  const addWood = (wood: number) => {
-    setState({ 
-      ...state, 
-      wood: state.wood + wood
-    })
-  }
-
-  const updateAxeDamage = (newDamage: number) => {
-    setState({ 
-      ...state, 
-      axeDamage: newDamage
+  const updateState = (newState: Partial<PlayerState>) => {
+    setState({
+      ...state,
+      ...newState,
     })
   }
 
@@ -44,8 +37,7 @@ const usePlayerState = (): PlayerContextType => {
 
   return {
     ...state,
-    addWood,
-    updateAxeDamage,
+    updateState,
     importSavedState,
     reset,
   }

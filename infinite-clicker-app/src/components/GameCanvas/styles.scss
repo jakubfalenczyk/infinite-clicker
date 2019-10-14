@@ -1,6 +1,14 @@
 .game-canvas {
   background: url("/assets/images/bg.png");
+  background-repeat: round;
   position: absolute;
   min-height: 1024px;
   width: 100%;
+
+  .clickingArea {
+    position: absolute;
+    top: 400px;
+    margin: auto;
+    width: 100%;
+  }
 }

@@ -2,16 +2,17 @@
   padding: 5px;
   font-size: 25px;
   user-select: none;
+  color: #000000ba;
 
   .resources {
     padding: 10px;
   }
 
-  .wood {
-    color: #b16262;
+  .fa-tree {
+    color: #239135;
   }
 
-  .gold {
+  .fa-coins {
     color: #debb00;
   }
 }

@@ -15,7 +15,7 @@ const Settings = () => {
 
   return (
     <>
-      <div className="woodenButton" onClick={onOpen}>
+      <div className="uiButton" onClick={onOpen}>
         Settings
         <div className="buttonIcon">
           <i className="fas fa-cog"></i>

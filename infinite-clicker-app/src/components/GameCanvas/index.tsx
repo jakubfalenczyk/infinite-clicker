@@ -42,7 +42,7 @@ const GameCanvas = ()  => {
     tree.updateCurrentLife(validatedLife)
 
     if (isTreeDead) {
-      player.addWood(tree.wood)
+      player.updateState({ wood: player.wood + tree.wood })
       cutDownTree()
     }
   }
@@ -57,15 +57,17 @@ const GameCanvas = ()  => {
   return (
     <div className="game-canvas">
       <UserInterface/>
-      <Tree 
-        type={treeState.type}
-        onClick={() => onTreeClick()}
-      />
-      <HealthBar life={tree.currentLife}/>
-      <Player 
-        isCutting={playerState.isCutting}
-        onAnimationEnd={() => setPlayerState({ isCutting: false })}
-      />
+      <div className="clickingArea">
+        <Tree 
+          type={treeState.type}
+          onClick={() => onTreeClick()}
+        />
+        <HealthBar life={tree.currentLife}/>
+        <Player 
+          isCutting={playerState.isCutting}
+          onAnimationEnd={() => setPlayerState({ isCutting: false })}
+        />
+      </div>
     </div>
   )
 } 
