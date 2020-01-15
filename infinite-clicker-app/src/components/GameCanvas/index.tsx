@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import "./styles.scss"
 import Player from "../Player"
 import Tree from "../Tree"
@@ -10,6 +10,8 @@ import useSound from "common/useSound"
 import { getRandomItem } from "common/random"
 import { choppingSounds, backgroundMusic, treeFallSound } from "sounds"
 import useMusic from "common/useMusic"
+import { throttle } from "lodash"
+import { TreeClickedParams } from "./treeClickParams"
 
 const GameCanvas = ()  => {
   const { player, tree } = useGameState()
@@ -38,21 +40,45 @@ const GameCanvas = ()  => {
   const damageTree = () => {
     const newTreeLife = tree.currentLife - player.axeDamage
     const isTreeDead = newTreeLife === 0
-    const validatedLife = isTreeDead ? tree.maxLife : newTreeLife
-    tree.updateCurrentLife(validatedLife)
-
-    if (isTreeDead) {
-      player.updateState({ wood: player.wood + tree.wood })
-      cutDownTree()
+    const updatedLife = isTreeDead ? tree.maxLife : newTreeLife
+    
+    return {
+      updatedLife,
+      isTreeDead,
     }
   }
 
   const onTreeClick = () => {
-    damageTree()
-    setPlayerState({ isCutting: true })
-    choppingAudio.changeTrack(getRandomItem(choppingSounds))
-    choppingAudio.play()
+    const { updatedLife, isTreeDead } = damageTree()
+    const updatedWood = player.wood + tree.wood
+    const choppingSound = getRandomItem(choppingSounds)
+    choppingAudio.changeTrack(choppingSound)
+
+    treeClickedThrottled({
+      updatedLife,
+      isTreeDead,
+      updatedWood,
+      choppingAudio,
+    })
   }
+
+  const treeClicked = (request: TreeClickedParams) => {
+    tree.updateCurrentLife(request.updatedLife)
+
+    if (request.isTreeDead) {
+      player.updateState({ wood: request.updatedWood })
+      cutDownTree()
+    }
+
+    setPlayerState({ isCutting: true })
+    request.choppingAudio.play()
+  }
+
+  const treeClickedThrottled = useCallback(throttle(
+    (request: TreeClickedParams) => treeClicked(request),
+    150,
+    { trailing: false }
+  ), [])
 
   return (
     <div className="game-canvas">

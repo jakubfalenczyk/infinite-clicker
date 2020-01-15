@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSoundSettings } from "./useSoundSettings"
 
-interface AudioControls {
+export interface AudioControls {
   changeTrack: (src: string) => void
   play: () => void
 }
