@@ -76,9 +76,9 @@ const GameCanvas = ()  => {
 
   const treeClickedThrottled = useCallback(throttle(
     (request: TreeClickedParams) => treeClicked(request),
-    150,
+    200,
     { trailing: false }
-  ), [])
+  ), [tree.maxLife, player.gold, player.axeDamage])
 
   return (
     <div className="game-canvas">
