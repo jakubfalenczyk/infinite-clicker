@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import "./styles.scss"
 import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
-import { Upgrade, allUpgrades } from "common/upgrades"
 import UpgradeItem from "./components/UpgradeItem"
+import { Upgrade, allUpgrades } from "./allUpgrades"
 
 const Upgrades = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -56,7 +56,7 @@ const Upgrades = () => {
           <div className="actionCell">Buy</div>
         </div>
         {allUpgrades.map((u: Upgrade) => 
-          <UpgradeItem item={u} buy={() => buyUpgrade(u)}/>)}
+          <UpgradeItem key={u.storeKey} item={u} buy={() => buyUpgrade(u)}/>)}
       </GameModal>
     </>
   )

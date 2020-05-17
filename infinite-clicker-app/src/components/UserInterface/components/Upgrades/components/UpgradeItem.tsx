@@ -1,7 +1,7 @@
 import React from "react"
-import { Upgrade } from "common/upgrades"
 import Button from "components/GameModal/components/Button"
 import { useGameState } from "gameState"
+import { Upgrade } from "../allUpgrades"
 
 interface UpgradeItemProps {
   item: Upgrade
@@ -13,7 +13,7 @@ const UpgradeItem = (props: UpgradeItemProps) => {
   const { item, buy } = props
   
   return (
-    <div key={item.storeKey} className="upgradesRow">
+    <div className="upgradesRow">
       <div className="upgradeCell">
         <div className="label">
           {item.icon} {item.label}

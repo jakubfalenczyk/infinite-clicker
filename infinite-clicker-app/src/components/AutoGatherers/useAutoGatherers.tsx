@@ -1,28 +1,29 @@
 import { useRef, useEffect } from "react"
 import { useGameState } from "gameState"
-import { calculateGatheredMaterials } from "common/upgrades"
-import { PlayerState } from "gameState/player/model"
+import { PlayerState, Materials } from "gameState/player/model"
 import { UpgradesState } from "gameState/upgrades/model"
+import { calculateGatheredMaterials } from "components/UserInterface/components/Upgrades/calculateGatheredMaterials"
 
 const useAutoGatherers = (autoGathererTick: React.MutableRefObject<() => void>) => {
   const { player, upgrades } = useGameState()
   
-  const updateState = useRef((playerState: PlayerState, upgradesState: UpgradesState) => {
+  const updatePlayerState = useRef((playerState: PlayerState, upgradesState: UpgradesState) => {
     const gathered = calculateGatheredMaterials(upgradesState)
-    const gold = gathered.find(x => x.key === "gold")
-    const wood = gathered.find(x => x.key === "wood")
+    const updatedEntries = Object.entries(gathered).map(entry => {
+      const key = entry[0] as keyof Materials
+      return [ entry[0], entry[1] + playerState[key] ]
+    })
+    const updatedState = Object.fromEntries(updatedEntries)
     
-    console.log(gathered)
     player.updateState({
       ...playerState,
-      gold: playerState.gold + (gold ? gold.sum : 0),
-      wood: playerState.wood + (wood ? wood.sum : 0)
+      ...updatedState
     })
   })
 
   useEffect(() => {
     autoGathererTick.current = () => {
-      updateState.current(player, upgrades)
+      updatePlayerState.current(player, upgrades)
     }
   }, [upgrades, player, autoGathererTick])
 }

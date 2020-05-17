@@ -1,5 +1,4 @@
 import React from "react"
-import { marketPrices } from "common/marketPrices"
 import { Materials } from "gameState/player/model"
 import Sell from "./Sell"
 import Buy from "./Buy"
@@ -7,12 +6,13 @@ import Buy from "./Buy"
 interface MarketItemProps {
   icon: JSX.Element
   material: keyof Materials
+  price: number
   sell: (count?: number) => void
   buy: (count: number) => void
 }
 
 const MarketItem = (props: MarketItemProps) => {
-  const { icon, material, sell, buy } = props
+  const { icon, material, price, sell, buy } = props
 
   return (
     <div className="marketRow">
@@ -23,7 +23,7 @@ const MarketItem = (props: MarketItemProps) => {
       </div>
       <div className="priceCell">
         <div className="label">
-        {marketPrices[material]} <i className="fas fa-coins"></i> 
+        {price} <i className="fas fa-coins"></i> 
         </div>
       </div>
       <div className="actionsCell">

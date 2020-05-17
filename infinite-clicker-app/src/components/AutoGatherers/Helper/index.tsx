@@ -1,7 +1,7 @@
 import React from "react"
 import "./styles.scss"
 import { useGameState } from "gameState"
-import { allUpgrades } from "common/upgrades"
+import { allUpgrades } from "components/UserInterface/components/Upgrades/allUpgrades"
 
 const Helper = () => {
   const { upgrades } = useGameState()
