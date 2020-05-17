@@ -20,32 +20,15 @@ export const defaultTreeContext: TreeContextType = {
 const useTreeState = (): TreeContextType => {
   const { state, setState } = useStateWithLocalStorage(defaultTreeState, "tree")
 
-  const updateMaxLife = (newLife: number) => {
-    setState({ 
-      ...state, 
-      maxLife: newLife
-    })
-  }
+  const updateTreeState = (newState: TreeState) => setState(newState)
 
-  const updateCurrentLife = (newLife: number) => {
-    setState({ 
-      ...state, 
-      currentLife: newLife
-    })
-  }
+  const importSavedState = (savedState: TreeState) => setState(savedState)
 
-  const importSavedState = (savedState: TreeState) => {
-    setState(savedState)
-  }
-
-  const reset = () => {
-    setState(defaultTreeState)
-  }
+  const reset = () => setState(defaultTreeState)
 
   return {
     ...state,
-    updateMaxLife,
-    updateCurrentLife,
+    updateTreeState,
     importSavedState,
     reset,
   }

@@ -1,0 +1,47 @@
+$base-position: 0px -30px;
+
+.helper {
+  background: url("/assets/images/helper-tilesheet.png");
+  background-position: $base-position;
+  height: 280px;
+  width: 220px;
+  margin: auto;
+  position: relative;
+  top: -500px;
+  left: 300px;
+  animation: helperCut 15s steps(1, start) infinite;
+
+  .count {
+    color: white;
+    font-size: 20px;
+    top: 240px;
+    left: 78px;
+    position: relative;
+  }
+
+  .goldPerSec {
+    color: white;
+    font-size: 18px;
+    top: 240px;
+    left: 78px;
+    position: relative;
+  }
+}
+
+@keyframes helperCut {
+  0% {
+    background-position: $base-position;
+  }
+
+  25% {
+    background-position: -230px -30px;
+  }
+
+  50% {
+    background-position: -460px -30px;
+  }
+
+  75% {
+    background-position: -700px -30px;
+  }
+}

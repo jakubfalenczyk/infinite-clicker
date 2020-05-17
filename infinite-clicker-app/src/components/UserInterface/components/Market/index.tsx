@@ -17,6 +17,7 @@ const Market = () => {
       return
 
     player.updateState({
+      ...player,
       wood: player.wood - sold,
       gold: player.gold + sold * woodPrice,
     })
@@ -27,6 +28,7 @@ const Market = () => {
       return
 
     player.updateState({
+      ...player,
       wood: player.wood + bought,
       gold: player.gold - bought * woodPrice,
     })

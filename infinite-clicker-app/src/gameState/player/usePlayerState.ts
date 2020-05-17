@@ -20,20 +20,11 @@ export const defaultPlayerContext: PlayerContextType = {
 const usePlayerState = (): PlayerContextType => {
   const { state, setState } = useStateWithLocalStorage(defaultPlayerState, "player")
 
-  const updateState = (newState: Partial<PlayerState>) => {
-    setState({
-      ...state,
-      ...newState,
-    })
-  }
+  const updateState = (newState: PlayerState) => setState(newState)
 
-  const importSavedState = (savedState: PlayerState) => {
-    setState(savedState)
-  }
+  const importSavedState = (savedState: PlayerState) => setState(savedState)
 
-  const reset = () => {
-    setState(defaultPlayerState)
-  }
+  const reset = () => setState(defaultPlayerState)
 
   return {
     ...state,

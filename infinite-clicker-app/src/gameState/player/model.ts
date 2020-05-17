@@ -13,7 +13,7 @@ export const defaultPlayerState: PlayerState = {
 }
 
 export interface PlayerActions {
-  updateState(newState: Partial<PlayerState>) : void
+  updateState(newState: PlayerState) : void
 }
 
 export const defaultPlayerActions: PlayerActions = {

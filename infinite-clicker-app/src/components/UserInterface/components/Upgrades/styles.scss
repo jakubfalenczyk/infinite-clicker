@@ -1,0 +1,25 @@
+.upgradesModal {
+  width: 800px;
+  font-size: 24px;
+
+  .fa-users {
+    color: rgb(228, 225, 21);
+  }
+
+  .upgradesRow {
+    display: flex;
+    justify-content: space-around;
+
+    .upgradesCell {
+      display: flex;
+
+      * {
+        margin-left: 10px;
+      }
+    }
+
+    .label {
+      margin-top: 18px;
+    }
+  }
+}

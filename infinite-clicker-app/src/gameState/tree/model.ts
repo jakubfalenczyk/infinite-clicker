@@ -13,11 +13,9 @@ export const defaultTreeState: TreeState = {
 }
 
 export interface TreeActions {
-  updateMaxLife(newLife: number): void
-  updateCurrentLife(newLife: number): void
+  updateTreeState(newState: TreeState): void
 }
 
 export const defaultTreeActions: TreeActions = {
-  updateMaxLife: _.noop,
-  updateCurrentLife: _.noop,
+  updateTreeState: _.noop,
 }

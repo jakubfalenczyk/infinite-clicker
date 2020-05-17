@@ -12,6 +12,7 @@ import { choppingSounds, backgroundMusic, treeFallSound } from "sounds"
 import useMusic from "common/useMusic"
 import { throttle } from "lodash"
 import { TreeClickedParams } from "./treeClickParams"
+import Helper from "components/AutoGatherers/Helper"
 
 const GameCanvas = ()  => {
   const { player, tree } = useGameState()
@@ -53,9 +54,11 @@ const GameCanvas = ()  => {
     const updatedWood = player.wood + tree.wood
     const choppingSound = getRandomItem(choppingSounds)
     choppingAudio.changeTrack(choppingSound)
+    console.log(player.gold);
 
     treeClickedThrottled({
       updatedLife,
+      currentGold: player.gold,
       isTreeDead,
       updatedWood,
       choppingAudio,
@@ -63,10 +66,17 @@ const GameCanvas = ()  => {
   }
 
   const treeClicked = (request: TreeClickedParams) => {
-    tree.updateCurrentLife(request.updatedLife)
+    tree.updateTreeState({
+      ...tree,
+      currentLife: request.updatedLife,
+    })
 
     if (request.isTreeDead) {
-      player.updateState({ wood: request.updatedWood })
+      player.updateState({ 
+        ...player,
+        gold: request.currentGold,
+        wood: request.updatedWood
+      })
       cutDownTree()
     }
 
@@ -76,9 +86,9 @@ const GameCanvas = ()  => {
 
   const treeClickedThrottled = useCallback(throttle(
     (request: TreeClickedParams) => treeClicked(request),
-    200,
+    100,
     { trailing: false }
-  ), [tree.maxLife, player.gold, player.axeDamage])
+  ), [tree.maxLife, player])
 
   return (
     <div className="game-canvas">
@@ -93,6 +103,7 @@ const GameCanvas = ()  => {
           isCutting={playerState.isCutting}
           onAnimationEnd={() => setPlayerState({ isCutting: false })}
         />
+        <Helper/>
       </div>
     </div>
   )
