@@ -10,6 +10,7 @@ $base-position: 0px -30px;
   top: -520px;
   left: 350px;
   animation: helperCut 15s steps(1, start) infinite;
+  user-select: none;
 
   .count {
     color: white;
