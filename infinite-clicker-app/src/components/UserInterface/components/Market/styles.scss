@@ -2,6 +2,49 @@
   width: 800px;
   font-size: 24px;
 
+  .header {
+    display: flex;
+  }
+
+  .materialCell, .priceCell, .actionsCell {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8px;
+    box-shadow: 0px 3px 0px #562d22;
+  }
+
+  .actionsCell {
+    .row {
+
+      display: flex;
+      margin-left: 10px;
+
+      .label {
+        margin-top: 18px;
+        margin-right: 10px;
+      }
+    }
+
+    .marketActions {
+      .gameModalButton {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .materialCell {
+    flex: 1 1 150px;
+  }
+
+  .priceCell {
+    flex: 1 1 80px;
+  }
+
+  .actionsCell {
+    flex: 1 1 300px;
+  }
+
   .marketRow {
     display: flex;
     justify-content: space-around;
@@ -14,16 +57,8 @@
       color: #debb00;
     }
 
-    .marketCell {
-      display: flex;
-
-      * {
-        margin-left: 10px;
-      }
-    }
-
-    .label {
-      margin-top: 18px;
+    .materialName {
+      text-transform: capitalize;
     }
   }
 }

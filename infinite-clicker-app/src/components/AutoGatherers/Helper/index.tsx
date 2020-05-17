@@ -9,10 +9,12 @@ const Helper = () => {
   const goldPerSec = upgrades.woodcutters * woodcuttersUpgrade!.goldPerSec
 
   return (
-    <div className="helper">
-      <div className="count">Count: {upgrades.woodcutters}</div>
-      <div className="goldPerSec">Gold per sec: {goldPerSec}</div>
-    </div>
+    upgrades.woodcutters > 0 
+      ? <div className="helper">
+          <div className="count">Woodcutters: {upgrades.woodcutters}</div>
+          <div className="gps"> [{goldPerSec} gold/s]</div>
+        </div>
+      : null
   )
 }
 

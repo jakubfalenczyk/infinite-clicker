@@ -1,7 +1,10 @@
 import _ from "lodash"
 
-export interface PlayerState {
+export interface Materials {
   wood: number
+}
+
+export interface PlayerState extends Materials {
   gold: number
   axeDamage: number
 }

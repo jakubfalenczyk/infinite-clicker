@@ -39,7 +39,7 @@ const Upgrades = () => {
       </div>
       <GameModal
         className="upgradesModal"
-        title="Market"
+        title="Upgrades"
         isOpen={isOpen}
         onClose={onClose}
       >

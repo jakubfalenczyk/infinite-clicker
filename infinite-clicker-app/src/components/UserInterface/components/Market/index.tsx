@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import "./styles.scss"
 import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
-import Button from "components/GameModal/components/Button"
-
-const woodPrice = 10
+import { Materials } from "gameState/player/model"
+import { marketPrices } from "common/marketPrices"
+import MarketItem from "./components/MarketItem"
 
 const Market = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,25 +12,29 @@ const Market = () => {
   const onClose = () => setIsOpen(false)
   const { player } = useGameState()
 
-  const sellWood = (sold: number) => {
-    if (sold > player.wood)
+  const sell = (material: keyof Materials, sold?: number) => {
+    let soldMaterials = sold || player[material]
+    
+    if (soldMaterials > player.wood) {
       return
+    }
 
     player.updateState({
       ...player,
-      wood: player.wood - sold,
-      gold: player.gold + sold * woodPrice,
+      [material]: player[material] - soldMaterials,
+      gold: player.gold + soldMaterials * marketPrices[material],
     })
   }
 
-  const buyWood = (bought: number) => {
-    if (bought * woodPrice > player.gold)
+  const buy = (material: keyof Materials, bought: number) => {
+    if (bought * marketPrices[material] > player.gold) {
       return
+    }
 
     player.updateState({
       ...player,
-      wood: player.wood + bought,
-      gold: player.gold - bought * woodPrice,
+      [material]: player[material] + bought,
+      gold: player.gold - bought * marketPrices[material],
     })
   }
 
@@ -48,36 +52,23 @@ const Market = () => {
         isOpen={isOpen}
         onClose={onClose}
       >
-        <div className="marketRow">
-          <div className="marketCell">
-            <div className="label">
-              <i className="fas fa-tree"></i> Wood
-            </div>
+        <div className="header">
+          <div className="materialCell">
+              Material
           </div>
-          <div className="marketCell">
-            <div className="label">
-            {woodPrice} <i className="fas fa-coins"></i> 
-            </div>
+          <div className="priceCell">
+              Price
           </div>
-          <div className="marketCell">
-            <div className="label">Sell</div>
-            <Button onClick={() => sellWood(10)}>
-              10x
-            </Button>
-            <Button onClick={() => sellWood(100)}>
-              100x
-            </Button>
-          </div>
-          <div className="marketCell">
-            <div className="label">Buy</div>
-            <Button onClick={() => buyWood(10)}>
-              10x
-            </Button>
-            <Button onClick={() => buyWood(100)}>
-              100x
-          </Button>
+          <div className="actionsCell">
+              Action
           </div>
         </div>
+        <MarketItem
+          icon={<i className="fas fa-tree"></i>}
+          material="wood"
+          sell={count => sell("wood", count)}
+          buy={count => buy("wood", count)}
+        />
       </GameModal>
     </>
   )

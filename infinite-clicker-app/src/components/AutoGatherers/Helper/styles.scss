@@ -7,24 +7,26 @@ $base-position: 0px -30px;
   width: 220px;
   margin: auto;
   position: relative;
-  top: -500px;
-  left: 300px;
+  top: -520px;
+  left: 350px;
   animation: helperCut 15s steps(1, start) infinite;
 
   .count {
     color: white;
     font-size: 20px;
-    top: 240px;
-    left: 78px;
+    top: 245px;
+    left: 10px;
     position: relative;
+    text-align: center;
   }
 
-  .goldPerSec {
+  .gps {
+    text-align: center;
     color: white;
-    font-size: 18px;
-    top: 240px;
-    left: 78px;
+    font-size: 20px;
+    top: 245px;
     position: relative;
+    left: 10px;
   }
 }
 
