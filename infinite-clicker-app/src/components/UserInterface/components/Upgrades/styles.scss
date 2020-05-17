@@ -1,9 +1,46 @@
 .upgradesModal {
   width: 800px;
   font-size: 24px;
+  
+  .content {
+    padding-top: 20px;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .upgradeCell, .priceCell, .countCell, .actionCell {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8px;
+    box-shadow: 6px 4px 16px #562d22;
+  }
+
+  .upgradeCell {
+    flex: 1 1 250px;
+  }
+
+  .priceCell {
+    flex: 1 1 120px;
+  }
+
+  .countCell {
+    flex: 1 1 200px;
+    position: relative;
+  }
+
+  .actionCell {
+    flex: 1 1 50px;
+  }
 
   .fa-users {
-    color: rgb(228, 225, 21);
+    color: #08a222;
+  }
+
+  .fa-truck-pickup {
+    color: #e6e63b;
   }
 
   .upgradesRow {

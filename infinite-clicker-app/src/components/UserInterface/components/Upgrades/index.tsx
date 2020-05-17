@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import "./styles.scss"
 import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
-import Button from "components/GameModal/components/Button"
 import { Upgrade, allUpgrades } from "common/upgrades"
+import UpgradeItem from "./components/UpgradeItem"
 
 const Upgrades = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,30 +43,20 @@ const Upgrades = () => {
         isOpen={isOpen}
         onClose={onClose}
       >
+        <div className="header">
+          <div className="upgradeCell">
+              Upgrade
+          </div>
+          <div className="priceCell">
+              Price
+          </div>
+          <div className="countCell">
+              Current count
+          </div>
+          <div className="actionCell">Buy</div>
+        </div>
         {allUpgrades.map((u: Upgrade) => 
-          <div key={u.storeKey} className="upgradesRow">
-            <div className="upgradesCell">
-              <div className="label">
-                {u.icon} {u.label}
-              </div>
-            </div>
-            <div className="upgradesCell">
-              <div className="label">
-                {u.price} <i className="fas fa-coins"></i> 
-              </div>
-            </div>
-            <div className="upgradesCell">
-              <div className="label">
-                Current count: {upgrades[u.storeKey]}
-              </div>
-            </div>
-            <div className="marketCell">
-              <Button onClick={() => buyUpgrade(u)}>
-                <i className="fas fa-plus"></i>
-              </Button>
-            </div>
-          </div>  
-        )}
+          <UpgradeItem item={u} buy={() => buyUpgrade(u)}/>)}
       </GameModal>
     </>
   )
