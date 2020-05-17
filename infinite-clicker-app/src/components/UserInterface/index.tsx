@@ -4,7 +4,7 @@ import Settings from "./components/Settings"
 import Market from "./components/Market"
 import Upgrades from "./components/Upgrades"
 import "./styles.scss"
-import useAutoGatherers from "components/AutoGatherers/useAutoGatherer"
+import useAutoGatherers from "components/AutoGatherers/useAutoGatherers"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
