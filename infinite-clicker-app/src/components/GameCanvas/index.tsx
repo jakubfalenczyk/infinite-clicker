@@ -3,7 +3,6 @@ import "./styles.scss"
 import Player from "../Player"
 import Tree from "../Tree"
 import HealthBar from "../HealthBar"
-import UserInterface from "components/UserInterface"
 import { backgroundMusic } from "sounds"
 import useMusic from "common/useMusic"
 import Helper from "components/AutoGatherers/Helper"
@@ -15,7 +14,6 @@ const GameCanvas = ()  => {
 
   return (
     <div className="game-canvas">
-      <UserInterface/>
       <div className="clickingArea">
         <Tree setPlayerVisualState={setPlayerVisualState}/>
         <HealthBar/>

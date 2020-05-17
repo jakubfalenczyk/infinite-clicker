@@ -18,3 +18,14 @@ export const allUpgrades: Upgrade[] = [
     goldPerSec: 2,
   }
 ]
+
+export const calculateGoldPerSec = (upgrades: UpgradesState) => {
+  const goldPerSecMap = Object.keys(upgrades).map(x => {
+    const key = x as keyof UpgradesState
+    const upgradeProps = allUpgrades.find(y => y.storeKey === x)
+    return upgradeProps ? upgrades[key] * upgradeProps.goldPerSec : 0
+  })
+
+  const sum = goldPerSecMap.reduce((a, b) => a + b)
+  return sum
+}
