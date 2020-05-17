@@ -1,4 +1,5 @@
-export function getRandomItem<T>(array: T[]): T {
-  const randomIndex = Math.floor(Math.random() * array.length)
-  return array[randomIndex]
+export function getRandomItem<T>(array: T[], current: T): T {
+  const filteredArray = array.filter(x => x !== current)
+  const randomIndex = Math.floor(Math.random() * filteredArray.length)
+  return filteredArray[randomIndex]
 }

@@ -1,15 +1,14 @@
 import React from "react"
 import "./styles.scss"
+import { useGameState } from "gameState"
 
-interface HealthBarProps {
-  life: number
-}
+const HealthBar = () => {
+  const { tree } = useGameState()
 
-const HealthBar = (props: HealthBarProps) => {
   return (
     <div className="health-bar">
-      <div className="life" style={{ width: props.life }}/>
-      <span className="life-count">{props.life}%</span>
+      <div className="life" style={{ width: tree.currentLife }}/>
+      <span className="life-count">{tree.currentLife}%</span>
     </div>
   )
 }

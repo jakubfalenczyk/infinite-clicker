@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef } from "react"
 import { useSoundSettings } from "./useSoundSettings"
 
 export interface AudioControls {
@@ -7,17 +7,17 @@ export interface AudioControls {
 }
 
 const useSound = (src: string): AudioControls => {
-  const [audio, setAudio] = useState(new Audio(src))
+  const audio = useRef(new Audio(src))
   const { soundsOn } = useSoundSettings()
   
   const changeTrack = (src: string) => {
-    setAudio(new Audio(src))
+    audio.current = new Audio(src)
   }
 
   const play = () => {
     if (soundsOn) {
-      audio.currentTime = 0
-      audio.play()
+      audio.current.currentTime = 0
+      audio.current.play()
     }
   }
 
