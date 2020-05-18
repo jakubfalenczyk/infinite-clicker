@@ -1,10 +1,10 @@
 import React from "react"
 import Button from "components/GameModal/components/Button"
 import { useGameState } from "gameState"
-import { Upgrade } from "../allUpgrades"
+import { UpgradeParams } from "gameState/upgrades/allUpgrades"
 
 interface UpgradeItemProps {
-  item: Upgrade
+  item: UpgradeParams
   buy: () => void
 }
 
@@ -21,12 +21,12 @@ const UpgradeItem = (props: UpgradeItemProps) => {
       </div>
       <div className="priceCell">
         <div className="label">
-          {item.price} <i className="fas fa-coins"></i> 
+          {upgrades[item.key].price} <i className="fas fa-coins"></i> 
         </div>
       </div>
       <div className="countCell">
         <div className="label">
-          {upgrades[item.storeKey]}
+          {upgrades[item.key].count}
         </div>
       </div>
       <div className="actionCell">

@@ -2,30 +2,33 @@ import React from "react"
 import { UpgradesState } from "gameState/upgrades/model"
 import { Materials } from "gameState/player/model"
 
-export interface Upgrade {
+export interface UpgradeParams {
+  key: keyof UpgradesState
   label: string
-  price: number
+  basePrice: number
+  priceMultiplier: number
   icon: JSX.Element
-  storeKey: keyof UpgradesState
   gatheredMaterial: keyof Materials
   gatheredPerSec: number
 }
 
-export const allUpgrades: Upgrade[] = [
-  { 
+export const allUpgrades: Record<keyof UpgradesState, UpgradeParams> = {
+  woodcutters: {
+    key: "woodcutters",
     label: "Woodcutters",
-    price: 1000,
+    basePrice: 1000,
+    priceMultiplier: 1.1,
     icon: <i className="fas fa-users"></i>,
-    storeKey: "woodcutters",
     gatheredMaterial: "wood",
     gatheredPerSec: 2,
   },
-  { 
+  buldozers: { 
+    key: "buldozers",
     label: "Buldozers",
-    price: 15000,
+    basePrice: 25000,
+    priceMultiplier: 1.2,
     icon: <i className="fas fa-truck-pickup"></i>,
-    storeKey: "buldozers",
     gatheredMaterial: "wood",
-    gatheredPerSec: 20,
+    gatheredPerSec: 10,
   }
-]
+}

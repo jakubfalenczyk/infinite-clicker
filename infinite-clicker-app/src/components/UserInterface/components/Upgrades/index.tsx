@@ -3,7 +3,7 @@ import "./styles.scss"
 import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
 import UpgradeItem from "./components/UpgradeItem"
-import { Upgrade, allUpgrades } from "./allUpgrades"
+import { UpgradeParams, allUpgrades } from "../../../../gameState/upgrades/allUpgrades"
 
 const Upgrades = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,8 +11,8 @@ const Upgrades = () => {
   const onClose = () => setIsOpen(false)
   const { player, upgrades } = useGameState()
 
-  const buyUpgrade = (upgrade: Upgrade) => {
-    const playerHasEnoughMoney = player.gold >= upgrade.price
+  const buyUpgrade = (upgrade: UpgradeParams) => {
+    const playerHasEnoughMoney = player.gold >= upgrades[upgrade.key].price
 
     if (!playerHasEnoughMoney) {
       return
@@ -20,12 +20,15 @@ const Upgrades = () => {
 
     player.updateState({
       ...player,
-      gold: player.gold - upgrade.price,
+      gold: player.gold - upgrades[upgrade.key].price,
     })
     
-    upgrades.updateUpgrades({ 
+    upgrades.updateState({ 
       ...upgrades, 
-      [upgrade.storeKey]: upgrades[upgrade.storeKey] + 1
+      [upgrade.key]: { 
+        count: upgrades[upgrade.key].count + 1,
+        price: Math.floor(upgrades[upgrade.key].price * upgrade.priceMultiplier)
+      }
     })
   }
 
@@ -55,8 +58,9 @@ const Upgrades = () => {
           </div>
           <div className="actionCell">Buy</div>
         </div>
-        {allUpgrades.map((u: Upgrade) => 
-          <UpgradeItem key={u.storeKey} item={u} buy={() => buyUpgrade(u)}/>)}
+        {Object.values(allUpgrades).map(value => (
+          <UpgradeItem key={value.key} item={value} buy={() => buyUpgrade(value)}/>
+        ))}
       </GameModal>
     </>
   )

@@ -23,7 +23,7 @@ const useUpgradesState = (): UpgradesContextType => {
 
   return {
     ...state,
-    updateUpgrades,
+    updateState: updateUpgrades,
     importSavedState,
     reset,
   }

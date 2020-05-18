@@ -7,6 +7,7 @@ import { backgroundMusic } from "sounds"
 import useMusic from "common/useMusic"
 import Helper from "components/AutoGatherers/Helper"
 import { PlayerVisualState } from "./playerVisualState"
+import Buldozer from "components/AutoGatherers/Buldozer"
 
 const GameCanvas = ()  => {
   const [ playerVisualState, setPlayerVisualState ] = useState<PlayerVisualState>({ isCutting: false })
@@ -22,6 +23,7 @@ const GameCanvas = ()  => {
           onAnimationEnd={() => setPlayerVisualState({ isCutting: false })}
         />
         <Helper/>
+        <Buldozer/>
       </div>
     </div>
   )

@@ -1,19 +1,31 @@
 import _ from "lodash"
+import { allUpgrades } from "./allUpgrades"
+
+export interface Upgrade {
+  count: number
+  price: number
+}
 
 export interface UpgradesState {
-  woodcutters: number
-  buldozers: number
+  woodcutters: Upgrade
+  buldozers: Upgrade
 }
 
 export const defaultUpgradesState: UpgradesState = {
-  woodcutters: 0,
-  buldozers: 0,
+  woodcutters: {
+    count: 0,
+    price: allUpgrades.woodcutters.basePrice
+  },
+  buldozers: {
+    count: 0,
+    price: allUpgrades.buldozers.basePrice,
+  },
 }
 
 export interface UpgradesActions {
-  updateUpgrades(newState: UpgradesState): void
+  updateState(newState: UpgradesState): void
 }
 
 export const defaultUpgradesActions: UpgradesActions = {
-  updateUpgrades: _.noop,
+  updateState: _.noop,
 }

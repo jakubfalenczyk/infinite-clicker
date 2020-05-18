@@ -1,0 +1,28 @@
+.buldozer {
+  background: url("/assets/images/buldozer.png");
+  background-position: center;
+  background-size: 600px;
+  height: 280px;
+  width: 220px;
+  margin: auto;
+  position: relative;
+  top: -800px;
+  left: -450px;
+  user-select: none;
+
+  .count {
+    color: white;
+    font-size: 20px;
+    top: 255px;
+    position: relative;
+    text-align: center;
+  }
+
+  .gps {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    top: 255px;
+    position: relative;
+  }
+}
