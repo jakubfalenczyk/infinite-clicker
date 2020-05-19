@@ -10,8 +10,8 @@ const Buldozer = () => {
   return (
     upgrades.buldozers.count > 0 
       ? <div className="buldozer">
-          <div className="count">Buldozers: {upgrades.buldozers.count}</div>
-          <div className="gps"> [{materialsPerSec} {allUpgrades.buldozers.gatheredMaterial}/s]</div>
+          <div className="count">{allUpgrades.buldozers.label}: {upgrades.buldozers.count}</div>
+          <div className="gps"> [+{materialsPerSec} {allUpgrades.buldozers.gatheredMaterial}/s]</div>
         </div>
       : null
   )

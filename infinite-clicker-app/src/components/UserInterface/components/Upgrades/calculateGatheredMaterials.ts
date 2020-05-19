@@ -1,18 +1,25 @@
 import { UpgradesState } from "gameState/upgrades/model"
-import { Materials } from "gameState/player/model"
-import _ from "lodash"
-import { allUpgrades, UpgradeParams } from "gameState/upgrades/allUpgrades"
+import { PlayerState } from "gameState/player/model"
+import { allUpgrades } from "gameState/upgrades/allUpgrades"
 
-export const calculateGatheredMaterials = (upgrades: UpgradesState): Materials => {
-  const groupedByMaterial = _.groupBy(allUpgrades, u => u.gatheredMaterial)
+export const calculateGatheredMaterials = (upgrades: UpgradesState, player: PlayerState): PlayerState => {
+  const updatedPlayerState = {...player}
   
-  const sumUpValues = (value: UpgradeParams) => {
-    const count = upgrades[value.key].count
-    return count * value.gatheredPerSec
-  }
+  Object.values(allUpgrades).forEach(x => {
+    const count = upgrades[x.key].count
+    const gatheredMaterials = count * x.gatheredPerSec
 
-  const summedUp = _.map(groupedByMaterial, (value, key) =>
-    ([ key, _.sumBy(value, v => sumUpValues(v))]))
+    if (x.usedMaterial && x.usedPerSec) {
+      const usedMaterials = count * x.usedPerSec
+      
+      if (updatedPlayerState[x.usedMaterial] >= usedMaterials) {
+        updatedPlayerState[x.usedMaterial] = updatedPlayerState[x.usedMaterial] - usedMaterials
+        updatedPlayerState[x.gatheredMaterial] = updatedPlayerState[x.gatheredMaterial] + gatheredMaterials
+      }
+    } else {
+      updatedPlayerState[x.gatheredMaterial] = updatedPlayerState[x.gatheredMaterial] + gatheredMaterials
+    }
+  })
 
-  return Object.fromEntries(summedUp)
+  return updatedPlayerState
 }

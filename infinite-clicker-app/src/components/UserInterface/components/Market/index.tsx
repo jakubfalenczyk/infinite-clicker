@@ -63,7 +63,7 @@ const Market = () => {
               Action
           </div>
         </div>
-        {allMarketGoods.map(x => 
+        {Object.values(allMarketGoods).map(x => 
           <MarketItem
             key={x.material}
             icon={x.icon}

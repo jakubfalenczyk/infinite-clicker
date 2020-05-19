@@ -1,0 +1,43 @@
+.burner {
+  background: url("/assets/images/burner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 280px;
+  height: 280px;
+  width: 350px;
+  margin: auto;
+  position: absolute;
+  top: 330px;
+  right: 20px;
+  user-select: none;
+
+  .count {
+    color: white;
+    font-size: 20px;
+    top: 255px;
+    left: -10px;
+    position: relative;
+    text-align: center;
+  }
+
+  .gps {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    top: 255px;
+    left: -10px;
+    position: relative;
+  }
+
+  .fire {
+    background: url("/assets/images/fire.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120px;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    left: 105px;
+    top: 70px;
+  }
+}

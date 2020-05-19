@@ -9,6 +9,7 @@ export interface Upgrade {
 export interface UpgradesState {
   woodcutters: Upgrade
   buldozers: Upgrade
+  burners: Upgrade
 }
 
 export const defaultUpgradesState: UpgradesState = {
@@ -19,6 +20,10 @@ export const defaultUpgradesState: UpgradesState = {
   buldozers: {
     count: 0,
     price: allUpgrades.buldozers.basePrice,
+  },
+  burners: {
+    count: 0,
+    price: allUpgrades.burners.basePrice,
   },
 }
 

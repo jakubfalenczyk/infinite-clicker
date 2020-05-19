@@ -10,8 +10,8 @@ const Helper = () => {
   return (
     upgrades.woodcutters.count > 0 
       ? <div className="helper">
-          <div className="count">Woodcutters: {upgrades.woodcutters.count}</div>
-          <div className="gps"> [{materialsPerSec} {allUpgrades.woodcutters.gatheredMaterial}/s]</div>
+          <div className="count">{allUpgrades.woodcutters.label}: {upgrades.woodcutters.count}</div>
+          <div className="gps"> [+{materialsPerSec} {allUpgrades.woodcutters.gatheredMaterial}/s]</div>
         </div>
       : null
   )

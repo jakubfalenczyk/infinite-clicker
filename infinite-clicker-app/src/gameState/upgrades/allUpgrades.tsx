@@ -8,6 +8,8 @@ export interface UpgradeParams {
   basePrice: number
   priceMultiplier: number
   icon: JSX.Element
+  usedMaterial?: keyof Materials
+  usedPerSec?: number
   gatheredMaterial: keyof Materials
   gatheredPerSec: number
 }
@@ -30,5 +32,16 @@ export const allUpgrades: Record<keyof UpgradesState, UpgradeParams> = {
     icon: <i className="fas fa-truck-pickup"></i>,
     gatheredMaterial: "wood",
     gatheredPerSec: 10,
+  },
+  burners: { 
+    key: "burners",
+    label: "Charcoal burners",
+    basePrice: 125000,
+    priceMultiplier: 1.3,
+    icon: <i className="fas fa-burn"></i>,
+    gatheredMaterial: "charcoal",
+    gatheredPerSec: 2,
+    usedMaterial: "wood",
+    usedPerSec: 10,
   }
 }

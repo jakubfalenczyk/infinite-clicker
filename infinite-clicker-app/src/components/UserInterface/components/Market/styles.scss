@@ -53,8 +53,16 @@
     display: flex;
     justify-content: space-around;
 
+    .fas {
+      margin-right: 8px;
+    }
+
     .fa-tree {
       color: #239135;
+    }
+
+    .fa-fire {
+      color: black;
     }
 
     .fa-coins {

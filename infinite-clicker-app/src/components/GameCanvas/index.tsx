@@ -8,6 +8,7 @@ import useMusic from "common/useMusic"
 import Helper from "components/AutoGatherers/Helper"
 import { PlayerVisualState } from "./playerVisualState"
 import Buldozer from "components/AutoGatherers/Buldozer"
+import Burner from "components/AutoGatherers/Burner"
 
 const GameCanvas = ()  => {
   const [ playerVisualState, setPlayerVisualState ] = useState<PlayerVisualState>({ isCutting: false })
@@ -24,6 +25,7 @@ const GameCanvas = ()  => {
         />
         <Helper/>
         <Buldozer/>
+        <Burner/>
       </div>
     </div>
   )
