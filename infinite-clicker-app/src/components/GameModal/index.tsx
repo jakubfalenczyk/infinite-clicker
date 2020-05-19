@@ -31,6 +31,7 @@ const GameModal = (props: PropsWithChildren<GameModalProps>) => {
     >
       <div className="title">
         {title}
+        <i className="fas fa-times" onClick={() => onClose()}/>
       </div>
       <div className="content">
         {props.children}

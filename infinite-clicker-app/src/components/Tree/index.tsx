@@ -28,7 +28,7 @@ const Tree = (props: TreeProps) => {
     const newChoppingSound = getRandomItem(choppingSounds, lastChoppingSound.current)
     choppingAudio.changeTrack(newChoppingSound)
 
-    const newTreeLife = tree.currentLife - player.axeDamage
+    const newTreeLife = tree.currentLife - player.axe.damage
     const isTreeDead = newTreeLife === 0
     const updatedLife = isTreeDead ? tree.maxLife : newTreeLife
 

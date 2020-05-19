@@ -20,14 +20,18 @@
 
   .upgradeCell {
     flex: 1 1 250px;
+
+    .fas {
+      margin-right: 10px;
+    }
   }
 
   .priceCell {
-    flex: 1 1 120px;
+    flex: 1 1 200px;
   }
 
   .countCell {
-    flex: 1 1 200px;
+    flex: 1 1 150px;
     position: relative;
   }
 

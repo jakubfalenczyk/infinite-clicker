@@ -1,4 +1,5 @@
 import _ from "lodash"
+import { Axe, allAxes } from "components/UserInterface/components/Tools/allAxes"
 
 export interface Materials {
   gold: number
@@ -6,13 +7,13 @@ export interface Materials {
 }
 
 export interface PlayerState extends Materials {
-  axeDamage: number
+  axe: Axe
 }
 
 export const defaultPlayerState: PlayerState = {
   gold: 0,
-  axeDamage: 10,
   wood: 0,
+  axe: allAxes.stone,
 }
 
 export interface PlayerActions {

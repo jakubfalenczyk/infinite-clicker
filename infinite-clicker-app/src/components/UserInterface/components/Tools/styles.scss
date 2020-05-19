@@ -1,0 +1,48 @@
+.toolsModal {
+  width: 800px;
+  font-size: 24px;
+  top: 100px;
+
+  .content {
+    padding-top: 20px;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .toolsCell, .priceCell, .actionsCell {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8px;
+    box-shadow: 6px 4px 16px #562d22;
+    padding: 20px 0;
+  }
+
+  .toolsCell {
+    flex: 1 1 350px;
+
+    img {
+      width: 60px;
+      margin-left: 20px;
+    }
+  }
+
+  .priceCell {
+    flex: 1 1 200px;
+
+    .fas {
+      margin-left: 8px;
+    }
+  }
+
+  .actionsCell {
+    flex: 1 1 100px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
+}
