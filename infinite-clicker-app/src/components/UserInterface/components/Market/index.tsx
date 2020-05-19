@@ -15,7 +15,7 @@ const Market = () => {
   const sell = (material: keyof Materials, price: number, sold?: number) => {
     let soldMaterials = sold || player[material]
     
-    if (soldMaterials > player.wood) {
+    if (soldMaterials > player[material]) {
       return
     }
 

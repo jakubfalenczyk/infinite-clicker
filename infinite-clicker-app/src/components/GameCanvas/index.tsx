@@ -9,6 +9,7 @@ import Helper from "components/AutoGatherers/Helper"
 import { PlayerVisualState } from "./playerVisualState"
 import Buldozer from "components/AutoGatherers/Buldozer"
 import Burner from "components/AutoGatherers/Burner"
+import LumberCamp from "components/AutoGatherers/LumberCamp"
 
 const GameCanvas = ()  => {
   const [ playerVisualState, setPlayerVisualState ] = useState<PlayerVisualState>({ isCutting: false })
@@ -26,6 +27,7 @@ const GameCanvas = ()  => {
         <Helper/>
         <Buldozer/>
         <Burner/>
+        <LumberCamp/>
       </div>
     </div>
   )

@@ -20,5 +20,11 @@ export const allMarketGoods: Record<keyof Materials, Goods> = {
     icon: <i className="fas fa-fire"></i>,
     material: "charcoal",
     label: "Charcoal",
+  },
+  plank: {
+    price: 30,
+    icon: <i className="fas fa-grip-lines-vertical"></i>,
+    material: "plank",
+    label: "Planks",
   }
 }

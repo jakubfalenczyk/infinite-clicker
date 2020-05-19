@@ -43,5 +43,16 @@ export const allUpgrades: Record<keyof UpgradesState, UpgradeParams> = {
     gatheredPerSec: 2,
     usedMaterial: "wood",
     usedPerSec: 10,
+  },
+  lumberCamps: {
+    key: "lumberCamps",
+    label: "Lumber camps",
+    basePrice: 250000,
+    priceMultiplier: 1.35,
+    icon: <i className="fas fa-campground"></i>,
+    gatheredMaterial: "plank",
+    gatheredPerSec: 5,
+    usedMaterial: "wood",
+    usedPerSec: 10,
   }
 }

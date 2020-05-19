@@ -1,20 +1,20 @@
-.buldozer {
-  background: url("/assets/images/buldozer.png");
+.lumberCamp {
+  background: url("/assets/images/lumber-camp.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 250px;
+  background-size: 500px;
   height: 280px;
-  width: 350px;
+  width: 500px;
   margin: auto;
-  position: relative;
-  top: -800px;
-  left: -380px;
+  position: absolute;
+  top: 270px;
+  left: 10px;
   user-select: none;
 
   .count {
     color: white;
     font-size: 20px;
-    top: 225px;
+    top: 215px;
     position: relative;
     text-align: center;
   }
@@ -23,7 +23,7 @@
     text-align: center;
     color: white;
     font-size: 20px;
-    top: 225px;
+    top: 215px;
     position: relative;
   }
 }
