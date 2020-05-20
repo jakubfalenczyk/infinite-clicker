@@ -1,5 +1,5 @@
 .upgradesModal {
-  width: 800px;
+  width: 900px;
   font-size: 24px;
   
   .content {
@@ -19,10 +19,17 @@
   }
 
   .upgradeCell {
-    flex: 1 1 250px;
+    flex: 1 1 280px;
+    padding: 15px;
+    text-align: center;
 
     .fas {
       margin-right: 10px;
+    }
+
+    .description {
+      margin-top: 4px;
+      font-size: 18px;
     }
   }
 
