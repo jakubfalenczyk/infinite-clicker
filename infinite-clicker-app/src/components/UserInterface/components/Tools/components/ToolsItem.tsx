@@ -10,13 +10,16 @@ interface ToolsItemProps {
 }
 
 const ToolsItem = (props: ToolsItemProps) => {
-  const { player } = useGameState()
+  const { player, tree } = useGameState()
   const { item, buy } = props
 
   return (
     <div className="row">
       <div className="toolsCell">
-        {item.label}
+        <div>
+          {item.label}
+          <div className="description">[Cuts tree in {Math.ceil(tree.maxLife / item.damage)} hits]</div>
+        </div>
         <img src={item.imgUrl} alt={item.label}/>
       </div>
       <div className="priceCell">
