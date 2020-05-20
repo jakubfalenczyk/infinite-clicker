@@ -2,6 +2,7 @@ import React from "react"
 import { Materials } from "gameState/player/model"
 import Sell from "./Sell"
 import Buy from "./Buy"
+import { formatNumber } from "common/formatNumber"
 
 interface MarketItemProps {
   icon: JSX.Element
@@ -23,7 +24,7 @@ const MarketItem = (props: MarketItemProps) => {
       </div>
       <div className="priceCell">
         <div className="label">
-        {price} <i className="fas fa-coins"></i> 
+        {formatNumber(price)} <i className="fas fa-coins"></i> 
         </div>
       </div>
       <div className="actionsCell">

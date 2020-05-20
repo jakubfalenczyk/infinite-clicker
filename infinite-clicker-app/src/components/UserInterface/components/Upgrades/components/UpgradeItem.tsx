@@ -2,6 +2,7 @@ import React from "react"
 import Button from "components/GameModal/components/Button"
 import { useGameState } from "gameState"
 import { UpgradeParams } from "gameState/upgrades/allUpgrades"
+import { formatNumber } from "common/formatNumber"
 
 interface UpgradeItemProps {
   item: UpgradeParams
@@ -21,12 +22,12 @@ const UpgradeItem = (props: UpgradeItemProps) => {
       </div>
       <div className="priceCell">
         <div className="label">
-          {upgrades[item.key].price} <i className="fas fa-coins"></i> 
+          {formatNumber(upgrades[item.key].price)} <i className="fas fa-coins"></i> 
         </div>
       </div>
       <div className="countCell">
         <div className="label">
-          {upgrades[item.key].count}
+          {formatNumber(upgrades[item.key].count)}
         </div>
       </div>
       <div className="actionCell">

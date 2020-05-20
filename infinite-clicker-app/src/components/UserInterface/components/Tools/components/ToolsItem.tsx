@@ -2,6 +2,7 @@ import React from "react"
 import { Axe, AxeTypes } from "../allAxes"
 import Button from "components/GameModal/components/Button"
 import { useGameState } from "gameState"
+import { formatNumber } from "common/formatNumber"
 
 interface ToolsItemProps {
   item: Axe
@@ -19,7 +20,7 @@ const ToolsItem = (props: ToolsItemProps) => {
         <img src={item.imgUrl} alt={item.label}/>
       </div>
       <div className="priceCell">
-        {item.price || "~"} <i className="fas fa-coins"></i> 
+        {formatNumber(item.price)} <i className="fas fa-coins"></i> 
       </div>
       <div className="actionsCell">
         {player.axe.key === item.key || player.axe.price > item.price

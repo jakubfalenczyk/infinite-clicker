@@ -5,6 +5,7 @@ import { calculateGatheredMaterials } from "../Upgrades/calculateGatheredMateria
 import { allMarketGoods } from "../Market/allMarketGoods"
 import { Materials } from "gameState/player/model"
 import { allUpgrades } from "gameState/upgrades/allUpgrades"
+import { formatNumber } from "common/formatNumber"
 
 const PlayerStats = () => {
   const { player, upgrades } = useGameState()
@@ -24,12 +25,12 @@ const PlayerStats = () => {
     <div className="playerStats">
       <div className="resources">
         <div className="gold">
-          <i className="fas fa-coins"></i> Gold: {player.gold}
+          <i className="fas fa-coins"></i> Gold: {formatNumber(player.gold)}
         </div>
         {Object.values(allMarketGoods).map(x => 
           hasAnyUpgradeForMaterial(x.material) && (
             <div key={x.material}>
-              {x.icon} {x.label}: {player[x.material]} ({stateAfterGathering[x.material] - player[x.material] || 0}/s)
+              {x.icon} {x.label}: {formatNumber(player[x.material])} ({formatNumber(stateAfterGathering[x.material] - player[x.material]) || 0}/s)
             </div>
           )
         )}

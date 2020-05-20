@@ -1,0 +1,1 @@
+export const formatNumber = (input: number) => input.toLocaleString("de-DE")
