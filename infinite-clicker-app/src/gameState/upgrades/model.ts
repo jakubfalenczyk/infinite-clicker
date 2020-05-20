@@ -11,6 +11,8 @@ export interface UpgradesState {
   buldozers: Upgrade
   burners: Upgrade
   lumberCamps: Upgrade
+  paperFactories: Upgrade
+  furnitureFactories: Upgrade
 }
 
 export const defaultUpgradesState: UpgradesState = {
@@ -29,6 +31,14 @@ export const defaultUpgradesState: UpgradesState = {
   lumberCamps: {
     count: 0,
     price: allUpgrades.lumberCamps.basePrice,
+  },
+  paperFactories: {
+    count: 0,
+    price: allUpgrades.paperFactories.basePrice,
+  },
+  furnitureFactories: {
+    count: 0,
+    price: allUpgrades.furnitureFactories.basePrice,
   }
 }
 

@@ -10,6 +10,8 @@ import { PlayerVisualState } from "./playerVisualState"
 import Buldozer from "components/AutoGatherers/Buldozer"
 import Burner from "components/AutoGatherers/Burner"
 import LumberCamp from "components/AutoGatherers/LumberCamp"
+import PaperFactory from "components/AutoGatherers/PaperFactory"
+import FurnitureFactory from "components/AutoGatherers/FurnitureFactory"
 
 const GameCanvas = ()  => {
   const [ playerVisualState, setPlayerVisualState ] = useState<PlayerVisualState>({ isCutting: false })
@@ -28,6 +30,8 @@ const GameCanvas = ()  => {
         <Buldozer/>
         <Burner/>
         <LumberCamp/>
+        <PaperFactory/>
+        <FurnitureFactory/>
       </div>
     </div>
   )

@@ -5,6 +5,8 @@ export interface Materials {
   wood: number
   charcoal: number
   plank: number
+  paper: number
+  furniture: number
 }
 
 export interface PlayerState extends Materials {
@@ -17,6 +19,8 @@ export const defaultPlayerState: PlayerState = {
   wood: 0,
   charcoal: 0,
   plank: 0,
+  paper: 0,
+  furniture: 0,
   axe: allAxes.stone,
 }
 

@@ -22,9 +22,21 @@ export const allMarketGoods: Record<keyof Materials, Goods> = {
     label: "Charcoal",
   },
   plank: {
-    price: 50,
+    price: 100,
     icon: <i className="fas fa-grip-lines-vertical"></i>,
     material: "plank",
     label: "Planks",
-  }
+  },
+  paper: {
+    price: 200,
+    icon: <i className="fas fa-copy"></i>,
+    material: "paper",
+    label: "Paper",
+  },
+  furniture: {
+    price: 1500,
+    icon: <i className="fas fa-couch"></i>,
+    material: "furniture",
+    label: "Furniture",
+  },
 }

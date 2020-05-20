@@ -1,20 +1,21 @@
-.buldozer {
-  background: url("/assets/images/buldozer.png");
+.paperFactory {
+  background: url("/assets/images/paper-factory.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 250px;
+  background-size: 300px;
   height: 280px;
-  width: 350px;
+  width: 300px;
   margin: auto;
   position: absolute;
-  top: 50px;
-  right: 120px;
+  top: 420px;
+  right: 400px;
   user-select: none;
 
   .count {
     color: white;
     font-size: 20px;
-    top: 225px;
+    top: 245px;
+    left: 20px;
     position: relative;
     text-align: center;
   }
@@ -23,7 +24,8 @@
     text-align: center;
     color: white;
     font-size: 20px;
-    top: 225px;
+    top: 245px;
+    left: 20px;
     position: relative;
   }
 }

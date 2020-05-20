@@ -11,7 +11,7 @@ export interface TreeState {
 export const defaultTreeState: TreeState = {
   maxLife: 100,
   currentLife: 100,
-  wood: 10,
+  wood: 25,
   type: treeTypes[0]
 }
 
