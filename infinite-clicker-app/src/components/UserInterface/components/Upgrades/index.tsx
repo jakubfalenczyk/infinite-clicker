@@ -6,7 +6,7 @@ import UpgradeItem from "./components/UpgradeItem"
 import { UpgradeParams, allUpgrades } from "../../../../gameState/upgrades/allUpgrades"
 
 const Upgrades = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const { player, upgrades } = useGameState()

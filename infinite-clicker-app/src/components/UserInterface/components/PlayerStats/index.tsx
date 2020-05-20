@@ -24,12 +24,12 @@ const PlayerStats = () => {
   return (
     <div className="playerStats">
       <div className="resources">
-        <div className="gold">
+        <div className="gold stat">
           <i className="fas fa-coins"></i> Gold: {formatNumber(player.gold)}
         </div>
         {Object.values(allMarketGoods).map(x => 
           hasAnyUpgradeForMaterial(x.material) && (
-            <div key={x.material}>
+            <div className="stat" key={x.material}>
               {x.icon} {x.label}: {formatNumber(player[x.material])} ({formatNumber(stateAfterGathering[x.material] - player[x.material]) || 0}/s)
             </div>
           )
