@@ -5,29 +5,38 @@ import { useGameState } from "gameState"
 import { Materials } from "gameState/player/model"
 import MarketItem from "./components/MarketItem"
 import { allMarketGoods } from "./allMarketGoods"
+import useSound from "common/useSound"
+import { uiSounds } from "sounds"
+import UIButton from "../UIButton"
 
 const Market = () => {
   const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const { player } = useGameState()
+  const disabledClickSound = useSound(uiSounds.disabledClick)
+  const moneySound = useSound(uiSounds.money)
 
   const sell = (material: keyof Materials, price: number, sold?: number) => {
     let soldMaterials = sold || player[material]
     
-    if (soldMaterials > player[material]) {
+    if (soldMaterials > player[material] || player[material] === 0) {
+      disabledClickSound.play()
       return
     }
+
+    moneySound.play()
 
     player.updateState({
       ...player,
       [material]: player[material] - soldMaterials,
       gold: player.gold + soldMaterials * price,
-    })
+    })    
   }
 
   const buy = (material: keyof Materials, price: number, bought: number) => {
     if (bought * price > player.gold) {
+      disabledClickSound.play()
       return
     }
 
@@ -36,16 +45,17 @@ const Market = () => {
       [material]: player[material] + bought,
       gold: player.gold - bought * price,
     })
+
+    moneySound.play()
   }
 
   return (
     <>
-      <div className="uiButton" onClick={onOpen}>
-        Market
-        <div className="buttonIcon">
-          <i className="fas fa-shopping-cart"></i>
-        </div>
-      </div>
+      <UIButton 
+        label="Market"
+        onClick={onOpen}
+        icon={<i className="fas fa-shopping-cart"></i>}
+      />
       <GameModal
         className="marketModal"
         title="Market"

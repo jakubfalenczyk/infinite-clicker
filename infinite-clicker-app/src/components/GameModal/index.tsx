@@ -2,6 +2,8 @@ import React, { PropsWithChildren } from 'react'
 import ReactModal from 'react-modal'
 import "./styles.scss"
 import classNames from 'classnames'
+import useSound from 'common/useSound';
+import { uiSounds } from 'sounds';
 
 ReactModal.setAppElement('#root');
 
@@ -20,18 +22,24 @@ const GameModal = (props: PropsWithChildren<GameModalProps>) => {
     "gameModal",
     className,
     { "nested": isNested }
-  ) 
+  )
+  const menuCloseSound = useSound(uiSounds.menuClose)
+
+  const onCloseHandler = () => {
+    menuCloseSound.play()
+    onClose()
+  }
 
   return (
     <ReactModal 
       isOpen={isOpen}
-      onRequestClose={onClose}
+      onRequestClose={onCloseHandler}
       className={modalClassName}
       overlayClassName="gameModalOverlay"
     >
       <div className="title">
         {title}
-        <i className="fas fa-times" onClick={() => onClose()}/>
+        <i className="fas fa-times" onClick={() => onCloseHandler()}/>
       </div>
       <div className="content">
         {props.children}

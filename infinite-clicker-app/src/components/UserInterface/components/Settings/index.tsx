@@ -6,6 +6,7 @@ import Credits from "./components/Credits"
 import { useSoundSettings } from "common/useSoundSettings"
 import GameModal from "components/GameModal"
 import Button from "components/GameModal/components/Button"
+import UIButton from "../UIButton"
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,12 +16,11 @@ const Settings = () => {
 
   return (
     <>
-      <div className="uiButton" onClick={onOpen}>
-        Settings
-        <div className="buttonIcon">
-          <i className="fas fa-cog"></i>
-        </div>
-      </div>
+      <UIButton 
+        label="Settings"
+        onClick={onOpen}
+        icon={<i className="fas fa-cog"></i>}
+      />
       <GameModal
         title="Settings"
         isOpen={isOpen}
