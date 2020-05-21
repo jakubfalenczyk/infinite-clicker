@@ -6,13 +6,16 @@ import Upgrades from "./components/Upgrades"
 import "./styles.scss"
 import useAutoGatherers from "components/AutoGatherers/useAutoGatherers"
 import Tools from "./components/Tools"
+import useRandomEvents from "components/RandomEvents/useRandomEvents"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
+  randomEventsTick: React.MutableRefObject<() => void>
 }
 
 const UserInterface = (props: UserInterfaceProps) => {
   useAutoGatherers(props.autoGathererTick)
+  useRandomEvents(props.randomEventsTick)
 
   return (
     <div className="userInterface">

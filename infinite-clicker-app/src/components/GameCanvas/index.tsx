@@ -12,6 +12,7 @@ import Burner from "components/AutoGatherers/Burner"
 import LumberCamp from "components/AutoGatherers/LumberCamp"
 import PaperFactory from "components/AutoGatherers/PaperFactory"
 import FurnitureFactory from "components/AutoGatherers/FurnitureFactory"
+import RandomEventSpawner from "components/RandomEvents/RandomEventSpawner"
 
 const GameCanvas = ()  => {
   const [ playerVisualState, setPlayerVisualState ] = useState<PlayerVisualState>({ isCutting: false })
@@ -32,6 +33,7 @@ const GameCanvas = ()  => {
         <LumberCamp/>
         <PaperFactory/>
         <FurnitureFactory/>
+        <RandomEventSpawner/>
       </div>
     </div>
   )
