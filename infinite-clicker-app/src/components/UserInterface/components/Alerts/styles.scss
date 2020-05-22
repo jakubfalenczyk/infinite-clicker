@@ -1,0 +1,25 @@
+.alerts {
+  position: absolute;
+  width: 100%;
+  user-select: none;
+  text-align: center;
+
+  .message {
+    display: inline-block;
+    animation-name: flash, colorsChange; 
+    animation-duration: 300ms, 800ms; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+  }
+}
+
+@keyframes flash {
+  from {transform: scale(1, 1);}  
+  to {transform: scale(1.03, 1.03);}
+}
+
+@keyframes colorsChange {
+  from {color: #a50000;}  
+  to {color: #ec0000;}
+}

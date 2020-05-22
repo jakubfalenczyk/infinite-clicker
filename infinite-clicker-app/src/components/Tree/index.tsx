@@ -9,6 +9,7 @@ import { treeFallSound, choppingSounds } from "sounds"
 import { throttle } from "lodash"
 import { TreeClickedParams } from "./treeClickParams"
 import { PlayerVisualState } from "components/GameCanvas/playerVisualState"
+import { useSoundSettings } from "common/useSoundSettings"
 
 interface TreeProps {
   setPlayerVisualState(newState: PlayerVisualState): void
@@ -18,6 +19,7 @@ const Tree = (props: TreeProps) => {
   const treeFallAudio = useSound(treeFallSound)
   const lastChoppingSound = useRef(choppingSounds[0])
   const choppingAudio = useSound(lastChoppingSound.current)
+  const soundSettings = useSoundSettings()
 
   const { tree, player } = useGameState()
   
@@ -43,19 +45,24 @@ const Tree = (props: TreeProps) => {
       type: isTreeDead ? getRandomItem(treeTypes, tree.type) : tree.type,
     })
 
+    const playChoppingAudio = () => choppingAudio.play(soundSettings.soundsOn)
+    const playTreeFallAudio = () => treeFallAudio.play(soundSettings.soundsOn)
+
     treeClickedThrottled.current({
       updatePlayerState,
       updateTreeState,
       isTreeDead,
+      playChoppingAudio,
+      playTreeFallAudio,
     })
   }
 
   const treeClicked = (request: TreeClickedParams) => {
     setIsBouncing(true)
-    choppingAudio.play()
+    request.playChoppingAudio()
 
     if (request.isTreeDead) {
-      treeFallAudio.play()
+      request.playTreeFallAudio()
     }
 
     request.updatePlayerState()

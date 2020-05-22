@@ -7,6 +7,7 @@ import "./styles.scss"
 import useAutoGatherers from "components/AutoGatherers/useAutoGatherers"
 import Tools from "./components/Tools"
 import useRandomEvents from "components/RandomEvents/useRandomEvents"
+import Alerts from "./components/Alerts"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
@@ -20,7 +21,8 @@ const UserInterface = (props: UserInterfaceProps) => {
   return (
     <div className="userInterface">
       <PlayerStats/>
-      <div>
+      <Alerts/>
+      <div className="menu">
         <Settings/>
         <Market/>
         <Upgrades/>

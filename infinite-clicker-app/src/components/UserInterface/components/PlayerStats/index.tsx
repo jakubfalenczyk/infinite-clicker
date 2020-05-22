@@ -2,13 +2,13 @@ import React from "react"
 import "./styles.scss"
 import { useGameState } from "gameState"
 import { calculateGatheredMaterials } from "../Upgrades/calculateGatheredMaterials"
-import { allMarketGoods } from "../Market/allMarketGoods"
+import { allMarketGoods, Goods } from "../Market/allMarketGoods"
 import { Materials } from "gameState/player/model"
 import { allUpgrades } from "gameState/upgrades/allUpgrades"
 import { formatNumber } from "common/formatNumber"
 
 const PlayerStats = () => {
-  const { player, upgrades } = useGameState()
+  const { player, upgrades, randomEvents } = useGameState()
   
   const hasAnyUpgradeForMaterial = (material: keyof Materials) => {
     if (material === "wood" || player[material] > 0) {
@@ -21,6 +21,15 @@ const PlayerStats = () => {
   
   const stateAfterGathering = calculateGatheredMaterials(upgrades, player)
 
+  const isEventHappening = 
+    randomEvents.wildfire.count > 0 
+    || randomEvents.termites.count > 0
+  
+  const getMaterialsPerSec = (goods: Goods) => {
+    const materialsPerSec = stateAfterGathering[goods.material] - player[goods.material] || 0
+    return isEventHappening ? 0 : formatNumber(materialsPerSec)
+  }
+
   return (
     <div className="playerStats">
       <div className="resources">
@@ -30,7 +39,7 @@ const PlayerStats = () => {
         {Object.values(allMarketGoods).map(x => 
           hasAnyUpgradeForMaterial(x.material) && (
             <div className="stat" key={x.material}>
-              {x.icon} {x.label}: {formatNumber(player[x.material])} ({formatNumber(stateAfterGathering[x.material] - player[x.material]) || 0}/s)
+              {x.icon} {x.label}: {formatNumber(player[x.material])} ({getMaterialsPerSec(x)}/s)
             </div>
           )
         )}

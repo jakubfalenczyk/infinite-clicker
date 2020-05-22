@@ -7,12 +7,27 @@ import { useSoundSettings } from "common/useSoundSettings"
 import GameModal from "components/GameModal"
 import Button from "components/GameModal/components/Button"
 import UIButton from "../UIButton"
+import useMusic from "gameState/music/useMusic"
+import { music } from "sounds"
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const soundSettings = useSoundSettings()
+  const bgMusic = useMusic()
+
+  const onStartNewGame = () => {
+    onClose()
+    bgMusic.changeTrack(music.bg)
+    bgMusic.play()
+  }
+
+  const onContinue = () => {
+    onClose()
+    bgMusic.changeTrack(music.bg)
+    bgMusic.play()
+  }
 
   return (
     <>
@@ -22,19 +37,16 @@ const Settings = () => {
         icon={<i className="fas fa-cog"></i>}
       />
       <GameModal
-        title="Settings"
+        title="Lumber Click"
         isOpen={isOpen}
         onClose={onClose}
       >
-        <Button onClick={onClose}>
+        <Button onClick={onContinue}>
           Continue
         </Button>
-        <StartNewGame onStartNewGame={onClose}/>
+        <StartNewGame onStartNewGame={onStartNewGame}/>
         <Button onClick={() => soundSettings.changeSoundSettings()}>
           Sounds: {soundSettings.soundsOn ? "ON" : "OFF"}
-        </Button>
-        <Button onClick={() => soundSettings.changeMusicSettings()}>
-          Music: {soundSettings.musicOn ? "ON" : "OFF"}
         </Button>
         <ImportExportSave onActionCompleted={onClose}/>
         <Credits/>

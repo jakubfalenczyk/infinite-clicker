@@ -26,8 +26,9 @@ const Credits = () => {
         <span>
           I'm using assets from:<br/>
           <a className="creditsLink" href="https://kenney.nl" target="_blank" rel="noopener noreferrer">
-            https://kenney.nl
-          </a>
+            kenney.nl
+          </a><br/>
+          <a className="creditsLink" href="https://www.vecteezy.com/free-vector/termite">Vecteezy.com</a>
         </span>
         <span>
         and music from:<br/>

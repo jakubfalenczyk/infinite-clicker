@@ -1,9 +1,10 @@
 .wildfire {
   height: 60px;
   animation-name: resize; 
-  animation-duration: 300ms; 
+  animation-duration: 200ms; 
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  animation-direction: alternate;
 }
 
 @keyframes resize {

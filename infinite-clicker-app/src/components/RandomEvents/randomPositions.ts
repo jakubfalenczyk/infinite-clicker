@@ -1,14 +1,10 @@
-interface Position {
-  top: string
-  left?: string
-  right?: string
-}
+import { CSSProperties } from "react"
 
 const leftOffsets = [
-  "15%", "20%", "25%", "30%", "40%", "50%", "60%", "70%", "75%", "80%", "85%"
+  "20%", "30%", "40%", "50%", "60%", "70%", "80%"
 ]
 
-export const randomPositions: Position[] = [
+export const randomPositions: CSSProperties[] = [
   // tree line positions
   ...leftOffsets.map(offset => ({ top: "150px", left: offset })),
   ...leftOffsets.map(offset => ({ top: "170px", left: offset })),

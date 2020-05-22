@@ -3,8 +3,6 @@ import "./styles.scss"
 import Player from "../Player"
 import Tree from "../Tree"
 import HealthBar from "../HealthBar"
-import { backgroundMusic } from "sounds"
-import useMusic from "common/useMusic"
 import Helper from "components/AutoGatherers/Helper"
 import { PlayerVisualState } from "./playerVisualState"
 import Buldozer from "components/AutoGatherers/Buldozer"
@@ -16,8 +14,7 @@ import RandomEventSpawner from "components/RandomEvents/RandomEventSpawner"
 
 const GameCanvas = ()  => {
   const [ playerVisualState, setPlayerVisualState ] = useState<PlayerVisualState>({ isCutting: false })
-  useMusic(backgroundMusic[0])
-
+  
   return (
     <div className="game-canvas">
       <div className="clickingArea">

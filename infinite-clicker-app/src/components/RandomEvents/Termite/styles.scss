@@ -1,0 +1,13 @@
+.termite {
+  height: 80px;
+  animation-name: rotate; 
+  animation-duration: 400ms; 
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@keyframes rotate {
+  from {transform: rotate(85deg);}
+  to {transform: rotate(95deg);}
+}
