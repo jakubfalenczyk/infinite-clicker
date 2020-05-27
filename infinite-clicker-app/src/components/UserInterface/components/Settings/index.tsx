@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./styles.scss"
 import StartNewGame from "./components/StartNewGame"
 import ImportExportSave from "./components/ImportExportSave"
@@ -8,23 +8,33 @@ import GameModal from "components/GameModal"
 import Button from "components/GameModal/components/Button"
 import UIButton from "../UIButton"
 import useMusic from "gameState/music/useMusic"
-import { music } from "sounds"
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const soundSettings = useSoundSettings()
-  const bgMusic = useMusic()
+  const { currentMusic } = useMusic()
+
+  useEffect(() => {
+    if (!soundSettings.soundsOn) {
+      currentMusic.current.stop()
+    } else {
+      currentMusic.current.play(soundSettings.soundsOn)
+    }
+  }, [soundSettings, currentMusic])
 
   const onStartNewGame = () => {
     onClose()
-    bgMusic.changeTrack(music.bg)
-    bgMusic.play()
+    currentMusic.current.play()
   }
 
   const onContinue = () => {
     onClose()
+  }
+
+  const onSoundSettingsChange = () => {
+    soundSettings.changeSoundSettings()
   }
 
   return (
@@ -43,7 +53,7 @@ const Settings = () => {
           Continue
         </Button>
         <StartNewGame onStartNewGame={onStartNewGame}/>
-        <Button onClick={() => soundSettings.changeSoundSettings()}>
+        <Button onClick={onSoundSettingsChange}>
           Sounds: {soundSettings.soundsOn ? "ON" : "OFF"}
         </Button>
         <ImportExportSave onActionCompleted={onClose}/>

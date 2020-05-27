@@ -10,7 +10,20 @@ import { useSoundSettings } from "common/useSoundSettings"
 const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
   const { randomEvents } = useGameState()
   const soundSettings = useSoundSettings()
-  const bgMusic = useMusic()
+  const { changeMusic } = useMusic()
+
+  useEffect(() => {
+    const wildfire = randomEvents.wildfire.count 
+      && allRandomEvents[randomEvents.wildfire.key]
+    const termites = randomEvents.termites.count 
+      && allRandomEvents[randomEvents.termites.key]
+
+    const currentEvent = wildfire || termites
+    
+    if (currentEvent) {
+      changeMusic(currentEvent.music, soundSettings.soundsOn)
+    }
+  }, [randomEvents, changeMusic, soundSettings.soundsOn])
   
   const update = useRef((randomEventsState: RandomEventsState, soundsOn: boolean) => {
     const isEventHappening = 
@@ -29,9 +42,6 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
       ...randomEventsState,
       [event.key]: { count, key: event.key, positions }
     })
-
-    bgMusic.changeTrack(event.music)
-    bgMusic.play(soundsOn)
   })
 
   useEffect(() => {

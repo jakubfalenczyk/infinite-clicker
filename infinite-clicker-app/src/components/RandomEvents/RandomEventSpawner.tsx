@@ -1,22 +1,17 @@
-import React, { useEffect } from "react"
+import React from "react"
 import "./styles.scss"
 import { allRandomEvents } from "./allRandomEvents"
 import { useGameState } from "gameState"
 import { RandomEvent } from "gameState/randomEvents/model"
 import useMusic from "gameState/music/useMusic"
-import { music } from "sounds"
+import { useSoundSettings } from "common/useSoundSettings"
 
 const RandomEventSpawner = () => {
+  const { soundsOn } = useSoundSettings()
   const { randomEvents } = useGameState()
   const { wildfire, termites } = randomEvents
   const events = [ wildfire, termites ]
-  const bgMusic = useMusic()
-
-  useEffect(() => {
-    if (wildfire.count || termites.count) {
-      bgMusic.changeTrackAndPlay(music.danger)
-    }
-  }, [ wildfire, termites, bgMusic ])
+  const { changeMusic } = useMusic()
 
   const populateEvents = (e: RandomEvent): RandomEvent[] => {
     return Array.from({length: e.count}, () => e)
@@ -35,7 +30,7 @@ const RandomEventSpawner = () => {
           })
 
           if (e.positions.length === 0) {
-            bgMusic.changeTrackAndPlay(music.bg)
+            changeMusic("bg", soundsOn)
           }
         }
 
