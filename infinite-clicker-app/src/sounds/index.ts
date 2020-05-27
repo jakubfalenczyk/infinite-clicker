@@ -18,5 +18,6 @@ export const uiSounds = {
 
 export const music = {
   bg: "/assets/sounds/music-bg2.mp3",
-  danger: "/assets/sounds/music-danger2.mp3",
+  danger: "/assets/sounds/music-danger.mp3",
+  danger2: "/assets/sounds/music-danger2.mp3",
 }

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./styles.scss"
 import { allRandomEvents } from "./allRandomEvents"
 import { useGameState } from "gameState"
@@ -11,6 +11,12 @@ const RandomEventSpawner = () => {
   const { wildfire, termites } = randomEvents
   const events = [ wildfire, termites ]
   const bgMusic = useMusic()
+
+  useEffect(() => {
+    if (wildfire.count || termites.count) {
+      bgMusic.changeTrackAndPlay(music.danger)
+    }
+  }, [ wildfire, termites, bgMusic ])
 
   const populateEvents = (e: RandomEvent): RandomEvent[] => {
     return Array.from({length: e.count}, () => e)
@@ -29,8 +35,7 @@ const RandomEventSpawner = () => {
           })
 
           if (e.positions.length === 0) {
-            bgMusic.changeTrack(music.bg)
-            bgMusic.play()
+            bgMusic.changeTrackAndPlay(music.bg)
           }
         }
 

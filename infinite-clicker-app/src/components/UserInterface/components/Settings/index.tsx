@@ -25,8 +25,6 @@ const Settings = () => {
 
   const onContinue = () => {
     onClose()
-    bgMusic.changeTrack(music.bg)
-    bgMusic.play()
   }
 
   return (

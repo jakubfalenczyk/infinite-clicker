@@ -5,7 +5,6 @@ import { getRandomItem, getDistinctRandomItems } from "common/random"
 import { allRandomEvents } from "./allRandomEvents"
 import { randomPositions } from "./randomPositions"
 import useMusic from "gameState/music/useMusic"
-import { music } from "sounds"
 import { useSoundSettings } from "common/useSoundSettings"
 
 const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
@@ -23,7 +22,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
     }
 
     const event = getRandomItem([allRandomEvents.wildfire, allRandomEvents.termites])
-    const count = Math.floor(Math.random() * 10) + 1
+    const count = Math.floor(Math.random() * 6) + 6
     const positions = getDistinctRandomItems(randomPositions, count)
     
     randomEvents.updateState({
@@ -31,7 +30,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
       [event.key]: { count, key: event.key, positions }
     })
 
-    bgMusic.changeTrack(music.danger)
+    bgMusic.changeTrack(event.music)
     bgMusic.play(soundsOn)
   })
 
