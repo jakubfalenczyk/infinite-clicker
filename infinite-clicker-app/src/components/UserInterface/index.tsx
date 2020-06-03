@@ -8,6 +8,7 @@ import useAutoGatherers from "components/AutoGatherers/useAutoGatherers"
 import Tools from "./components/Tools"
 import useRandomEvents from "components/RandomEvents/useRandomEvents"
 import Alerts from "./components/Alerts"
+import Achievements from "./components/Achievements"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
@@ -27,6 +28,7 @@ const UserInterface = (props: UserInterfaceProps) => {
         <Market/>
         <Upgrades/>
         <Tools/>
+        <Achievements/>
       </div>
     </div>
   )

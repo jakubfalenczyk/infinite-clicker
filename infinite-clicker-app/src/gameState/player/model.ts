@@ -12,6 +12,8 @@ export interface Materials {
 export interface PlayerState extends Materials {
   gold: number
   axe: Axe
+  cutDownTrees: number
+  gameReset: number
 }
 
 export const defaultPlayerState: PlayerState = {
@@ -21,6 +23,8 @@ export const defaultPlayerState: PlayerState = {
   plank: 0,
   paper: 0,
   furniture: 0,
+  cutDownTrees: 0,
+  gameReset: 0,
   axe: allAxes.stone,
 }
 

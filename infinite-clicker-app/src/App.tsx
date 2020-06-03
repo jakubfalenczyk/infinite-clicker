@@ -11,7 +11,7 @@ const App = () => {
   useRef(setInterval(() => autoGathererTick.current(), 1000))
   
   const randomEventsTick = useRef(noop)
-  useRef(setInterval(() => randomEventsTick.current(), 0.2 * 60 * 1000))
+  useRef(setInterval(() => randomEventsTick.current(), 4.5 * 60 * 1000))
 
   return (
     <div>

@@ -4,6 +4,7 @@ import useTreeState, { defaultTreeContext, TreeContextType } from "./tree/useTre
 import _ from "lodash"
 import useUpgradesState, { UpgradesContextType, defaultUpgradesContext } from "./upgrades/useUpgradesState"
 import useRandomEventsState, { RandomEventsContextType, defaultRandomEventsContext } from "./randomEvents/useRandomEventsState"
+import useAchievements, { AchievementsContextType, defaultAchievementsContext } from "./achievements/useAchievements"
 
 export interface BaseState<StateType> {
   importSavedState: (savedState: StateType) => void
@@ -15,6 +16,7 @@ export interface GameStateContextType extends BaseState<GameStateContextType> {
   tree: TreeContextType
   upgrades: UpgradesContextType
   randomEvents: RandomEventsContextType
+  achievements: AchievementsContextType
   reset: () => void
 }
 
@@ -23,6 +25,7 @@ const defaultGameStateContext: GameStateContextType = {
   tree: defaultTreeContext,
   upgrades: defaultUpgradesContext,
   randomEvents: defaultRandomEventsContext,
+  achievements: defaultAchievementsContext,
   importSavedState: _.noop,
   reset: _.noop,
 }
@@ -34,12 +37,14 @@ const GameStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const tree = useTreeState()
   const upgrades = useUpgradesState()
   const randomEvents = useRandomEventsState()
+  const achievements = useAchievements()
   
   const importSavedState = (state: GameStateContextType) => {
     player.importSavedState(state.player)
     tree.importSavedState(state.tree)
     upgrades.importSavedState(state.upgrades)
     randomEvents.importSavedState(state.randomEvents)
+    achievements.importSavedState(state.achievements)
   }
 
   const reset = () => {
@@ -47,6 +52,7 @@ const GameStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     tree.reset()
     upgrades.reset()
     randomEvents.reset()
+    achievements.reset()
   }
 
   const gameState = {
@@ -54,6 +60,7 @@ const GameStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     tree,
     upgrades,
     randomEvents,
+    achievements,
     importSavedState,
     reset,
   }

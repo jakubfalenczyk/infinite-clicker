@@ -1,0 +1,43 @@
+.achievementsModal {
+  width: 800px;
+  font-size: 24px;
+  top: 100px;
+
+  .content {
+    padding-top: 20px;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .category, .achievementCell {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8px;
+    box-shadow: 6px 4px 16px #562d22;
+    padding: 20px 0;
+  }
+
+  .category {
+    flex: 1 1 300px;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  .achievementCell {
+    flex: 1 1 100%;
+  }
+
+  .achievement {
+    border: 5px outset #a0523b;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
+}

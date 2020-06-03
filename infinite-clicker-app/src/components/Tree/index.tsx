@@ -37,6 +37,7 @@ const Tree = (props: TreeProps) => {
     const updatePlayerState = () => player.updateState({
       ...player,
       wood: isTreeDead ? player.wood + tree.wood : player.wood,
+      cutDownTrees: isTreeDead ? player.cutDownTrees + 1 : player.cutDownTrees,
     })
 
     const updateTreeState = () => tree.updateState({
