@@ -6,9 +6,9 @@ $base-position: 0px -30px;
   height: 280px;
   width: 220px;
   margin: auto;
-  position: relative;
-  top: -550px;
-  left: -450px;
+  position: absolute;
+  top: 50px;
+  left: 100px;
   animation: helperCut 15s steps(1, start) infinite;
   user-select: none;
 

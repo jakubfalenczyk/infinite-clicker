@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react"
 import { useGameState } from "gameState"
 import { RandomEventsState } from "gameState/randomEvents/model"
-import { getRandomItem, getDistinctRandomItems } from "common/random"
+import { getRandomItem } from "common/random"
 import { allRandomEvents } from "./allRandomEvents"
-import { randomPositions } from "./randomPositions"
+import { getRandomPositions } from "./randomPositions"
 import useMusic from "gameState/music/useMusic"
 import { useSoundSettings } from "common/useSoundSettings"
 
@@ -36,7 +36,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
 
     const event = getRandomItem([allRandomEvents.wildfire, allRandomEvents.termites])
     const count = Math.floor(Math.random() * 6) + 6
-    const positions = getDistinctRandomItems(randomPositions, count)
+    const positions = getRandomPositions(count)
     
     randomEvents.updateState({
       ...randomEventsState,
