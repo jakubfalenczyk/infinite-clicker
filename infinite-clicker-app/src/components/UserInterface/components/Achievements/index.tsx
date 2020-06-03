@@ -30,13 +30,6 @@ const Achievements = () => {
         isOpen={isOpen}
         onClose={onClose}
       >
-        <div className="header">
-          <div className="category">
-              Category
-          </div>
-          <div className="achievementCell">
-          </div>
-        </div>
         {allCategories.map(category => (
           <AchievementsCategory
             key={category.id}

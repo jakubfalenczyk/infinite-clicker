@@ -158,11 +158,11 @@ const axeUpgradeCategory: AchievementCategory = {
 }
 
 const axeUpgrade: Achievement[] = 
-  Object.values(allAxes)
+  Object.values(allAxes).slice(1)
     .map((value: Axe, index) => ({ 
       id: `${axeUpgradeCategory.id}_${index}`,
       category: axeUpgradeCategory,
-      valueLabel: value.label,
+      valueLabel: value.label.split(' ')[0],
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
         return player.axe.key === value.key

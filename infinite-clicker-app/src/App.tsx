@@ -13,6 +13,9 @@ const App = () => {
   const randomEventsTick = useRef(noop)
   useRef(setInterval(() => randomEventsTick.current(), 4.5 * 60 * 1000))
 
+  const achievementsUnlockTick = useRef(noop)
+  useRef(setInterval(() => achievementsUnlockTick.current(), 3000))
+
   return (
     <div>
       <GameStateProvider>
@@ -21,6 +24,7 @@ const App = () => {
             <UserInterface 
               autoGathererTick={autoGathererTick}
               randomEventsTick={randomEventsTick}
+              achievementsUnlockTick={achievementsUnlockTick}
             />
             <GameCanvas/>
           </MusicProvider>

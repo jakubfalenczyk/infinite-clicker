@@ -1,7 +1,7 @@
 .achievementsModal {
-  width: 800px;
+  width: 850px;
   font-size: 24px;
-  top: 100px;
+  top: 40px;
 
   .content {
     padding-top: 20px;
@@ -21,19 +21,24 @@
   }
 
   .category {
-    flex: 1 1 300px;
+    flex: 1 1 340px;
     text-align: center;
     font-size: 26px;
   }
 
   .achievementCell {
     flex: 1 1 100%;
+    flex-wrap: wrap;
   }
 
   .achievement {
     border: 5px outset #a0523b;
     padding: 5px;
     margin: 5px;
+
+    &.unlocked {
+      border-style: inset;
+    }
   }
 
   .row {

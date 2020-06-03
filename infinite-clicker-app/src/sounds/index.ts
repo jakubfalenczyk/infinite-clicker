@@ -14,6 +14,7 @@ export const uiSounds = {
   extinguish: "/assets/sounds/extinguish.mp3",
   squish: "/assets/sounds/squish.mp3",
   menuClose: "/assets/sounds/menu-close.mp3",
+  achievement: "/assets/sounds/achievement.mp3",
 }
 
 export const music = {

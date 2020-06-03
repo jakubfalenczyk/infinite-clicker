@@ -11,6 +11,7 @@ export interface Achievement {
   category: AchievementCategory
   valueLabel: string
   isUnlocked: (gameState: GameStateContextType) => boolean
+  shown?: boolean
 }
 
 export interface AchievementsState {

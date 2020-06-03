@@ -4,6 +4,7 @@ import "./styles.scss"
 import classNames from 'classnames'
 import useSound from 'common/useSound';
 import { uiSounds } from 'sounds';
+import { noop } from 'lodash';
 
 ReactModal.setAppElement('#root');
 
@@ -14,15 +15,19 @@ interface GameModalProps {
   onClose: () => void
   title: string | JSX.Element
   actions?: JSX.Element
+  overlayClassName?: string
+  noExternalClosing?: boolean
+  hideTitle?: boolean
 }
 
 const GameModal = (props: PropsWithChildren<GameModalProps>) => {
-  const { isOpen, isNested, onClose, title, actions, className } = props
+  const { isOpen, isNested, onClose, title, actions, className, overlayClassName, noExternalClosing, hideTitle } = props
   const modalClassName = classNames(
     "gameModal",
     className,
     { "nested": isNested }
   )
+  const backdropClassName = classNames("gameModalOverlay", overlayClassName)
   const menuCloseSound = useSound(uiSounds.menuClose)
 
   const onCloseHandler = () => {
@@ -33,14 +38,16 @@ const GameModal = (props: PropsWithChildren<GameModalProps>) => {
   return (
     <ReactModal 
       isOpen={isOpen}
-      onRequestClose={onCloseHandler}
+      onRequestClose={noExternalClosing ? noop : onCloseHandler}
       className={modalClassName}
-      overlayClassName="gameModalOverlay"
+      overlayClassName={backdropClassName}
     >
-      <div className="title">
-        {title}
-        <i className="fas fa-times" onClick={() => onCloseHandler()}/>
-      </div>
+      {!hideTitle &&
+        <div className="title">
+          {title}
+          <i className="fas fa-times" onClick={() => onCloseHandler()}/>
+        </div>
+      }
       <div className="content">
         {props.children}
       </div>

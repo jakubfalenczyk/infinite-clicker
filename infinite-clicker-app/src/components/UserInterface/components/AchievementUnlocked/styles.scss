@@ -1,0 +1,67 @@
+.achievementModal {
+  position: absolute;
+  width: 260px;
+  user-select: none;
+  text-align: center;
+  font-size: 12px;
+  top: 0;
+
+  animation: shake 0.45s cubic-bezier(.18,.04,.12,.87) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  .message {
+    display: inline-block;
+  }
+
+  .title {
+    padding: 8px 12px;
+  }
+
+  .content {
+    display: block;
+    padding-bottom: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .gameModalButton {
+    font-size: 12px;
+    margin-top: 0; 
+    padding: 8px 20px;
+  }
+
+  h2 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.achievementModalOverlay {
+  background: none;
+  position: absolute;
+  top: 250px;
+  left: initial;
+  right: 215px;
+  width: 260px;
+  height: 160px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
