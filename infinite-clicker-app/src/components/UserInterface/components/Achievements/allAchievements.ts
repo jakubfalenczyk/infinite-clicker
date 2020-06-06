@@ -165,7 +165,7 @@ const axeUpgrade: Achievement[] =
       valueLabel: value.label.split(' ')[0],
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
-        return player.axe.key === value.key
+        return player.axe.price >= value.price
       },
     }))
 
