@@ -8,7 +8,7 @@ interface SoundSettings {
 }
 
 const defaultSoundSettings: SoundSettings = {
-  soundsOn: true,
+  soundsOn: false,
   changeSoundSettings: _.noop,
 }
 

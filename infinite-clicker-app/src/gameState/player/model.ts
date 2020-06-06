@@ -18,6 +18,7 @@ export interface PlayerState extends Materials {
   gameReset: number
   marketPriceMultiplier: number
   gameResetPrice: number
+  isNewPlayer: boolean
 }
 
 export const defaultPlayerState: PlayerState = {
@@ -33,6 +34,7 @@ export const defaultPlayerState: PlayerState = {
   marketPriceMultiplier: 1,
   gameResetPrice: gameResetBasePrice,
   axe: allAxes.stone,
+  isNewPlayer: true,
 }
 
 export interface PlayerActions {

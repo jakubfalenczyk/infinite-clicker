@@ -8,9 +8,11 @@ import GameModal from "components/GameModal"
 import Button from "components/GameModal/components/Button"
 import UIButton from "../UIButton"
 import useMusic from "gameState/music/useMusic"
+import { useGameState } from "gameState"
 
 const Settings = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const { player } = useGameState()
+  const [isOpen, setIsOpen] = useState(player.isNewPlayer)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const soundSettings = useSoundSettings()
@@ -48,11 +50,18 @@ const Settings = () => {
         title="Lumber Click"
         isOpen={isOpen}
         onClose={onClose}
+        noExternalClosing={player.isNewPlayer}
+        hideExit={player.isNewPlayer}
       >
-        <Button onClick={onContinue}>
-          Continue
-        </Button>
-        <StartNewGame onStartNewGame={onStartNewGame}/>
+        {!player.isNewPlayer && (
+          <Button onClick={onContinue}>
+            Continue
+          </Button>
+        )}
+        <StartNewGame 
+          ignoreConfirmation={player.isNewPlayer}
+          onStartNewGame={onStartNewGame}
+        />
         <Button onClick={onSoundSettingsChange}>
           Sounds: {soundSettings.soundsOn ? "ON" : "OFF"}
         </Button>

@@ -18,10 +18,11 @@ interface GameModalProps {
   overlayClassName?: string
   noExternalClosing?: boolean
   hideTitle?: boolean
+  hideExit?: boolean
 }
 
 const GameModal = (props: PropsWithChildren<GameModalProps>) => {
-  const { isOpen, isNested, onClose, title, actions, className, overlayClassName, noExternalClosing, hideTitle } = props
+  const { isOpen, isNested, onClose, title, actions, className, overlayClassName, noExternalClosing, hideTitle, hideExit } = props
   const modalClassName = classNames(
     "gameModal",
     className,
@@ -45,7 +46,9 @@ const GameModal = (props: PropsWithChildren<GameModalProps>) => {
       {!hideTitle &&
         <div className="title">
           {title}
-          <i className="fas fa-times" onClick={() => onCloseHandler()}/>
+          {!hideExit && 
+            <i className="fas fa-times" onClick={() => onCloseHandler()}/>
+          }
         </div>
       }
       <div className="content">

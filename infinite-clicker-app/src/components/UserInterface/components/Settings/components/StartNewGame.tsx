@@ -4,6 +4,7 @@ import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
 
 interface StartNewGameProps {
+  ignoreConfirmation?: boolean
   onStartNewGame: () => void
 }
 
@@ -21,7 +22,7 @@ const StartNewGame = (props: StartNewGameProps) => {
 
   return (
     <>
-      <Button onClick={onConfirmationOpen}>
+      <Button onClick={props.ignoreConfirmation ? onConfirm : onConfirmationOpen}>
         Start New Game
       </Button>
       <GameModal

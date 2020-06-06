@@ -19,7 +19,10 @@ const SaveActions = (props: SaveActionsProps) => {
     const base64 = btoa(stateAsJson)
     const blob = new Blob([base64], {type: "text/plain;charset=utf-8"});
     saveAs(blob, saveFileName)
-    props.onActionCompleted()
+
+    if (!gameState.player.isNewPlayer) {
+      props.onActionCompleted()
+    }
   }
 
   const onImportClick = () => {
