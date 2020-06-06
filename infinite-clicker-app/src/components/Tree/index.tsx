@@ -17,8 +17,9 @@ interface TreeProps {
 
 const Tree = (props: TreeProps) => {
   const treeFallAudio = useSound(treeFallSound)
-  const lastChoppingSound = useRef(choppingSounds[0])
-  const choppingAudio = useSound(lastChoppingSound.current)
+  const chop1 = useSound(choppingSounds[0])
+  const chop2 = useSound(choppingSounds[1])
+  const chop3 = useSound(choppingSounds[2])
   const soundSettings = useSoundSettings()
 
   const { tree, player } = useGameState()
@@ -27,8 +28,7 @@ const Tree = (props: TreeProps) => {
   const treeClassName = classnames("tree", tree.type, { "bounce": isBouncing })
 
   const onTreeClick = () => {
-    const newChoppingSound = getRandomItem(choppingSounds, lastChoppingSound.current)
-    choppingAudio.changeTrack(newChoppingSound)
+    const newChoppingSound = getRandomItem([chop1, chop2, chop3])
 
     const newTreeLife = tree.currentLife - player.axe.damage
     const isTreeDead = newTreeLife <= 0
@@ -46,7 +46,7 @@ const Tree = (props: TreeProps) => {
       type: isTreeDead ? getRandomItem(treeTypes, tree.type) : tree.type,
     })
 
-    const playChoppingAudio = () => choppingAudio.play(soundSettings.soundsOn)
+    const playChoppingAudio = () => newChoppingSound.play(soundSettings.soundsOn)
     const playTreeFallAudio = () => treeFallAudio.play(soundSettings.soundsOn)
 
     treeClickedThrottled.current({
