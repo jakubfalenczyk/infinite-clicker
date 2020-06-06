@@ -15,6 +15,7 @@ import { allAchievements } from "./components/Achievements/allAchievements"
 import { noop } from "lodash"
 import useSound from "common/useSound"
 import { uiSounds } from "sounds"
+import Advance from "./components/Advance"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
@@ -59,6 +60,7 @@ const UserInterface = (props: UserInterfaceProps) => {
         <Upgrades/>
         <Tools/>
         <Achievements/>
+        <Advance/>
       </div>
     </div>
   )

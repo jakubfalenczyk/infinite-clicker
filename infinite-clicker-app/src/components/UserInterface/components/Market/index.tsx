@@ -18,6 +18,7 @@ const Market = () => {
   const moneySound = useSound(uiSounds.money)
 
   const sell = (material: keyof Materials, price: number, sold?: number) => {
+    const currentPrice = price * (player.marketPriceMultiplier || 1)
     let soldMaterials = sold || player[material]
     
     if (soldMaterials > player[material] || player[material] === 0) {
@@ -30,8 +31,8 @@ const Market = () => {
     player.updateState({
       ...player,
       [material]: player[material] - soldMaterials,
-      gold: player.gold + soldMaterials * price,
-      goldEarnedFromStart: player.goldEarnedFromStart + soldMaterials * price
+      gold: player.gold + soldMaterials * currentPrice,
+      goldEarnedFromStart: player.goldEarnedFromStart + soldMaterials * currentPrice
     })    
   }
 
@@ -79,7 +80,7 @@ const Market = () => {
             key={x.material}
             icon={x.icon}
             material={x.material}
-            price={x.price}
+            price={x.price * (player.marketPriceMultiplier || 1)}
             sell={count => sell(x.material, x.price, count)}
             buy={count => buy(x.material, x.price, count)}
           />

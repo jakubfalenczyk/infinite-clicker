@@ -1,5 +1,6 @@
 import _ from "lodash"
 import { Axe, allAxes } from "components/UserInterface/components/Tools/allAxes"
+import { gameResetBasePrice } from "components/UserInterface/components/Advance"
 
 export interface Materials {
   wood: number
@@ -15,6 +16,8 @@ export interface PlayerState extends Materials {
   axe: Axe
   cutDownTrees: number
   gameReset: number
+  marketPriceMultiplier: number
+  gameResetPrice: number
 }
 
 export const defaultPlayerState: PlayerState = {
@@ -27,6 +30,8 @@ export const defaultPlayerState: PlayerState = {
   furniture: 0,
   cutDownTrees: 0,
   gameReset: 0,
+  marketPriceMultiplier: 1,
+  gameResetPrice: gameResetBasePrice,
   axe: allAxes.stone,
 }
 

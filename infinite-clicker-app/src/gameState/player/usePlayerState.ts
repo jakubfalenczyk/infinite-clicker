@@ -22,9 +22,10 @@ const usePlayerState = (): PlayerContextType => {
 
   const updateState = (newState: PlayerState) => setState(newState)
 
-  const importSavedState = (savedState: PlayerState) => setState(savedState)
+  const importSavedState = (savedState: PlayerState) => 
+    setState({ ...defaultPlayerState, ...savedState})
 
-  const reset = () => setState(defaultPlayerState)
+  const reset = (marketPricesMultiplier?: number) => setState(defaultPlayerState)
 
   return {
     ...state,

@@ -2,14 +2,15 @@ import React, { PropsWithChildren } from "react"
 import "./styles.scss"
 
 interface ButtonProps {
+  disabledTooltip?: string
   onClick: () => void
 }
 
 const Button = (props: PropsWithChildren<ButtonProps>) => {
-  const { onClick, children } = props
+  const { disabledTooltip, onClick, children } = props
 
   return (
-    <button className="gameModalButton" onClick={onClick}>
+    <button title={disabledTooltip} className="gameModalButton" onClick={onClick}>
       {children}
     </button>
   )

@@ -1,4 +1,4 @@
-.achievementsModal {
+.gameModal.achievementsModal {
   width: 850px;
   font-size: 24px;
   top: 40px;
@@ -29,6 +29,7 @@
   .achievementCell {
     flex: 1 1 100%;
     flex-wrap: wrap;
+    font-size: 20px;
   }
 
   .achievement {

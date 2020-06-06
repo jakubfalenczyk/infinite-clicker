@@ -1,0 +1,41 @@
+.gameModal.advanceModal {
+  width: 620px;
+  font-size: 24px;
+  top: 120px;
+
+  .content {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .disclaimer {
+    font-size: 24px;
+    font-style: italic;
+    padding-bottom: 30px;
+  }
+
+  .resetCount {
+    margin-top: 20px;
+  }
+
+  .multiplier {
+    margin-top: 20px;
+  }
+
+  .actions {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  .gameModalButton {
+    font-size: 18px;
+    width: 300px;
+  }
+
+  .value {
+    border: 5px outset #a0523b;
+    padding: 5px;
+    margin: 5px;
+  }
+}

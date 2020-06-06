@@ -5,7 +5,6 @@ import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
 import UIButton from "../UIButton"
 import AchievementsCategory from "./components/AchievementsCategory"
-import "./styles.scss"
 import { allAchievements, allCategories } from "./allAchievements"
 
 const Achievements = () => {
