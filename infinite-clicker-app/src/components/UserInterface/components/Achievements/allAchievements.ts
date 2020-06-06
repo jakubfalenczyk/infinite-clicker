@@ -1,6 +1,6 @@
 import { Achievement, AchievementCategory } from "gameState/achievements/model";
 import { GameStateContextType } from "gameState";
-import { formatNumber } from "common/formatNumber";
+import { formatNumber, formatNumberWithSuffix } from "common/formatNumber";
 import { calculateGatheredMaterials } from "../Upgrades/calculateGatheredMaterials";
 import { Goods, allMarketGoods } from "../Market/allMarketGoods";
 import { allAxes, Axe } from "../Tools/allAxes";
@@ -124,14 +124,14 @@ const bln = 1000*mln
 const trl = 1000*bln
 
 const goldEarned: Achievement[] = 
-  [mln, 10*mln, 100*mln, bln, 100*bln, trl]
+  [100000, mln, 10*mln, 100*mln, bln, 100*bln, trl]
     .map((value, index) => ({ 
       id: `${goldEarnedCategory.id}_${index}`,
       category: goldEarnedCategory,
-      valueLabel: formatNumber(value),
+      valueLabel: formatNumberWithSuffix(value),
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
-        return player.gold >= value
+        return player.goldEarnedFromStart >= value
       },
     }))
 

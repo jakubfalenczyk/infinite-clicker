@@ -31,6 +31,7 @@ const Market = () => {
       ...player,
       [material]: player[material] - soldMaterials,
       gold: player.gold + soldMaterials * price,
+      goldEarnedFromStart: player.goldEarnedFromStart + soldMaterials * price
     })    
   }
 

@@ -14,7 +14,7 @@ const App = () => {
   useRef(setInterval(() => randomEventsTick.current(), 4.5 * 60 * 1000))
 
   const achievementsUnlockTick = useRef(noop)
-  useRef(setInterval(() => achievementsUnlockTick.current(), 3000))
+  useRef(setInterval(() => achievementsUnlockTick.current(), 2000))
 
   return (
     <div>
