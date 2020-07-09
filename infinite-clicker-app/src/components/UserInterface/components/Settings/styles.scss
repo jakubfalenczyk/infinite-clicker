@@ -1,7 +1,30 @@
-.gameModal.creditsModal {
-  font-size: 19px;
-  width: 520px;
-  text-align: center;
+@media (min-width: 768px){
+  .gameModal.creditsModal {
+    font-size: 19px;
+    width: 520px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px){
+  .gameModal.creditsModal {
+    top: 40px;
+    width: calc(100% - 8px);
+    font-size: 17px;
+    text-align: center;
+
+    .content {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 767px){
+  .settingsModal {
+    top: 90px;
+    width: calc(100% - 8px);
+  }
 }
 
 .creditsLink {

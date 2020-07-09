@@ -1,8 +1,79 @@
-.toolsModal {
-  width: 800px;
-  font-size: 24px;
-  top: 100px;
+@media (min-width: 800px){
+  .gameModal.toolsModal {
+    width: 800px;
+    font-size: 24px;
+    top: 100px;
 
+    .toolsCell {
+      flex: 1 1 350px;
+      text-align: center;
+      font-size: 26px;
+  
+      img {
+        width: 60px;
+        margin-left: 20px;
+      }
+  
+      .description {
+        font-size: 18px;
+      }
+    }
+  
+    .priceCell {
+      flex: 1 1 200px;
+  
+      .fas {
+        margin-left: 8px;
+      }
+    }
+  
+    .actionsCell {
+      flex: 1 1 100px;
+    }
+  }
+}
+
+@media (max-width: 799px){
+  .gameModal.toolsModal {
+    top: 0;
+    width: calc(100% - 8px);
+    font-size: 18px;
+
+    .content {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    
+    .toolsCell {
+      flex: 1 1 150px;
+      text-align: center;
+      font-size: 18px;
+  
+      img {
+        width: 40px;
+        margin-left: 10px;
+      }
+  
+      .description {
+        font-size: 12px;
+      }
+    }
+  
+    .priceCell {
+      flex: 1 1 120px;
+  
+      .fas {
+        margin-left: 8px;
+      }
+    }
+  
+    .actionsCell {
+      flex: 1 1 100px;
+    }
+  }
+}
+
+.toolsModal {
   .content {
     padding-top: 20px;
   }
@@ -18,33 +89,6 @@
     padding-bottom: 8px;
     box-shadow: 6px 4px 16px #562d22;
     padding: 20px 0;
-  }
-
-  .toolsCell {
-    flex: 1 1 350px;
-    text-align: center;
-    font-size: 26px;
-
-    img {
-      width: 60px;
-      margin-left: 20px;
-    }
-
-    .description {
-      font-size: 18px;
-    }
-  }
-
-  .priceCell {
-    flex: 1 1 200px;
-
-    .fas {
-      margin-left: 8px;
-    }
-  }
-
-  .actionsCell {
-    flex: 1 1 100px;
   }
 
   .row {

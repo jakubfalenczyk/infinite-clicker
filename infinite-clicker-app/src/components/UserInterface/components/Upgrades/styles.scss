@@ -1,5 +1,90 @@
+@media (min-width: 900px){
+  .gameModal.upgradesModal {
+    width: 800px;
+    font-size: 24px;
+
+    .upgradeCell {
+      flex: 1 1 280px;
+      padding: 15px;
+      text-align: center;
+  
+      .fas {
+        margin-right: 10px;
+      }
+  
+      .description {
+        margin-top: 4px;
+        font-size: 18px;
+      }
+    }
+  
+    .priceCell {
+      flex: 1 1 200px;
+
+      i {
+        margin-right: 4px;
+      }
+    }
+  
+    .countCell {
+      flex: 1 1 150px;
+      position: relative;
+    }
+  
+    .actionCell {
+      flex: 1 1 100px;
+    }
+  }
+}
+
+@media (max-width: 899px){
+  .gameModal.upgradesModal {
+    top: 0;
+    width: calc(100% - 8px);
+    font-size: 18px;
+
+    .content {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    
+    .upgradeCell {
+      flex: 1 1 100px;
+      padding: 5px;
+      text-align: center;
+  
+      .fas {
+        margin-right: 1px;
+      }
+  
+      .description {
+        margin-top: 2px;
+        font-size: 12px;
+      }
+    }
+  
+    .priceCell {
+      flex: 1 1 100px;
+      max-width: 100px;
+
+      .label {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  
+    .countCell {
+      flex: 1 1 40px;
+      position: relative;
+    }
+  
+    .actionCell {
+      flex: 1 1 30px;
+    }
+  }
+}
+
 .upgradesModal {
-  width: 900px;
   font-size: 24px;
   
   .content {
@@ -16,34 +101,6 @@
     justify-content: center;
     padding-bottom: 8px;
     box-shadow: 6px 4px 16px #562d22;
-  }
-
-  .upgradeCell {
-    flex: 1 1 280px;
-    padding: 15px;
-    text-align: center;
-
-    .fas {
-      margin-right: 10px;
-    }
-
-    .description {
-      margin-top: 4px;
-      font-size: 18px;
-    }
-  }
-
-  .priceCell {
-    flex: 1 1 200px;
-  }
-
-  .countCell {
-    flex: 1 1 150px;
-    position: relative;
-  }
-
-  .actionCell {
-    flex: 1 1 70px;
   }
 
   .fa-users {

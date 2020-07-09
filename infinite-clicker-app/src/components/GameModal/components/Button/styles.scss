@@ -1,3 +1,23 @@
+@media (max-width: 767px) {
+  .gameModalButton {
+    padding: 4px 8px;
+
+    .actions & {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .gameModalButton {
+    padding: 12px 24px;
+
+    .actions & {
+      margin-left: 10px;
+    }
+  }
+}
+
 .gameModalButton {
   color: white;
   box-shadow: none;
@@ -7,7 +27,6 @@
   background-color: #682413;
   font-family: inherit;
   margin-top: 12px;
-  padding: 12px 24px;
   cursor: pointer;
   
   &:hover {

@@ -47,7 +47,8 @@ const Settings = () => {
         icon={<i className="fas fa-cog"></i>}
       />
       <GameModal
-        title="Lumber Click"
+        className="settingsModal"
+        title="Settings"
         isOpen={isOpen}
         onClose={onClose}
         noExternalClosing={player.isNewPlayer}

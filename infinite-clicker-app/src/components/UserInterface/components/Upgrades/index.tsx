@@ -61,7 +61,7 @@ const Upgrades = () => {
               Price
           </div>
           <div className="countCell">
-              Current count
+              Owned
           </div>
           <div className="actionCell">Buy</div>
         </div>

@@ -1,0 +1,24 @@
+.gameModal.mobileMenu {
+  margin: 10px;
+  width: calc(100% - 30px);
+  overflow: auto;
+  top: 60px;
+
+  .uiButton {
+    width: calc(100% - 20px);
+  }
+}
+
+.burger.uiButton {
+  padding: 5px;
+  width: 30px;
+
+  .buttonIcon {
+    font-size: 16px;
+    margin-left: 0;
+
+    i {
+      margin-top: 3px;
+    }
+  }
+}

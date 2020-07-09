@@ -16,6 +16,8 @@ import { noop } from "lodash"
 import useSound from "common/useSound"
 import { uiSounds } from "sounds"
 import Advance from "./components/Advance"
+import { useMediaQuery } from "beautiful-react-hooks"
+import MobileMenu from "./components/MobileMenu"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
@@ -49,18 +51,29 @@ const UserInterface = (props: UserInterfaceProps) => {
     }
   }, [achievements, gameState, props.achievementsUnlockTick, achievementSound])
 
+  const isLargeScreen = useMediaQuery("(min-width: 768px)")
+
+  const allMenuItems = (
+    <>
+      <Settings/>
+      <Market/>
+      <Upgrades/>
+      <Tools/>
+      <Achievements/>
+      <Advance/>
+    </>
+  )
+
   return (
     <div className="userInterface">
       <PlayerStats/>
       <Alerts/>
       <AchievementUnlocked/>
       <div className="menu">
-        <Settings/>
-        <Market/>
-        <Upgrades/>
-        <Tools/>
-        <Achievements/>
-        <Advance/>
+        {isLargeScreen 
+          ? allMenuItems
+          : <MobileMenu allMenuItems={allMenuItems} />
+        }
       </div>
     </div>
   )

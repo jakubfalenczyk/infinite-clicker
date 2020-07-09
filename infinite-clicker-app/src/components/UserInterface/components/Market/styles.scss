@@ -1,7 +1,63 @@
-.gameModal.marketModal {
-  width: 800px;
-  font-size: 24px;
+@media (min-width: 800px){
+  .gameModal.marketModal {
+    width: 800px;
+    font-size: 24px;
 
+    .materialCell {
+      padding-top: 8px;
+      flex: 1 1 150px;
+    }
+  
+    .priceCell {
+      padding-top: 8px;
+      padding-left: 10px;
+      flex: 1 1 80px;
+    }
+  
+    .actionsCell {
+      flex: 1 1 300px;
+    }
+
+    .marketActions {
+      .gameModalButton {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 799px){
+  .gameModal.marketModal {
+    top: 0;
+    width: calc(100% - 8px);
+    font-size: 18px;
+
+    .content {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    
+    .materialCell {
+      flex: 1 0 80px;
+    }
+  
+    .priceCell {
+      flex: 1 0 60px;
+    }
+  
+    .actionsCell {
+      flex: 1 0 60px;
+    }
+
+    .marketActions {
+      .gameModalButton {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.gameModal.marketModal {
   .content {
     padding-top: 20px;
   }
@@ -29,27 +85,6 @@
         margin-right: 10px;
       }
     }
-
-    .marketActions {
-      .gameModalButton {
-        margin-left: 15px;
-      }
-    }
-  }
-
-  .materialCell {
-    padding-top: 8px;
-    flex: 1 1 150px;
-  }
-
-  .priceCell {
-    padding-top: 8px;
-    padding-left: 10px;
-    flex: 1 1 80px;
-  }
-
-  .actionsCell {
-    flex: 1 1 300px;
   }
 
   .marketRow {

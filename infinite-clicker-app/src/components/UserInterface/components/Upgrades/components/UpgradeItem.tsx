@@ -32,9 +32,10 @@ const UpgradeItem = (props: UpgradeItemProps) => {
         </div>
       </div>
       <div className="priceCell">
-        <div className="label">
-          {formatNumber(upgrade.price)} <i className="fas fa-coins"></i> 
-        </div>
+        <span className="label">
+          <i className="fas fa-coins"></i>
+          {formatNumber(upgrade.price)}
+        </span>
       </div>
       <div className="countCell">
         <div className="label">
