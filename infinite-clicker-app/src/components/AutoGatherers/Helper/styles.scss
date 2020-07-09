@@ -1,3 +1,27 @@
+@media (min-width: 300px) {
+  .helper {
+    right: calc(50% + 165px);
+  }
+}
+
+@media (min-width: 768px) {
+  .helper {
+    right: calc(50% + 65px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .helper {
+    right: calc(50% + 165px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .helper {
+    right: calc(50% + 230px);
+  }
+}
+
 $base-position: 0px -30px;
 
 .helper {
@@ -8,7 +32,6 @@ $base-position: 0px -30px;
   margin: auto;
   position: absolute;
   top: 20px;
-  left: 100px;
   animation: helperCut 15s steps(1, start) infinite;
   user-select: none;
 

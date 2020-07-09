@@ -11,6 +11,8 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-direction: alternate;
+    background: rgba(207, 239, 252, 0.7);
+    text-shadow: 1px 1px black;
   }
 }
 
@@ -26,11 +28,15 @@
 
 @media (max-width: 765px) {
   .alerts {
-    background: rgba(207, 239, 252, 0.6);
+    background: rgba(207, 239, 252, 0.7);
     border-radius: 4px;
     padding-left: 30px;
     padding-right: 30px;
     width: calc(100% - 60px);
+
+    .message {
+      background: none;
+    }
 
     h2 {
       font-size: 18px;

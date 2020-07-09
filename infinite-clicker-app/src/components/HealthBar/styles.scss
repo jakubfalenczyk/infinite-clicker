@@ -11,6 +11,7 @@
   font-weight: bold;
   background-color: #b5b5b5;
   top: 5px;
+  left: 70px;
 
   .life {
     background-color: #a30b0b;
@@ -20,5 +21,11 @@
   .life-count {
     top: -18px;
     position: relative;
+  }
+}
+
+@media (min-width: 768px) {
+  .health-bar {
+    left: 0;
   }
 }

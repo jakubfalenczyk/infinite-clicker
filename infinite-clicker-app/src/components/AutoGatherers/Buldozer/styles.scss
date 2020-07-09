@@ -1,3 +1,27 @@
+@media (min-width: 300px) {
+  .buldozer {
+    left: calc(50% + 35px);
+  }
+}
+
+@media (min-width: 768px) {
+  .buldozer {
+    left: calc(50% + 65px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .buldozer {
+    left: calc(50% + 165px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .buldozer {
+    left: calc(50% + 230px);
+  }
+}
+
 .buldozer {
   background: url("/assets/images/buldozer.png");
   background-position: center;
@@ -8,7 +32,6 @@
   margin: auto;
   position: absolute;
   top: 50px;
-  right: 120px;
   user-select: none;
 
   .count {

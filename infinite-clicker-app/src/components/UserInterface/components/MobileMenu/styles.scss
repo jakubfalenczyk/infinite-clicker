@@ -2,16 +2,18 @@
   margin: 10px;
   width: calc(100% - 30px);
   overflow: auto;
-  top: 60px;
+  top: 30px;
 
   .uiButton {
     width: calc(100% - 20px);
+    font-size: 20px;
   }
 }
 
 .burger.uiButton {
   padding: 5px;
   width: 30px;
+  margin-right: 4px;
 
   .buttonIcon {
     font-size: 16px;

@@ -8,7 +8,7 @@ $base-position: 0px -60px;
   margin: auto;
   position: relative;
   top: -200px;
-  left: -140px;
+  left: -60px;
 }
 
 .cutting {
@@ -28,5 +28,11 @@ $base-position: 0px -60px;
   50% {
     background-position: -660px -60px;
     width: 240px;
+  }
+}
+
+@media (min-width: 768px) {
+  .player {
+    left: -140px;
   }
 }

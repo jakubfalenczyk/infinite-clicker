@@ -18,6 +18,7 @@ import { uiSounds } from "sounds"
 import Advance from "./components/Advance"
 import { useMediaQuery } from "beautiful-react-hooks"
 import MobileMenu from "./components/MobileMenu"
+import MobileUpgrades from "./components/MobileUpgrades"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
@@ -58,6 +59,7 @@ const UserInterface = (props: UserInterfaceProps) => {
       <Settings/>
       <Market/>
       <Upgrades/>
+      {!isLargeScreen && <MobileUpgrades/>}
       <Tools/>
       <Achievements/>
       <Advance/>

@@ -1,0 +1,62 @@
+@media (min-width: 768px){
+  .gameModal.ownedUpgrades {
+    width: 620px;
+    font-size: 24px;
+    top: 120px;
+  }
+}
+
+@media (max-width: 757px){
+  .gameModal.ownedUpgrades {
+    top: 0;
+    width: calc(100% - 8px);
+    font-size: 18px;
+    padding-bottom: 30px;
+  }
+}
+
+.gameModal.ownedUpgrades {
+  .helper, .buldozer, .burner, .furnitureFactory, .lumberCamp, .paperFactory {
+    position: initial;
+  }
+
+  .buldozer {
+    background-size: 220px;
+    width: 220px;
+  }
+
+  .burner {
+    background-size: 210px;
+    width: 240px;
+
+    .fire {
+      background-size: 80px;
+      width: 60px;
+      left: 50px;
+      top: 50px;
+    }
+  }
+
+  .lumberCamp, .paperFactory, .furnitureFactory {
+    background-size: 220px;
+    width: 220px;
+    height: 260px;
+
+    .count, .gps {
+      top: 190px;
+      left: 0;
+    }
+  }
+
+  .furnitureFactory {
+    .count, .gps {
+      top: 200px;
+    }
+  }
+  
+  .paperFactory {
+    .count, .gps {
+      top: 220px;
+    }
+  }
+}

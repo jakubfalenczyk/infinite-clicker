@@ -21,7 +21,7 @@ export const allRandomEvents: Record<keyof RandomEventsState, RandomEventProps> 
   termites: {
     component: <Termite/>,
     key: "termites",
-    alert: <span>You are under termites infestation! <br/>Stop it to continue production.</span>,
+    alert: <span>Termites are attacking!<br/>Stop them to continue production.</span>,
     music: "termites",
   },
 }
