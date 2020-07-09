@@ -42,6 +42,7 @@ const ResetGame = (props: ResetGameProps) => {
     gameState.achievements.updateState(achievementsState)
     player.updateState({
       ...defaultPlayerState,
+      isNewPlayer: false,
       gold: playerState.gold - currentResetPrice,
       marketPriceMultiplier: nextMultiplier,
       gameReset: playerState.gameReset + 1,
