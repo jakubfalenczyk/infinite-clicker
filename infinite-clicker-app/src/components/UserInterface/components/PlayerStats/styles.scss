@@ -1,6 +1,6 @@
 .playerStats {
   padding: 5px;
-  font-size: 25px;
+  font-size: 20px;
   user-select: none;
   color: #000000ba;
 
@@ -18,5 +18,11 @@
 
   .fa-coins {
     color: #debb00;
+  }
+}
+
+@media (min-width: 768px) {
+  .playerStats {
+    font-size: 25px;
   }
 }
