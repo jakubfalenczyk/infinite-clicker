@@ -2,13 +2,15 @@ import React, { useState } from "react"
 import "./styles.scss"
 import GameModal from "components/GameModal"
 import UIButton from "../UIButton"
+import { useGameState } from "gameState"
 
 interface MobileMenuProps {
   allMenuItems: JSX.Element
 }
 
 const MobileMenu = (props: MobileMenuProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const { player } = useGameState()
+  const [isOpen, setIsOpen] = useState(player.isNewPlayer)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
 
