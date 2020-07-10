@@ -7,8 +7,8 @@ import ResetGame from "./components/ResetGame"
 import { formatNumberWithSuffix } from "common/formatNumber"
 
 export const multiplierStep = 0.5
-export const gameResetBasePrice = 100000000
-export const gameResetPriceMultiplier = 10
+export const gameResetBasePrice = 10000000
+export const gameResetPriceMultiplier = 2.5
 
 const Advance = () => {
   const [isOpen, setIsOpen] = useState(false)
