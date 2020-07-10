@@ -1,27 +1,3 @@
-@media (min-width: 300px) {
-  .helper {
-    right: calc(50% + 165px);
-  }
-}
-
-@media (min-width: 768px) {
-  .helper {
-    right: calc(50% + 65px);
-  }
-}
-
-@media (min-width: 1024px) {
-  .helper {
-    right: calc(50% + 165px);
-  }
-}
-
-@media (min-width: 1025px) {
-  .helper {
-    right: calc(50% + 230px);
-  }
-}
-
 $base-position: 0px -30px;
 
 .helper {

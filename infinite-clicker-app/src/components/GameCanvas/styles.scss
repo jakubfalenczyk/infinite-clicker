@@ -25,5 +25,121 @@
       top: 400px;
       height: 850px;
     }
+
+    .lumberCamp {
+      left: 40px;
+    }
+
+    .helper {
+      left: -40px;
+    }
+    
+    .buldozer {
+      right: 10px;
+      width: 250px;
+    }
+    
+    .burner {
+      background: url("/assets/images/burner.png");
+      background-size: 220px;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 220px;
+      right: 10px;
+      
+      .fire {
+        background-size: 80px;
+        width: 60px;
+        left: 50px;
+        top: 50px;
+      }
+    }
+    
+    .furnitureFactory {
+      right: 130px;
+      top: 520px;
+    }
+    
+    .paperFactory {
+      top: 500px;
+      left: -10px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-canvas {
+    .helper {
+      left: 30px;
+    }
+    
+    .buldozer {
+      right: 20px;
+      width: 350px;
+    }
+    
+    .burner {
+      background-size: 280px;
+      width: 280px;
+      right: 0px;
+      
+      .fire {
+        background-size: 120px;
+        height: 80px;
+        left: 90px;
+        top: 70px;
+      }
+    }
+    
+    .furnitureFactory {
+      left: 40px;
+      right: auto;
+      top: 520px;
+    }
+    
+    .paperFactory {
+      left: auto;
+      right: 300px;
+    }
+  }
+}
+
+@media (min-width: 1360px) {
+  .game-canvas {
+    .helper {
+      left: 170px;
+    }
+    
+    .buldozer {
+      right: 160px;
+    }
+  
+    .furnitureFactory {
+      left: 300px;
+    }
+    
+    .paperFactory {
+      right: 400px;
+    }
+  }
+}
+
+@media (min-width: 1980px) {
+  .game-canvas {
+    .helper {
+      left: 270px;
+    }
+    
+    .buldozer {
+      right: 260px;
+    }
+    
+    .furnitureFactory {
+      left: 400px;
+    }
+    
+    .paperFactory {
+      right: 700px;
+    }
   }
 }
