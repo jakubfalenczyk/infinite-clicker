@@ -9,6 +9,7 @@ import Button from "components/GameModal/components/Button"
 import UIButton from "../UIButton"
 import useMusic from "gameState/music/useMusic"
 import { useGameState } from "gameState"
+import { useMediaQuery } from "beautiful-react-hooks"
 
 const Settings = () => {
   const { player } = useGameState()
@@ -17,6 +18,8 @@ const Settings = () => {
   const onClose = () => setIsOpen(false)
   const soundSettings = useSoundSettings()
   const { currentMusic } = useMusic()
+  
+  const isLargeScreen = useMediaQuery("(min-width: 768px)")
 
   useEffect(() => {
     if (!soundSettings.soundsOn) {
@@ -42,7 +45,8 @@ const Settings = () => {
   return (
     <>
       <UIButton 
-        label="Settings"
+        className="settingsButton"
+        label={isLargeScreen ? "Settings" : ""}
         onClick={onOpen}
         icon={<i className="fas fa-cog"></i>}
       />

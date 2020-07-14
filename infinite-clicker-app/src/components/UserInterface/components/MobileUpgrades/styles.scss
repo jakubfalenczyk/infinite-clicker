@@ -16,6 +16,22 @@
 }
 
 .gameModal.ownedUpgrades {
+  .content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.gameModal.ownedUpgrades.emptyUpgrades {
+  top: 120px;
+  width: calc(100% - 20px);
+
+  .content {
+    text-align: center;
+  }
+}
+
+.gameModal.ownedUpgrades {
   .helper, .buldozer, .burner, .furnitureFactory, .lumberCamp, .paperFactory {
     position: initial;
   }

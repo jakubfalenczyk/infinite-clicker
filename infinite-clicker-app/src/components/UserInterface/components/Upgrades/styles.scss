@@ -1,6 +1,18 @@
-@media (min-width: 900px){
+@media (min-width: 1024px) {
   .gameModal.upgradesModal {
-    width: 800px;
+    top: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gameModal.upgradesModal {
+    top: 0;
+  }
+}
+
+@media (min-width: 768px){
+  .gameModal.upgradesModal {
+    width: 760px;
     font-size: 24px;
 
     .upgradeCell {
@@ -37,7 +49,7 @@
   }
 }
 
-@media (max-width: 899px){
+@media (max-width: 767px){
   .gameModal.upgradesModal {
     top: 0;
     width: calc(100% - 8px);
@@ -49,7 +61,7 @@
     }
     
     .upgradeCell {
-      flex: 1 1 100px;
+      flex: 1 1 90px;
       padding: 5px;
       text-align: center;
   
@@ -79,7 +91,7 @@
     }
   
     .actionCell {
-      flex: 1 1 30px;
+      flex: 1 1 40px;
     }
   }
 }

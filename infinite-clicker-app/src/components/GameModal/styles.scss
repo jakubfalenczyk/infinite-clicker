@@ -57,6 +57,21 @@
   }
 }
 
+@media (max-width: 767px) {
+  .gameModal {
+    &.nested {
+      top: 150px;
+      width: calc(100% - 20px);
+
+      .content {
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
 .gameModalOverlay {
   position: fixed;
   top: 0;

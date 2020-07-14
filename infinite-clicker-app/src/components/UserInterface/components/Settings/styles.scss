@@ -8,7 +8,8 @@
 
 @media (max-width: 767px){
   .gameModal.creditsModal {
-    top: 40px;
+    top: 0px;
+    height: calc(100% - 10px);
     width: calc(100% - 8px);
     font-size: 17px;
     text-align: center;
@@ -23,7 +24,26 @@
 @media (max-width: 767px){
   .settingsModal {
     top: 90px;
-    width: calc(100% - 8px);
+    width: calc(100% - 30px);
+  }
+}
+
+@media (max-width: 767px) {
+  .userInterface {
+    .settingsButton.uiButton {
+      padding: 5px;
+      width: 30px;
+      margin-right: 4px;
+    
+      .buttonIcon {
+        font-size: 16px;
+        margin-left: 0;
+    
+        i {
+          margin-top: 3px;
+        }
+      }
+    }
   }
 }
 

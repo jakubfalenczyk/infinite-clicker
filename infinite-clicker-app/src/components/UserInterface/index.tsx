@@ -56,7 +56,7 @@ const UserInterface = (props: UserInterfaceProps) => {
 
   const allMenuItems = (
     <>
-      <Settings/>
+      {isLargeScreen && <Settings/>}
       <Market/>
       <Upgrades/>
       {!isLargeScreen && <MobileUpgrades/>}
@@ -74,7 +74,10 @@ const UserInterface = (props: UserInterfaceProps) => {
       <div className="menu">
         {isLargeScreen 
           ? allMenuItems
-          : <MobileMenu allMenuItems={allMenuItems} />
+          : <>
+              <Settings/>
+              <MobileMenu allMenuItems={allMenuItems} />
+            </>
         }
       </div>
     </div>

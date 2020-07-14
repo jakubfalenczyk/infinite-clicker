@@ -8,6 +8,7 @@ import { allMarketGoods } from "./allMarketGoods"
 import useSound from "common/useSound"
 import { uiSounds } from "sounds"
 import UIButton from "../UIButton"
+import { useMediaQuery } from "beautiful-react-hooks"
 
 const Market = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,6 +17,7 @@ const Market = () => {
   const { player } = useGameState()
   const disabledClickSound = useSound(uiSounds.disabledClick)
   const moneySound = useSound(uiSounds.money)
+  const isLargeScreen = useMediaQuery("(min-width: 768px)")
 
   const sell = (material: keyof Materials, price: number, sold?: number) => {
     const currentPrice = price * (player.marketPriceMultiplier || 1)
@@ -72,7 +74,7 @@ const Market = () => {
               Price
           </div>
           <div className="actionsCell">
-              Action
+              {isLargeScreen ? "Action" : "Sell"}
           </div>
         </div>
         {Object.values(allMarketGoods).map(x => 
