@@ -1,6 +1,4 @@
-import React, { useRef } from "react"
-import useSound, { AudioControls } from "common/useSound"
-import { music } from "sounds"
+import React, { useRef, useEffect } from "react"
 import { MusicState, defaultMusicState, MusicType } from "./model"
 import { useContext, createContext } from "react"
 
@@ -13,34 +11,47 @@ export const defaultMusicContext: MusicContextType = {
 const MusicContext = createContext(defaultMusicContext)
 
 export const MusicProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const bgMusic = useSound(music.bg, true)
-  const wildfire = useSound(music.danger, true)
-  const termites = useSound(music.danger2, true)
-  const currentMusic = useRef(bgMusic)
+  const getBgMusic = () => document.getElementById("sounds-bg") as (HTMLAudioElement | null)
+  const getWildfire = () => document.getElementById("sounds-danger") as (HTMLAudioElement | null)
+  const getTermites = () => document.getElementById("sounds-danger2") as (HTMLAudioElement | null)
+  
+  const currentMusic = useRef<HTMLAudioElement | null>(getBgMusic())
+
+  useEffect(() => {
+    currentMusic.current = getBgMusic()
+  })
 
   const changeMusic = (type: MusicType, soundsOn: boolean) => {
     switch (type) {
       case "bg":
-        change(bgMusic, soundsOn)
+        change(getBgMusic(), soundsOn)
         break;
       case "wildfire":
-        change(wildfire, soundsOn)
+        change(getWildfire(), soundsOn)
         break;
       case "termites":
-        change(termites, soundsOn)
+        change(getTermites(), soundsOn)
         break;
       default:
         break;
     }
   }
 
-  const change = (music: AudioControls, soundsOn: boolean) => {
-    if (music.src === currentMusic.current.src) {
+  const change = (music: HTMLAudioElement | null, soundsOn: boolean) => {
+    if (!music) {
       return
     }
 
-    currentMusic.current.stop()
+    if (currentMusic.current && music.src === currentMusic.current.src) {
+      return
+    }
+
+    if (currentMusic.current) {
+      currentMusic.current.pause()
+    }
+
     currentMusic.current = music
+    currentMusic.current.currentTime = 0
 
     if (soundsOn) {
       currentMusic.current.play()

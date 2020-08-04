@@ -1,10 +1,9 @@
-import React, { PropsWithChildren } from 'react'
-import ReactModal from 'react-modal'
+import React, { PropsWithChildren } from "react"
+import ReactModal from "react-modal"
 import "./styles.scss"
-import classNames from 'classnames'
-import useSound from 'common/useSound';
-import { uiSounds } from 'sounds';
-import { noop } from 'lodash';
+import classNames from "classnames"
+import useSound from "common/useSound"
+import { noop } from "lodash"
 
 ReactModal.setAppElement('#root');
 
@@ -29,7 +28,7 @@ const GameModal = (props: PropsWithChildren<GameModalProps>) => {
     { "nested": isNested }
   )
   const backdropClassName = classNames("gameModalOverlay", overlayClassName)
-  const menuCloseSound = useSound(uiSounds.menuClose)
+  const menuCloseSound = useSound("sounds-menu-close")
 
   const onCloseHandler = () => {
     menuCloseSound.play()

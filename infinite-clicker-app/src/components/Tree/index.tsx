@@ -5,7 +5,6 @@ import { useGameState } from "gameState"
 import treeTypes from "components/Tree/treeTypes"
 import { getRandomItem } from "common/random"
 import useSound from "common/useSound"
-import { treeFallSound, choppingSounds } from "sounds"
 import { throttle } from "lodash"
 import { TreeClickedParams } from "./treeClickParams"
 import { PlayerVisualState } from "components/GameCanvas/playerVisualState"
@@ -16,10 +15,10 @@ interface TreeProps {
 }
 
 const Tree = (props: TreeProps) => {
-  const treeFallAudio = useSound(treeFallSound)
-  const chop1 = useSound(choppingSounds[0])
-  const chop2 = useSound(choppingSounds[1])
-  const chop3 = useSound(choppingSounds[2])
+const treeFallAudio = useSound("sounds-tree-fall")
+  const chop1 = useSound("sounds-axe-chop-1")
+  const chop2 = useSound("sounds-axe-chop-2")
+  const chop3 = useSound("sounds-axe-chop-3")
   const soundSettings = useSoundSettings()
 
   const { tree, player } = useGameState()

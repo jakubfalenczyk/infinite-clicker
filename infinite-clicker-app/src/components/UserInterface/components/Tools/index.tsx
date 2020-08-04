@@ -6,15 +6,14 @@ import { allAxes, AxeTypes } from "./allAxes"
 import ToolsItem from "./components/ToolsItem"
 import UIButton from "../UIButton"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 
 const Tools = () => {
   const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const { player } = useGameState()
-  const upgradeSound = useSound(uiSounds.upgrade)
-  const disabledClickSound = useSound(uiSounds.disabledClick)
+  const upgradeSound = useSound("sounds-upgrade")
+  const disabledClickSound = useSound("sounds-disabled-click")
 
   const buy = (key: keyof AxeTypes) => {
     if (allAxes[key].price > player.gold) {

@@ -3,7 +3,6 @@ import Button from "components/GameModal/components/Button"
 import GameModal from "components/GameModal"
 import { useGameState } from "gameState"
 import { multiplierStep, gameResetBasePrice, gameResetPriceMultiplier } from ".."
-import { uiSounds } from "sounds"
 import useSound from "common/useSound"
 import { defaultPlayerState } from "gameState/player/model"
 
@@ -16,8 +15,8 @@ const ResetGame = (props: ResetGameProps) => {
   const onConfirmationOpen = () => setIsConfirmationOpen(true)
   const onClose = () => setIsConfirmationOpen(false)
   
-  const disabledClickSound = useSound(uiSounds.disabledClick)
-  const moneySound = useSound(uiSounds.money)
+  const disabledClickSound = useSound("sounds-disabled-click")
+  const moneySound = useSound("sounds-money")
 
   const gameState = useGameState()
   const { player } = gameState

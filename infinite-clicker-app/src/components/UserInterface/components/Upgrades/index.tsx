@@ -6,15 +6,14 @@ import UpgradeItem from "./components/UpgradeItem"
 import { UpgradeParams, allUpgrades } from "../../../../gameState/upgrades/allUpgrades"
 import UIButton from "../UIButton"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 
 const Upgrades = () => {
   const [isOpen, setIsOpen] = useState(false)
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const { player, upgrades } = useGameState()
-  const disabledClickSound = useSound(uiSounds.disabledClick)
-  const upgradeSound = useSound(uiSounds.upgrade)
+  const disabledClickSound = useSound("sounds-disabled-click")
+  const upgradeSound = useSound("sounds-upgrade")
 
   const buyUpgrade = (upgrade: UpgradeParams) => {
     const playerHasEnoughMoney = player.gold >= upgrades[upgrade.key].price

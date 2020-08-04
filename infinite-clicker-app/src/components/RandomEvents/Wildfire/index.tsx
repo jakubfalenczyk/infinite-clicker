@@ -1,10 +1,9 @@
 import React from "react"
 import "./styles.scss"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 
 const Wildfire = () => {
-  const extinguishSound = useSound(uiSounds.extinguish)
+  const extinguishSound = useSound("sounds-extinguish")
 
   const onClick = () => {
     extinguishSound.play()

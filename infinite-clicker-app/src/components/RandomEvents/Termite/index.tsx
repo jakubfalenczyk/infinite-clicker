@@ -1,10 +1,9 @@
 import React from "react"
 import "./styles.scss"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 
 const Termite = () => {
-  const squishSound = useSound(uiSounds.squish)
+  const squishSound = useSound("sounds-squish")
 
   const onClick = () => {
     squishSound.play()

@@ -1,6 +1,5 @@
 import React from "react"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 import classNames from "classnames"
 
 export interface UIButtonProps {
@@ -13,7 +12,7 @@ export interface UIButtonProps {
 const UIButton = (props: UIButtonProps) => {
   const { className, onClick, label, icon } = props
   const container = classNames("uiButton", className)
-  const menuClickSound = useSound(uiSounds.menuClick)
+  const menuClickSound = useSound("sounds-menu-click")
 
   const onClickHandler = () => {
     menuClickSound.play()

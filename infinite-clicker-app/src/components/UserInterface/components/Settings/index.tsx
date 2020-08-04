@@ -13,25 +13,38 @@ import { useMediaQuery } from "beautiful-react-hooks"
 
 const Settings = () => {
   const { player } = useGameState()
-  const [isOpen, setIsOpen] = useState(player.isNewPlayer)
+  const [isOpen, setIsOpen] = useState(true)
   const onOpen = () => setIsOpen(true)
-  const onClose = () => setIsOpen(false)
+  
+  const onClose = () => {
+    setIsOpen(false)
+    
+    if (currentMusic.current && soundSettings.soundsOn && currentMusic.current.currentTime === 0) {
+      currentMusic.current.currentTime = 0
+      currentMusic.current.play()
+    }
+  }
+  
   const soundSettings = useSoundSettings()
   const { currentMusic } = useMusic()
   
   const isLargeScreen = useMediaQuery("(min-width: 768px)")
 
   useEffect(() => {
+    if (!currentMusic.current) {
+      return
+    }
+
     if (!soundSettings.soundsOn) {
-      currentMusic.current.stop()
+      currentMusic.current.pause()
     } else {
-      currentMusic.current.play(soundSettings.soundsOn)
+      currentMusic.current.currentTime = 0
+      currentMusic.current.play()
     }
   }, [soundSettings, currentMusic])
 
   const onStartNewGame = () => {
     onClose()
-    currentMusic.current.play()
   }
 
   const onContinue = () => {

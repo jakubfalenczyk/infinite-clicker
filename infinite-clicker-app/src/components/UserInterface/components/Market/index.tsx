@@ -6,7 +6,6 @@ import { Materials } from "gameState/player/model"
 import MarketItem from "./components/MarketItem"
 import { allMarketGoods } from "./allMarketGoods"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 import UIButton from "../UIButton"
 import { useMediaQuery } from "beautiful-react-hooks"
 
@@ -15,8 +14,8 @@ const Market = () => {
   const onOpen = () => setIsOpen(true)
   const onClose = () => setIsOpen(false)
   const { player } = useGameState()
-  const disabledClickSound = useSound(uiSounds.disabledClick)
-  const moneySound = useSound(uiSounds.money)
+  const disabledClickSound = useSound("sounds-disabled-click")
+  const moneySound = useSound("sounds-money")
   const isLargeScreen = useMediaQuery("(min-width: 768px)")
 
   const sell = (material: keyof Materials, price: number, sold?: number) => {

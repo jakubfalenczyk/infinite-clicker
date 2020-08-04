@@ -5,6 +5,7 @@ import { SoundSettingsProvider } from "./common/useSoundSettings"
 import UserInterface from "components/UserInterface"
 import { noop } from "lodash"
 import { MusicProvider } from "gameState/music/useMusic"
+import AllSounds from "sounds"
 
 const App = () => {
   const autoGathererTick = useRef(noop)
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <div>
+      <AllSounds/>
       <GameStateProvider>
         <SoundSettingsProvider>
           <MusicProvider>

@@ -14,7 +14,6 @@ import { useGameState } from "gameState"
 import { allAchievements } from "./components/Achievements/allAchievements"
 import { noop } from "lodash"
 import useSound from "common/useSound"
-import { uiSounds } from "sounds"
 import Advance from "./components/Advance"
 import { useMediaQuery } from "beautiful-react-hooks"
 import MobileMenu from "./components/MobileMenu"
@@ -29,7 +28,7 @@ interface UserInterfaceProps {
 const UserInterface = (props: UserInterfaceProps) => {
   useAutoGatherers(props.autoGathererTick)
   useRandomEvents(props.randomEventsTick)
-  const achievementSound = useSound(uiSounds.achievement)
+  const achievementSound = useSound("sounds-achievement")
   
   const gameState = useGameState()
   const { achievements } = gameState

@@ -1,46 +1,39 @@
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import { useSoundSettings } from "./useSoundSettings"
 
 export interface AudioControls {
-  src: string
-  changeTrack: (src: string) => void
+  id: string
   play: (soundsOnExternal?: boolean) => void
   stop: () => void
 }
 
-const useSound = (src: string, loop: boolean = false): AudioControls => {
-  const lastSrc = useRef(src)
-  const audio = useRef(new Audio(src))
-  audio.current.loop = loop
+const useSound = (id: string): AudioControls => {
+  const getSound = () => document.getElementById(id) as (HTMLAudioElement | null)
+  const audio = useRef<HTMLAudioElement | null>(getSound())
+  
+  useEffect(() => {
+    audio.current = getSound()
+  })
+  
   const { soundsOn } = useSoundSettings()
   
-  const changeTrack = (src: string) => {
-    if (src === audio.current.src) {
-      return
-    }
-
-    audio.current.pause()
-    audio.current = new Audio(src)
-    lastSrc.current = src
-  }
-
   const play = (soundsOnExternal?: boolean) => {
-    if (soundsOnExternal || soundsOn) {
+    if (audio.current && (soundsOnExternal || soundsOn)) {
       audio.current.currentTime = 0
-      audio.current.loop = loop
       audio.current.play()
     }
   }
 
   const stop = () => {
-    audio.current.pause()
+    if (audio.current) {
+      audio.current.pause()
+    }
   }
 
   return {
-    src: lastSrc.current,
-    stop,
-    changeTrack,
+    id,
     play,
+    stop,
   }
 }
 
