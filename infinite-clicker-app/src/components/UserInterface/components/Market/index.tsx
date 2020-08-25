@@ -8,6 +8,7 @@ import { allMarketGoods } from "./allMarketGoods"
 import useSound from "common/useSound"
 import UIButton from "../UIButton"
 import { useMediaQuery } from "beautiful-react-hooks"
+import ReactGA from "react-ga"
 
 const Market = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,7 +35,14 @@ const Market = () => {
       [material]: player[material] - soldMaterials,
       gold: player.gold + soldMaterials * currentPrice,
       goldEarnedFromStart: player.goldEarnedFromStart + soldMaterials * currentPrice
-    })    
+    })
+
+    ReactGA.event({
+      category: "Market",
+      action: "Sold items on market",
+      label: material,
+      value: soldMaterials,
+    })
   }
 
   const buy = (material: keyof Materials, price: number, bought: number) => {

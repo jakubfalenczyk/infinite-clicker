@@ -6,6 +6,7 @@ import UpgradeItem from "./components/UpgradeItem"
 import { UpgradeParams, allUpgrades } from "../../../../gameState/upgrades/allUpgrades"
 import UIButton from "../UIButton"
 import useSound from "common/useSound"
+import ReactGA from "react-ga"
 
 const Upgrades = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,6 +37,13 @@ const Upgrades = () => {
         count: upgrades[upgrade.key].count + 1,
         price: Math.floor(upgrades[upgrade.key].price * upgrade.priceMultiplier)
       }
+    })
+
+    ReactGA.event({
+      category: "Upgrades",
+      action: "Bought new upgrade",
+      label: upgrade.key,
+      value: upgrades[upgrade.key].count + 1,
     })
   }
 
