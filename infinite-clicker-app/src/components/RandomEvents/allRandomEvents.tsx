@@ -20,7 +20,7 @@ export const allRandomEvents: Record<keyof RandomEventsState, RandomEventProps> 
     alert: <span>
       Wildfire is burning the forest!<br/>
       Stop it to get more charcoal.<br/>
-      <span className="guide">(click on a fire to extinguish it)</span>
+      <span className="guide">(click on fire to extinguish it)</span>
     </span>,
     music: "wildfire",
     materialOnClick: "charcoal",
@@ -31,7 +31,7 @@ export const allRandomEvents: Record<keyof RandomEventsState, RandomEventProps> 
     alert: <span>
       Termites are attacking!<br/>
       Stop them to get more wood.<br/>
-      <span className="guide">(click on a termite to squish it)</span>
+      <span className="guide">(click on termites to squish them)</span>
     </span>,
     music: "termites",
     materialOnClick: "wood",

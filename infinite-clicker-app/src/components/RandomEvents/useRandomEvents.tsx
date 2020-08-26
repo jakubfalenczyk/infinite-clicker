@@ -9,7 +9,6 @@ import { useSoundSettings } from "common/useSoundSettings"
 import { Goods, allMarketGoods } from "components/UserInterface/components/Market/allMarketGoods"
 import { calculateGatheredMaterials } from "components/UserInterface/components/Upgrades/calculateGatheredMaterials"
 import { PlayerState } from "gameState/player/model"
-// eslint-disable-next-line
 import { UpgradesState } from "gameState/upgrades/model"
 
 const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
@@ -40,7 +39,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
     return multiplier
   }
   
-  const update = useRef((randomEventsState: RandomEventsState, playerState: PlayerState, UpgradesState: UpgradesState, soundsOn: boolean) => {
+  const update = useRef((randomEventsState: RandomEventsState, playerState: PlayerState, upgradesState: UpgradesState, soundsOn: boolean) => {
     const isEventHappening = 
       randomEventsState.wildfire.count > 0 
       || randomEventsState.termites.count > 0
@@ -53,7 +52,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
     const count = Math.floor(Math.random() * 3) + 3
     const positions = getRandomPositions(count)
 
-    const stateAfterGathering = calculateGatheredMaterials(UpgradesState, playerState)
+    const stateAfterGathering = calculateGatheredMaterials(upgradesState, playerState)
     const materialsPerSec = getMaterialsPerSec(allMarketGoods[event.materialOnClick], stateAfterGathering, playerState)
     const materialsPerClick =  Array.from({ length: count }, () => getRandomMultiplier() * (materialsPerSec || 1))
 
@@ -64,6 +63,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
 
     setTimeout(() => {
       randomEvents.updateState(defaultRandomEventsState)
+      changeMusic("bg", soundsOn)
     }, 30 * 1000)
   })
 
