@@ -4,4 +4,31 @@
   img {
     cursor: pointer;
   }
+
+  .fa-tree {
+    color: #239135;
+  }
+
+  &:hover {
+    .materialOnClick {
+      display: flex;
+    }  
+  }
+
+  .materialOnClick {
+    display: none;
+    position: absolute;
+    font-size: 20px;
+    top: -30px;
+    left: 28px;
+    background-color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    line-height: 20px;
+
+    i {
+      margin-left: 3px;
+    }
+  }
 }

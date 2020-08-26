@@ -3,7 +3,6 @@ import "./styles.scss"
 import { useGameState } from "gameState"
 import GameModal from "components/GameModal"
 import Button from "components/GameModal/components/Button"
-import ReactGA from "react-ga"
 
 const AchievementUnlocked = () => {
   const { achievements } = useGameState()
@@ -18,14 +17,6 @@ const AchievementUnlocked = () => {
         unlocked: achievements.unlocked
       })
     }
-  }
-
-  if (unlocked) {
-    ReactGA.event({
-      category: "Achievement",
-      action: "Unlocked",
-      label: unlocked.category.label + " " + unlocked.valueLabel,
-    })
   }
   
   return (

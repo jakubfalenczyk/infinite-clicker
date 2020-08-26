@@ -15,18 +15,17 @@ const Settings = () => {
   const { player } = useGameState()
   const [isOpen, setIsOpen] = useState(true)
   const onOpen = () => setIsOpen(true)
+  const { currentMusic, stopAll } = useMusic()
   
   const onClose = () => {
     setIsOpen(false)
-    
-    if (currentMusic.current && soundSettings.soundsOn && currentMusic.current.currentTime === 0) {
-      currentMusic.current.currentTime = 0
+
+    if (currentMusic.current && soundSettings.soundsOn) {
       currentMusic.current.play()
     }
   }
   
   const soundSettings = useSoundSettings()
-  const { currentMusic } = useMusic()
   
   const isLargeScreen = useMediaQuery("(min-width: 768px)")
 
@@ -36,12 +35,12 @@ const Settings = () => {
     }
 
     if (!soundSettings.soundsOn) {
-      currentMusic.current.pause()
+      stopAll()
     } else {
       currentMusic.current.currentTime = 0
       currentMusic.current.play()
     }
-  }, [soundSettings, currentMusic])
+  }, [soundSettings, currentMusic, stopAll])
 
   const onStartNewGame = () => {
     onClose()

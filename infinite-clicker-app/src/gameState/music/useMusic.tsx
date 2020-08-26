@@ -42,7 +42,7 @@ export const MusicProvider = ({ children }: React.PropsWithChildren<{}>) => {
       return
     }
 
-    if (currentMusic.current && music.src === currentMusic.current.src) {
+    if (currentMusic.current && music.id === currentMusic.current.id) {
       return
     }
 
@@ -58,9 +58,15 @@ export const MusicProvider = ({ children }: React.PropsWithChildren<{}>) => {
     }
   }
 
+  const stopAll = () => {
+    const allSounds = [ getBgMusic(), getWildfire(), getTermites() ]
+    allSounds.forEach(s => s?.pause())
+  }
+
   const state: MusicState = {
     currentMusic,
     changeMusic,
+    stopAll,
   }
 
   return (

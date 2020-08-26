@@ -12,7 +12,7 @@ const App = () => {
   useRef(setInterval(() => autoGathererTick.current(), 1000))
   
   const randomEventsTick = useRef(noop)
-  useRef(setInterval(() => randomEventsTick.current(), 4.5 * 60 * 1000))
+  useRef(setInterval(() => randomEventsTick.current(), 8.7 * 60 * 1000))
 
   const achievementsUnlockTick = useRef(noop)
   useRef(setInterval(() => achievementsUnlockTick.current(), 2000))

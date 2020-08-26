@@ -5,6 +5,7 @@ import { useGameState } from "gameState"
 import { multiplierStep, gameResetBasePrice, gameResetPriceMultiplier } from ".."
 import useSound from "common/useSound"
 import { defaultPlayerState } from "gameState/player/model"
+import ReactGA from "react-ga"
 
 interface ResetGameProps {
   onConfirm: () => void
@@ -34,6 +35,12 @@ const ResetGame = (props: ResetGameProps) => {
   }
 
   const onConfirm = () => {
+    ReactGA.event({
+      category: "Advance",
+      action: "Player has advanced to new level (" + (player.gameReset + 1) + ")",
+      value: player.gameReset + 1
+    })
+    
     moneySound.play()
     const achievementsState = { ...gameState.achievements }
     const playerState = { ...gameState.player }
@@ -47,6 +54,7 @@ const ResetGame = (props: ResetGameProps) => {
       gameReset: playerState.gameReset + 1,
       gameResetPrice: currentResetPrice * gameResetPriceMultiplier,
     })
+
     onClose()
     props.onConfirm()
   }

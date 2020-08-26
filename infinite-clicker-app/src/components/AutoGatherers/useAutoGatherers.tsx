@@ -3,20 +3,11 @@ import { useGameState } from "gameState"
 import { PlayerState } from "gameState/player/model"
 import { UpgradesState } from "gameState/upgrades/model"
 import { calculateGatheredMaterials } from "components/UserInterface/components/Upgrades/calculateGatheredMaterials"
-import { RandomEventsState } from "gameState/randomEvents/model"
 
 const useAutoGatherers = (autoGathererTick: React.MutableRefObject<() => void>) => {
-  const { player, upgrades, randomEvents } = useGameState()
+  const { player, upgrades } = useGameState()
   
-  const updatePlayerState = useRef((playerState: PlayerState, upgradesState: UpgradesState, randomEventsState: RandomEventsState) => {
-    const isEventHappening =
-      randomEventsState.wildfire.count > 0 
-      || randomEventsState.termites.count > 0
-    
-    if (isEventHappening) {
-      return
-    }
-    
+  const updatePlayerState = useRef((playerState: PlayerState, upgradesState: UpgradesState) => {
     const updatedPlayerState = calculateGatheredMaterials(upgradesState, playerState)
     
     player.updateState({
@@ -27,9 +18,9 @@ const useAutoGatherers = (autoGathererTick: React.MutableRefObject<() => void>) 
 
   useEffect(() => {
     autoGathererTick.current = () => {
-      updatePlayerState.current(player, upgrades, randomEvents)
+      updatePlayerState.current(player, upgrades)
     }
-  }, [upgrades, player, randomEvents, autoGathererTick])
+  }, [upgrades, player, autoGathererTick])
 }
 
 export default useAutoGatherers

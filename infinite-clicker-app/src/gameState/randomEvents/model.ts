@@ -5,6 +5,7 @@ export interface RandomEvent {
   count: number
   key: keyof RandomEventsState
   positions: CSSProperties[]
+  materialsPerClick: number[]
 }
 
 export interface RandomEventsState {
@@ -17,11 +18,13 @@ export const defaultRandomEventsState: RandomEventsState = {
     count: 0,
     key: "wildfire",
     positions: [],
+    materialsPerClick: [],
   },
   termites: {
     count: 0,
     key: "termites",
     positions: [],
+    materialsPerClick: [],
   },
 }
 

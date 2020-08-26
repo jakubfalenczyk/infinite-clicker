@@ -18,6 +18,7 @@ import Advance from "./components/Advance"
 import { useMediaQuery } from "beautiful-react-hooks"
 import MobileMenu from "./components/MobileMenu"
 import MobileUpgrades from "./components/MobileUpgrades"
+import ReactGA from "react-ga"
 
 interface UserInterfaceProps {
   autoGathererTick: React.MutableRefObject<() => void>
@@ -46,6 +47,12 @@ const UserInterface = (props: UserInterfaceProps) => {
         }) 
         achievementSound.play()
       }
+
+      ReactGA.event({
+        category: "Achievements",
+        action: "Unlocked new achievement",
+        label: unlocked.category.label + " - " + unlocked.valueLabel,
+      })
     } else {
       props.achievementsUnlockTick.current = noop
     }
