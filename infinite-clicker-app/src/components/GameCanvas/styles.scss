@@ -151,3 +151,110 @@
     }
   }
 }
+
+@media (min-height: 768px) and (min-width: 600px) {
+  .game-canvas {
+    margin-top: -256px;
+  }
+}
+
+@media (min-height: 768px) {
+  .gameModal.nested.creditsModal {
+    top: 100px;
+  }
+
+  .game-canvas {
+    .clickingArea {
+      height: 620px;
+    }
+
+    .burner {
+      margin-top: -50px;
+    }
+
+    .lumberCamp {
+      margin-top: -20px;
+      margin-left: -40px;
+    }
+    
+    .furnitureFactory {
+      margin-left: 120px;
+      margin-top: -230px;
+    }
+    
+    .paperFactory {
+      margin-right: -100px;
+      margin-top: -210px;
+    }
+  }
+}
+
+@media (min-height: 900px) {
+  .game-canvas {
+    margin-top: -200px;
+
+    .clickingArea {
+      height: 700px;
+    }
+
+    .burner {
+      margin-top: 0px;
+    }
+
+    .lumberCamp {
+      margin-top: 0px;
+      margin-left: -30px;
+    }
+    
+    .furnitureFactory {
+      margin-left: 120px;
+      margin-top: -165px;
+    }
+    
+    .paperFactory {
+      margin-right: -90px;
+      margin-top: -190px;
+    }
+  }
+}
+
+@media (min-height: 1080px) {
+  .game-canvas {
+    margin-top: -180px;
+
+    .clickingArea {
+      height: 850px;
+    }
+
+    .burner {
+      margin-top: 0px;
+    }
+
+    .lumberCamp {
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+    
+    .furnitureFactory {
+      margin-left: 0px;
+      margin-top: 0px;
+    }
+    
+    .paperFactory {
+      margin-right: 0px;
+      margin-top: 0px;
+    }
+  }
+}
+
+@media (min-height: 1200px) {
+  .game-canvas {
+    margin-top: -60px;
+  }
+}
+
+@media (min-height: 1300px) {
+  .game-canvas {
+    margin-top: 0px;
+  }
+}

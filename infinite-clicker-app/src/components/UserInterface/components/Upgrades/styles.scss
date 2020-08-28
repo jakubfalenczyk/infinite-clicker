@@ -1,4 +1,4 @@
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (min-height: 1080px) {
   .gameModal.upgradesModal {
     top: 40px;
   }
@@ -97,6 +97,7 @@
 }
 
 .upgradesModal {
+  top: 0;
   font-size: 24px;
   
   .content {
