@@ -6,6 +6,7 @@ import { useGameState } from "gameState"
 import UIButton from "../UIButton"
 import AchievementsCategory from "./components/AchievementsCategory"
 import { allAchievements, allCategories } from "./allAchievements"
+import BonusesModal from "./components/BonusesModal"
 
 const Achievements = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,6 +30,7 @@ const Achievements = () => {
         isOpen={isOpen}
         onClose={onClose}
       >
+        <BonusesModal/>
         {allCategories.map(category => (
           <AchievementsCategory
             key={category.id}

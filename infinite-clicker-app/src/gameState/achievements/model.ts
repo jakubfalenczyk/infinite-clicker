@@ -1,5 +1,6 @@
 import _ from "lodash"
 import { GameStateContextType } from "gameState"
+import { Materials } from "gameState/player/model"
 
 export interface AchievementCategory {
   id: number
@@ -12,6 +13,8 @@ export interface Achievement {
   valueLabel: string
   isUnlocked: (gameState: GameStateContextType) => boolean
   shown?: boolean
+  boostedResource: keyof Materials
+  boostValue: number
 }
 
 export interface AchievementsState {

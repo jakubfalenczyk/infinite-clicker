@@ -33,6 +33,7 @@ const AchievementUnlocked = () => {
         <div className="message">
           <h2>Achievement unlocked!</h2>
           <h2>{unlocked.category.label} [{unlocked.valueLabel}]</h2>
+          <h3>+{unlocked.boostValue}% {unlocked.boostedResource}/s</h3>
           <Button onClick={onClose}>Ok</Button>
         </div>
       }

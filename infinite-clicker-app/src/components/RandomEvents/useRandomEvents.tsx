@@ -10,9 +10,10 @@ import { Goods, allMarketGoods } from "components/UserInterface/components/Marke
 import { calculateGatheredMaterials } from "components/UserInterface/components/Upgrades/calculateGatheredMaterials"
 import { PlayerState } from "gameState/player/model"
 import { UpgradesState } from "gameState/upgrades/model"
+import { AchievementsState } from "gameState/achievements/model"
 
 const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
-  const { randomEvents, player, upgrades } = useGameState()
+  const { randomEvents, player, upgrades, achievements } = useGameState()
   const soundSettings = useSoundSettings()
   const { changeMusic } = useMusic()
 
@@ -39,7 +40,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
     return multiplier
   }
   
-  const update = useRef((randomEventsState: RandomEventsState, playerState: PlayerState, upgradesState: UpgradesState, soundsOn: boolean) => {
+  const update = useRef((randomEventsState: RandomEventsState, playerState: PlayerState, upgradesState: UpgradesState, achievementsState: AchievementsState, soundsOn: boolean) => {
     const isEventHappening = 
       randomEventsState.wildfire.count > 0 
       || randomEventsState.termites.count > 0
@@ -52,7 +53,7 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
     const count = Math.floor(Math.random() * 3) + 3
     const positions = getRandomPositions(count)
 
-    const stateAfterGathering = calculateGatheredMaterials(upgradesState, playerState)
+    const stateAfterGathering = calculateGatheredMaterials(upgradesState, playerState, achievementsState)
     const materialsPerSec = getMaterialsPerSec(allMarketGoods[event.materialOnClick], stateAfterGathering, playerState)
     const materialsPerClick =  Array.from({ length: count }, () => getRandomMultiplier() * (materialsPerSec || 1))
 
@@ -69,9 +70,9 @@ const useRandomEvents = (tick: React.MutableRefObject<() => void>) => {
 
   useEffect(() => {
     tick.current = () => {
-      update.current(randomEvents, player, upgrades, soundSettings.soundsOn)
+      update.current(randomEvents, player, upgrades, achievements, soundSettings.soundsOn)
     }
-  }, [tick, randomEvents, player, upgrades, soundSettings.soundsOn])
+  }, [tick, randomEvents, player, upgrades, achievements, soundSettings.soundsOn])
 }
 
 export default useRandomEvents

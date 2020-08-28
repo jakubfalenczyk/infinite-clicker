@@ -6,8 +6,8 @@ import { Goods, allMarketGoods } from "../Market/allMarketGoods";
 import { allAxes, Axe } from "../Tools/allAxes";
 
 const getMaterialsPerSec = (gameState: GameStateContextType, goods: Goods) => {
-  const { player, upgrades } = gameState
-  const stateAfterGathering = calculateGatheredMaterials(upgrades, player)
+  const { player, upgrades, achievements } = gameState
+  const stateAfterGathering = calculateGatheredMaterials(upgrades, player, achievements)
   const materialsPerSec = stateAfterGathering[goods.material] - player[goods.material] || 0
   return materialsPerSec
 }
@@ -23,6 +23,8 @@ const cutDownTrees: Achievement[] =
       id: `${cutDownTreesCategory.id}_${index}`,
       category: cutDownTreesCategory,
       valueLabel: formatNumber(value),
+      boostedResource: "wood",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
         return player.cutDownTrees >= value
@@ -35,11 +37,13 @@ const woodProductionCategory: AchievementCategory = {
 }
 
 const woodProduction: Achievement[] = 
-  [10, 50, 100, 250, 1000, 10000]
+  [10, 50, 100, 250, 1000, 10000, 50000, 250000]
     .map((value, index) => ({ 
       id: `${woodProductionCategory.id}_${index}`,
       category: woodProductionCategory,
       valueLabel: `${formatNumber(value)}/s`,
+      boostedResource: "wood",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const perSec = getMaterialsPerSec(gameState, allMarketGoods.wood)
         return perSec >= value
@@ -57,6 +61,8 @@ const charcoalProduction: Achievement[] =
       id: `${charcoalProductionCategory.id}_${index}`,
       category: charcoalProductionCategory,
       valueLabel: `${formatNumber(value)}/s`,
+      boostedResource: "charcoal",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const perSec = getMaterialsPerSec(gameState, allMarketGoods.charcoal)
         return perSec >= value
@@ -74,6 +80,8 @@ const planksProduction: Achievement[] =
       id: `${planksProductionCategory.id}_${index}`,
       category: planksProductionCategory,
       valueLabel: `${formatNumber(value)}/s`,
+      boostedResource: "plank",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const perSec = getMaterialsPerSec(gameState, allMarketGoods.plank)
         return perSec >= value
@@ -91,6 +99,8 @@ const paperProduction: Achievement[] =
       id: `${paperProductionCategory.id}_${index}`,
       category: paperProductionCategory,
       valueLabel: `${formatNumber(value)}/s`,
+      boostedResource: "paper",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const perSec = getMaterialsPerSec(gameState, allMarketGoods.paper)
         return perSec >= value
@@ -108,6 +118,8 @@ const furnitureProduction: Achievement[] =
       id: `${furnitureProductionCategory.id}_${index}`,
       category: furnitureProductionCategory,
       valueLabel: `${formatNumber(value)}/s`,
+      boostedResource: "furniture",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const perSec = getMaterialsPerSec(gameState, allMarketGoods.furniture)
         return perSec >= value
@@ -129,6 +141,8 @@ const goldEarned: Achievement[] =
       id: `${goldEarnedCategory.id}_${index}`,
       category: goldEarnedCategory,
       valueLabel: formatNumberWithSuffix(value),
+      boostedResource: "wood",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
         return player.goldEarnedFromStart >= value
@@ -146,6 +160,8 @@ const gameReset: Achievement[] =
       id: `${gameResetCategory.id}_${index}`,
       category: gameResetCategory,
       valueLabel: formatNumber(value),
+      boostedResource: "wood",
+      boostValue: (index + 1) * 5,
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
         return player.gameReset >= value
@@ -163,6 +179,8 @@ const axeUpgrade: Achievement[] =
       id: `${axeUpgradeCategory.id}_${index}`,
       category: axeUpgradeCategory,
       valueLabel: value.label.split(' ')[0],
+      boostedResource: "wood",
+      boostValue: index + 1,
       isUnlocked: (gameState: GameStateContextType) => {
         const { player } = gameState
         return player.axe.price >= value.price

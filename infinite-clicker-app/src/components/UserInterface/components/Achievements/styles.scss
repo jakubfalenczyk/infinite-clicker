@@ -11,14 +11,14 @@
 }
 
 @media (min-width: 768px){
+  .gameModal.bonusesModal {
+    width: 480px;
+  }
+
   .gameModal.achievementsModal {
     width: 768px;
     font-size: 24px;
   
-    .content {
-      padding-top: 20px;
-    }
-
     .category {
       flex: 1 1 340px;
       text-align: center;
@@ -44,6 +44,11 @@
 }
 
 @media (max-width: 757px){
+  .gameModal.bonusesModal {
+    top: 50px;
+    width: calc(100% - 8px);
+  }
+
   .gameModal.achievementsModal {
     top: 0;
     width: calc(100% - 8px);
@@ -95,5 +100,30 @@
   .row {
     display: flex;
     justify-content: space-around;
+  }
+}
+
+.fa-award {
+  color: #e4e400;
+  margin-left: 5px;
+}
+
+.bonusesButton {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+  margin-top: -20px;
+}
+
+.gameModal.bonusesModal {
+  .content {
+    padding-top: 15px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: -10px;
+
+    .category {
+      padding: 7px;
+    }
   }
 }

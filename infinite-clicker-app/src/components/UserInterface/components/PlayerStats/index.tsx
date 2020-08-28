@@ -8,7 +8,7 @@ import { allUpgrades } from "gameState/upgrades/allUpgrades"
 import { formatNumber } from "common/formatNumber"
 
 const PlayerStats = () => {
-  const { player, upgrades } = useGameState()
+  const { player, upgrades, achievements } = useGameState()
   
   const hasAnyUpgradeForMaterial = (material: keyof Materials) => {
     if (material === "wood" || player[material] > 0) {
@@ -19,7 +19,7 @@ const PlayerStats = () => {
     return materialUpgrades.some(x => upgrades[x.key].count > 0)
   }
   
-  const stateAfterGathering = calculateGatheredMaterials(upgrades, player)
+  const stateAfterGathering = calculateGatheredMaterials(upgrades, player, achievements)
 
   const getMaterialsPerSec = (goods: Goods) => {
     const materialsPerSec = stateAfterGathering[goods.material] - player[goods.material] || 0
