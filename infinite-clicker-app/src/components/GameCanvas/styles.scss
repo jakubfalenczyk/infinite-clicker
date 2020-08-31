@@ -152,13 +152,19 @@
   }
 }
 
-@media (min-height: 768px) and (min-width: 600px) {
+@media (min-height: 768px) and (min-width: 768px) {
   .game-canvas {
     margin-top: -256px;
   }
 }
 
-@media (min-height: 768px) {
+@media (max-height: 768px) and (min-width: 600px) {
+  .game-canvas {
+    margin-top: -256px;
+  }
+}
+
+@media (min-height: 768px) and (min-width: 1360px) {
   .gameModal.nested.creditsModal {
     top: 100px;
   }
@@ -189,7 +195,7 @@
   }
 }
 
-@media (min-height: 900px) {
+@media (min-height: 900px) and (min-width: 1360px) {
   .game-canvas {
     margin-top: -200px;
 
@@ -218,7 +224,7 @@
   }
 }
 
-@media (min-height: 1080px) {
+@media (min-height: 1080px) and (min-width: 1360px) {
   .game-canvas {
     margin-top: -180px;
 
